@@ -1,6 +1,5 @@
 {
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
-  ],
-  "_deployTrigger": "2026-01-28T16:48:00Z"
+  ]
 }
