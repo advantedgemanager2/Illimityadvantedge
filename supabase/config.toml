@@ -1,0 +1,16 @@
+project_id = "icezsfhyoixtxgdhmjzh"
+
+[functions.seed-content]
+verify_jwt = false
+
+[functions.setup-admin]
+verify_jwt = false
+
+[functions.seed-steel-content]
+verify_jwt = false
+
+[functions.seed-cement-content]
+verify_jwt = false
+
+[functions.seed-automotive-content]
+verify_jwt = false
