@@ -14,3 +14,6 @@ verify_jwt = false
 
 [functions.seed-automotive-content]
 verify_jwt = false
+
+[functions.manage-users]
+verify_jwt = true

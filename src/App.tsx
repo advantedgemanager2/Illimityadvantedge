@@ -2,10 +2,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/admin/ProtectedRoute";
+import AuthenticatedRoute from "@/components/auth/AuthenticatedRoute";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
 // Know-How Tool
@@ -36,7 +38,6 @@ import Automotive from "./pages/sectors/Automotive";
 import Shipping from "./pages/sectors/Shipping";
 
 // Admin
-import AdminLogin from "./pages/admin/Login";
 import AdminDashboard from "./pages/admin/Dashboard";
 import EditPage from "./pages/admin/EditPage";
 
@@ -50,37 +51,41 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            
+            {/* Login */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Home */}
+            <Route path="/" element={<AuthenticatedRoute><Index /></AuthenticatedRoute>} />
+
             {/* Know-How Tool */}
-            <Route path="/know-how/transition-finance" element={<TransitionFinance />} />
-            <Route path="/know-how/transition-risks" element={<TransitionRisks />} />
-            <Route path="/know-how/greenwashing-risks" element={<GreenwashingRisks />} />
-            <Route path="/know-how/credible-transition-plans" element={<CredibleTransitionPlans />} />
-            <Route path="/know-how/risk-assessment" element={<RiskAssessment />} />
-            <Route path="/know-how/solutions-deployment" element={<SolutionsDeployment />} />
-            <Route path="/know-how/litigation-risk" element={<LitigationRisk />} />
-            
+            <Route path="/know-how/transition-finance" element={<AuthenticatedRoute><TransitionFinance /></AuthenticatedRoute>} />
+            <Route path="/know-how/transition-risks" element={<AuthenticatedRoute><TransitionRisks /></AuthenticatedRoute>} />
+            <Route path="/know-how/greenwashing-risks" element={<AuthenticatedRoute><GreenwashingRisks /></AuthenticatedRoute>} />
+            <Route path="/know-how/credible-transition-plans" element={<AuthenticatedRoute><CredibleTransitionPlans /></AuthenticatedRoute>} />
+            <Route path="/know-how/risk-assessment" element={<AuthenticatedRoute><RiskAssessment /></AuthenticatedRoute>} />
+            <Route path="/know-how/solutions-deployment" element={<AuthenticatedRoute><SolutionsDeployment /></AuthenticatedRoute>} />
+            <Route path="/know-how/litigation-risk" element={<AuthenticatedRoute><LitigationRisk /></AuthenticatedRoute>} />
+
             {/* Governance Tool */}
-            <Route path="/governance/prudential-planning" element={<PrudentialPlanning />} />
-            <Route path="/governance/net-zero-management" element={<NetZeroManagement />} />
-            <Route path="/governance/finance-framework" element={<FinanceFramework />} />
-            
+            <Route path="/governance/prudential-planning" element={<AuthenticatedRoute><PrudentialPlanning /></AuthenticatedRoute>} />
+            <Route path="/governance/net-zero-management" element={<AuthenticatedRoute><NetZeroManagement /></AuthenticatedRoute>} />
+            <Route path="/governance/finance-framework" element={<AuthenticatedRoute><FinanceFramework /></AuthenticatedRoute>} />
+
             {/* Products */}
-            <Route path="/products/kpis-criteria" element={<KPIsCriteria />} />
-            <Route path="/products/corporate-loans" element={<CorporateLoans />} />
-            <Route path="/products/sll" element={<SLL />} />
-            <Route path="/products/contractual-solutions" element={<ContractualSolutions />} />
-            <Route path="/products/loan-policy" element={<LoanPolicy />} />
-            
+            <Route path="/products/kpis-criteria" element={<AuthenticatedRoute><KPIsCriteria /></AuthenticatedRoute>} />
+            <Route path="/products/corporate-loans" element={<AuthenticatedRoute><CorporateLoans /></AuthenticatedRoute>} />
+            <Route path="/products/sll" element={<AuthenticatedRoute><SLL /></AuthenticatedRoute>} />
+            <Route path="/products/contractual-solutions" element={<AuthenticatedRoute><ContractualSolutions /></AuthenticatedRoute>} />
+            <Route path="/products/loan-policy" element={<AuthenticatedRoute><LoanPolicy /></AuthenticatedRoute>} />
+
             {/* Sectors */}
-            <Route path="/sectors/steel" element={<Steel />} />
-            <Route path="/sectors/cement" element={<Cement />} />
-            <Route path="/sectors/automotive" element={<Automotive />} />
-            <Route path="/sectors/shipping" element={<Shipping />} />
-            
+            <Route path="/sectors/steel" element={<AuthenticatedRoute><Steel /></AuthenticatedRoute>} />
+            <Route path="/sectors/cement" element={<AuthenticatedRoute><Cement /></AuthenticatedRoute>} />
+            <Route path="/sectors/automotive" element={<AuthenticatedRoute><Automotive /></AuthenticatedRoute>} />
+            <Route path="/sectors/shipping" element={<AuthenticatedRoute><Shipping /></AuthenticatedRoute>} />
+
             {/* Admin Routes */}
-            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/login" element={<Navigate to="/login" replace />} />
             <Route
               path="/admin"
               element={
@@ -97,7 +102,7 @@ const App = () => (
                 </ProtectedRoute>
               }
             />
-            
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Search, Globe, Menu } from "lucide-react";
+import { Search, Globe, Menu, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import SearchDialog from "@/components/search/SearchDialog";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -15,6 +16,7 @@ interface HeaderProps {
 
 const Header = ({ onMenuToggle }: HeaderProps) => {
   const [searchOpen, setSearchOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -97,6 +99,13 @@ const Header = ({ onMenuToggle }: HeaderProps) => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {user && (
+              <Button variant="ghost" size="sm" className="gap-2" onClick={signOut}>
+                <LogOut className="h-4 w-4" />
+                <span className="hidden sm:inline">Sign Out</span>
+              </Button>
+            )}
           </div>
         </div>
       </header>
