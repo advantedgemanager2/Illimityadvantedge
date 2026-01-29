@@ -123,7 +123,18 @@ export default function AdminDashboard() {
       const { data, error } = await supabase.functions.invoke("manage-users", {
         body: { action: "list" },
       });
-      if (error) throw error;
+      if (error) {
+        const context = (error as any).context;
+        if (context && typeof context.json === "function") {
+          try {
+            const body = await context.json();
+            throw new Error(body.error || error.message);
+          } catch (e) {
+            if (e instanceof Error && e.message !== error.message) throw e;
+          }
+        }
+        throw error;
+      }
       return data.users as ManagedUser[];
     },
   });
@@ -133,7 +144,19 @@ export default function AdminDashboard() {
       const { data, error } = await supabase.functions.invoke("manage-users", {
         body: { action: "create", email, password, role },
       });
-      if (error) throw error;
+      if (error) {
+        // Try to extract the actual error message from the response body
+        const context = (error as any).context;
+        if (context && typeof context.json === "function") {
+          try {
+            const body = await context.json();
+            throw new Error(body.error || error.message);
+          } catch (e) {
+            if (e instanceof Error && e.message !== error.message) throw e;
+          }
+        }
+        throw error;
+      }
       if (data.error) throw new Error(data.error);
       return data;
     },
@@ -155,7 +178,18 @@ export default function AdminDashboard() {
       const { data, error } = await supabase.functions.invoke("manage-users", {
         body: { action: "delete", userId },
       });
-      if (error) throw error;
+      if (error) {
+        const context = (error as any).context;
+        if (context && typeof context.json === "function") {
+          try {
+            const body = await context.json();
+            throw new Error(body.error || error.message);
+          } catch (e) {
+            if (e instanceof Error && e.message !== error.message) throw e;
+          }
+        }
+        throw error;
+      }
       if (data.error) throw new Error(data.error);
       return data;
     },

@@ -4,6 +4,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 serve(async (req) => {
@@ -12,44 +13,89 @@ serve(async (req) => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+
+    if (!supabaseUrl || !supabaseServiceKey || !supabaseAnonKey) {
+      console.error("Missing env vars:", {
+        hasUrl: !!supabaseUrl,
+        hasServiceKey: !!supabaseServiceKey,
+        hasAnonKey: !!supabaseAnonKey,
+      });
+      return new Response(
+        JSON.stringify({ error: "Server configuration error: missing environment variables" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
 
     // Verify the caller is an admin
-    const authHeader = req.headers.get("Authorization")!;
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader) {
+      console.error("No Authorization header present");
+      return new Response(JSON.stringify({ error: "Missing Authorization header" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     const callerClient = createClient(supabaseUrl, supabaseAnonKey, {
       global: { headers: { Authorization: authHeader } },
     });
 
     const {
       data: { user: caller },
+      error: getUserError,
     } = await callerClient.auth.getUser();
 
-    if (!caller) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    if (getUserError) {
+      console.error("getUser error:", getUserError.message);
+      return new Response(JSON.stringify({ error: `Auth error: ${getUserError.message}` }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
+    if (!caller) {
+      console.error("getUser returned null caller, no error");
+      return new Response(JSON.stringify({ error: "Unauthorized: could not identify caller" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    console.log("Caller identified:", caller.id, caller.email);
+
     // Check if caller is admin
     const adminClient = createClient(supabaseUrl, supabaseServiceKey);
-    const { data: roleData } = await adminClient
+    const { data: roleData, error: roleError } = await adminClient
       .from("user_roles")
       .select("role")
       .eq("user_id", caller.id)
       .eq("role", "admin")
       .maybeSingle();
 
+    if (roleError) {
+      console.error("Role check error:", roleError.message);
+      return new Response(
+        JSON.stringify({ error: `Role check failed: ${roleError.message}` }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     if (!roleData) {
+      console.error("No admin role found for user:", caller.id);
       return new Response(JSON.stringify({ error: "Forbidden: admin role required" }), {
         status: 403,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const { action, ...params } = await req.json();
+    console.log("Admin role confirmed for:", caller.email);
+
+    const body = await req.json();
+    const { action, ...params } = body;
+    console.log("Action:", action);
 
     // LIST users
     if (action === "list") {
@@ -59,6 +105,7 @@ serve(async (req) => {
       } = await adminClient.auth.admin.listUsers();
 
       if (error) {
+        console.error("listUsers error:", error.message);
         return new Response(JSON.stringify({ error: error.message }), {
           status: 500,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -81,6 +128,7 @@ serve(async (req) => {
       }));
 
       return new Response(JSON.stringify({ users: enrichedUsers }), {
+        status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
@@ -96,6 +144,8 @@ serve(async (req) => {
         });
       }
 
+      console.log("Creating user:", email, "with role:", role || "viewer");
+
       const {
         data: { user: newUser },
         error,
@@ -106,6 +156,7 @@ serve(async (req) => {
       });
 
       if (error) {
+        console.error("createUser error:", error.message);
         return new Response(JSON.stringify({ error: error.message }), {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -114,15 +165,20 @@ serve(async (req) => {
 
       // Assign role if specified and not "viewer" (viewer is the default/no-role state)
       if (role && role !== "viewer" && newUser) {
-        await adminClient.from("user_roles").insert({
+        const { error: roleInsertError } = await adminClient.from("user_roles").insert({
           user_id: newUser.id,
           role,
         });
+        if (roleInsertError) {
+          console.error("Role insert error:", roleInsertError.message);
+        }
       }
+
+      console.log("User created successfully:", newUser!.id);
 
       return new Response(
         JSON.stringify({ user: { id: newUser!.id, email: newUser!.email, role: role || "viewer" } }),
-        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
@@ -151,6 +207,7 @@ serve(async (req) => {
       const { error } = await adminClient.auth.admin.deleteUser(userId);
 
       if (error) {
+        console.error("deleteUser error:", error.message);
         return new Response(JSON.stringify({ error: error.message }), {
           status: 500,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -158,18 +215,20 @@ serve(async (req) => {
       }
 
       return new Response(JSON.stringify({ success: true }), {
+        status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    return new Response(JSON.stringify({ error: "Unknown action" }), {
+    return new Response(JSON.stringify({ error: `Unknown action: ${action}` }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.error("Unhandled error:", err);
+    return new Response(
+      JSON.stringify({ error: err.message || "Internal server error", stack: String(err) }),
+      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   }
 });
