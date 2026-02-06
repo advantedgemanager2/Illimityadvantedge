@@ -14,11 +14,15 @@ const tocItems = [
   { id: "production-routes", title: "Production Routes", level: 2 },
   { id: "integrated-route", title: "Integrated Route (BF-BOF)", level: 3 },
   { id: "recycling-route", title: "Recycling Route (EAF)", level: 3 },
+  { id: "dri-route", title: "Direct Reduced Iron (DRI)", level: 3 },
   { id: "best-practices", title: "Best Practices & Benchmarks", level: 2 },
   { id: "impacts", title: "Environmental Impacts", level: 2 },
+  { id: "eu-policies", title: "EU Policies", level: 2 },
   { id: "decarbonization", title: "Decarbonization Technologies", level: 2 },
   { id: "transition-plans", title: "Transition Plan Credibility", level: 2 },
+  { id: "target-setting", title: "Target Setting (SBTi)", level: 2 },
   { id: "kpis", title: "KPIs for Steel Sector", level: 2 },
+  { id: "locked-in-emissions", title: "Locked-in Emissions", level: 2 },
 ];
 
 const sources = [
@@ -49,6 +53,34 @@ const sources = [
     author: "EUROFER",
     year: "2023",
     url: "https://www.eurofer.eu/publications/brochures-booklets-and-factsheets/european-steel-in-figures-2023/",
+  },
+  {
+    id: 5,
+    title: "Climate Bonds Steel Criteria",
+    author: "Climate Bonds Initiative (CBI)",
+    year: "2023",
+    url: "https://www.climatebonds.net/files/files/Climate%20Bonds%20Steel%20Criteria.pdf",
+  },
+  {
+    id: 6,
+    title: "Steel Transition Strategy",
+    author: "Mission Possible Partnership (MPP)",
+    year: "2022",
+    url: "https://missionpossiblepartnership.org/action-sectors/steel/",
+  },
+  {
+    id: 7,
+    title: "Carbon Performance Assessment of Steel",
+    author: "Transition Pathway Initiative (TPI)",
+    year: "2021",
+    url: "https://www.transitionpathwayinitiative.org/publications/44",
+  },
+  {
+    id: 8,
+    title: "ResponsibleSteel International Production Standard V2.1",
+    author: "ResponsibleSteel",
+    year: "2024",
+    url: "https://www.responsiblesteel.org/",
   },
 ];
 
@@ -164,6 +196,22 @@ const SteelFallback = () => {
                 The mitigation of indirect emissions could be achieved through the use of renewable electricity in the EAF process. The integration of renewable electricity in conjunction with hydrogen production is crucial for enhancing the overall sustainability of the steelmaking process.
               </Callout>
             </div>
+
+            <div id="dri-route" className="mb-6">
+              <h3 className="text-xl font-semibold text-foreground mb-3">Direct Reduced Iron (DRI)</h3>
+
+              <p className="text-muted-foreground mb-4">
+                DRI is produced by reducing iron ore using natural gas or hydrogen without melting. It produces a solid iron product (sponge iron) that can be used in EAF as a substitute for scrap.
+              </p>
+
+              <p className="text-muted-foreground mb-4">
+                <strong>Hydrogen-Based DRI</strong> is an emerging technology with significant potential for near-zero emissions when using green hydrogen. Several pilot projects are underway globally, and this route is expected to be a key decarbonization pathway.
+              </p>
+
+              <Callout type="info" title="Key Advantage">
+                DRI-EAF with green hydrogen can achieve up to 95% emission reduction compared to BF-BOF route, making it one of the most promising decarbonization technologies for the steel sector.
+              </Callout>
+            </div>
           </section>
 
           {/* Best Practices Section */}
@@ -222,6 +270,46 @@ const SteelFallback = () => {
             </Callout>
           </section>
 
+          {/* EU Policies Section */}
+          <section id="eu-policies" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">EU Policies</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Several EU policies and regulatory frameworks affect the steel sector:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">EU Emissions Trading System (EU ETS)</h4>
+                <p className="text-sm text-muted-foreground">Cap-and-trade system covering steel production. Free allocation is being phased out as CBAM is introduced.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Carbon Border Adjustment Mechanism (CBAM)</h4>
+                <p className="text-sm text-muted-foreground">Import levy on embedded carbon in steel products. Transitional phase since Oct 2023; financial obligations from 2026.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Industrial Emissions Directive (IED)</h4>
+                <p className="text-sm text-muted-foreground">Sets emission limits and Best Available Techniques (BAT) requirements for industrial installations.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">EU Taxonomy Regulation</h4>
+                <p className="text-sm text-muted-foreground">Defines criteria for sustainable steel production. Key thresholds apply to different production processes.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Fit for 55 Package</h4>
+                <p className="text-sm text-muted-foreground">Comprehensive climate policy targeting 55% emission reduction by 2030.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Green Deal Industrial Plan</h4>
+                <p className="text-sm text-muted-foreground">Support measures for clean technology manufacturing and green industrial transition.</p>
+              </div>
+            </div>
+
+            <Callout type="important" title="EU Taxonomy Thresholds">
+              Key emission thresholds for EU Taxonomy alignment include: Hot metal ≤1.331 tCO2e/t, EAF high alloy ≤0.266 tCO2e/t, EAF carbon steel ≤0.209 tCO2e/t.
+            </Callout>
+          </section>
+
           {/* Decarbonization Technologies Section */}
           <section id="decarbonization" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">Decarbonization Technologies</h2>
@@ -265,6 +353,53 @@ const SteelFallback = () => {
             />
           </section>
 
+          {/* Target Setting Section */}
+          <section id="target-setting" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Target Setting (SBTi Approach)</h2>
+
+            <p className="text-muted-foreground mb-4">
+              The Science Based Targets initiative (SBTi) provides guidance for steel sector target setting using the <strong>Sectoral Decarbonization Approach (SDA)</strong>.
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">Core Requirements</h3>
+
+            <StyledList
+              style="number"
+              items={[
+                "Emissions must align with the defined core boundary, using hot rolled steel as the intensity denominator",
+                "Include upstream emissions from purchased intermediate products within the boundary",
+                "Include downstream emissions from processing sold products within the core boundary",
+                "Set scope 3 targets covering all category 3 fuel- and energy-related emissions",
+                "Justify growth projections in target submission",
+                "Annual disclosure of emissions and scrap ratio aligned with target boundary"
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">Emission Intensity Benchmarks (1.5°C Scenario)</h3>
+
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left py-2 font-semibold">Year</th>
+                    <th className="text-left py-2 font-semibold">Combined (tCO2/t)</th>
+                    <th className="text-left py-2 font-semibold">Primary (tCO2/t)</th>
+                    <th className="text-left py-2 font-semibold">Secondary (tCO2/t)</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b"><td className="py-2">2030</td><td>0.99</td><td>1.22</td><td>0.28</td></tr>
+                  <tr className="border-b"><td className="py-2">2040</td><td>0.37</td><td>0.37</td><td>0.16</td></tr>
+                  <tr><td className="py-2">2050</td><td>0.12</td><td>0.05</td><td>0.05</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <Callout type="info" title="Scrap Ratio Consideration">
+              There is a systematic difference in emissions intensity between primary and secondary steelmaking. Combined benchmarks may be too strict for pure primary producers and too lenient for pure secondary producers.
+            </Callout>
+          </section>
+
           {/* KPIs Section */}
           <section id="kpis" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">KPIs for Steel Sector</h2>
@@ -273,32 +408,81 @@ const SteelFallback = () => {
               Key Performance Indicators for assessing steel companies' transition progress:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Physical Emission Intensity</h4>
-                <p className="text-sm text-muted-foreground">tCO2e per tonne of crude steel produced</p>
+                <p className="text-sm text-muted-foreground">tCO2e per tonne of crude steel produced. EU Taxonomy: Hot metal ≤1.331, EAF carbon steel ≤0.209 tCO2e/t.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Scope 1+2 Reduction Targets</h4>
-                <p className="text-sm text-muted-foreground">Alignment with science-based pathways</p>
+                <p className="text-sm text-muted-foreground">Long-term: 80-95% by 2050 vs 1990. Medium: 30% intensity reduction by 2030 from 2015 baseline.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Scope 3 Emission Intensity Trend</h4>
-                <p className="text-sm text-muted-foreground">Year-over-year improvement tracking</p>
+                <p className="text-sm text-muted-foreground">Alignment with decarbonization pathway over 5-year periods. Example: ArcelorMittal targets 25% Scope 3 reduction by 2030.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">R&D Investment</h4>
-                <p className="text-sm text-muted-foreground">Spending on climate change mitigation technologies</p>
+                <p className="text-sm text-muted-foreground">Ratio of R&D in mature and non-mature low-carbon technologies (hydrogen, CCS, efficiency, waste heat recovery).</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Scrap Utilization Rate</h4>
-                <p className="text-sm text-muted-foreground">Percentage of recycled content in production</p>
+                <p className="text-sm text-muted-foreground">Target: 45.3% share of metallic inputs by 2050 under SDS scenario. Material efficiency can reduce emissions 55%.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
-                <h4 className="font-semibold text-foreground mb-2">Locked-in Emissions</h4>
-                <p className="text-sm text-muted-foreground">Future emissions from existing assets</p>
+                <h4 className="font-semibold text-foreground mb-2">Waste Reduction</h4>
+                <p className="text-sm text-muted-foreground">Industry benchmark: 70% waste reduction by 2030. Steel packaging recycling rate ~84% as of 2019.</p>
               </div>
             </div>
+          </section>
+
+          {/* Locked-in Emissions Section */}
+          <section id="locked-in-emissions" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Locked-in Emissions</h2>
+
+            <p className="text-muted-foreground mb-4">
+              <strong>Carbon lock-in</strong> in the steel industry is defined as the action of enabling carbon-intensive technologies such as BF-BOF to persist, causing lower carbon alternatives to be 'locked out'.
+            </p>
+
+            <Callout type="warning" title="Carbon Budget">
+              The global carbon budget to limit warming to 1.5°C (67% certainty) is 400 GtCO2 until 2050. The steel industry share is approximately 19 Gt CO2 (5.0%). OECM allocates ~14 Gt for 2020-2030 and ~19 Gt for 2020-2050.
+            </Callout>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">Assessment Framework</h3>
+
+            <p className="text-muted-foreground mb-4">
+              Financial institutions should assess locked-in emissions by evaluating:
+            </p>
+
+            <StyledList
+              style="check"
+              items={[
+                "Remaining operational lifetime of carbon-intensive assets",
+                "Planned capacity additions and their emission profiles",
+                "Gap between committed emissions and carbon budget",
+                "Allocation methodology used by borrowers (SDA or ACA)",
+                "Whether targets are SBTi validated",
+                "Stranded asset risk for carbon-intensive facilities"
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">Engagement Steps</h3>
+
+            <p className="text-muted-foreground mb-4">
+              When locked-in emissions exceed the carbon budget, financial institutions should:
+            </p>
+
+            <StyledList
+              style="number"
+              items={[
+                "Assess the allocation approach used by the borrower (SDA or ACA)",
+                "Verify if targets have been validated following SBTi criteria",
+                "Use SBTi target setting tool to assess validity of disclosed data",
+                "Compare with cumulative locked-in emissions",
+                "Calculate if emission intensity exceeds the carbon budget",
+                "Understand how exceeding emissions connect to financed emissions"
+              ]}
+            />
           </section>
 
           <SourceCitations sources={sources} />

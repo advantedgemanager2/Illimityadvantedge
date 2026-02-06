@@ -13,10 +13,13 @@ const tocItems = [
   { id: "cement-market", title: "Cement Market", level: 2 },
   { id: "cement-types", title: "Cement Types", level: 2 },
   { id: "manufacturing-process", title: "Manufacturing Process", level: 2 },
+  { id: "drivers-of-change", title: "Drivers of Change", level: 2 },
   { id: "decarbonization", title: "Decarbonization Technologies", level: 2 },
   { id: "impacts", title: "Environmental Impacts", level: 2 },
   { id: "eu-policies", title: "EU Policies", level: 2 },
+  { id: "eu-taxonomy", title: "EU Taxonomy Criteria", level: 2 },
   { id: "transition-plans", title: "Transition Plan Credibility", level: 2 },
+  { id: "ghg-metrics", title: "GHG Emissions Metrics", level: 2 },
 ];
 
 const sources = [
@@ -168,6 +171,46 @@ const CementFallback = () => {
             </Callout>
           </section>
 
+          {/* Drivers of Change Section */}
+          <section id="drivers-of-change" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Drivers of Change</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Several factors influence the transition and decarbonisation of the cement sector:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Global Climate Goals</h4>
+                <p className="text-sm text-muted-foreground">Pressure to transition to net-zero by 2050. Adoption of science-based targets by major players across jurisdictions.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Regulatory Environment</h4>
+                <p className="text-sm text-muted-foreground">Carbon pricing mechanisms, CBAM, and incentives for low-carbon technologies driving transition.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Clinker Substitution</h4>
+                <p className="text-sm text-muted-foreground">Increasing use of SCMs (fly ash, calcined clays, slag) to reduce clinker-to-cement ratio.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Market Demand</h4>
+                <p className="text-sm text-muted-foreground">Growing demand for "green cement" and sustainable construction materials.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Public Procurement</h4>
+                <p className="text-sm text-muted-foreground">IDDI initiative driving low-emission cement in public infrastructure. 30% low-emission cement in public projects could save 350 Mt CO2 annually.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Technological Advancement</h4>
+                <p className="text-sm text-muted-foreground">Innovation in CCS/CCU, alternative fuels, and novel cement formulations.</p>
+              </div>
+            </div>
+
+            <Callout type="info" title="Real Estate Impact">
+              Real estate funds seeking EU Taxonomy-aligned buildings demand green cement due to Life Cycle Assessment (LCA) requirements. The construction sector contributes ~30% of global carbon emissions.
+            </Callout>
+          </section>
+
           {/* Decarbonization Technologies Section */}
           <section id="decarbonization" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">Decarbonization Technologies</h2>
@@ -272,30 +315,139 @@ const CementFallback = () => {
             </div>
           </section>
 
+          {/* EU Taxonomy Section */}
+          <section id="eu-taxonomy" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">EU Taxonomy Criteria</h2>
+
+            <p className="text-muted-foreground mb-4">
+              The EU Taxonomy Regulation defines technical screening criteria for cement production activities (NACE code C23.5):
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">Climate Mitigation - Substantial Contribution</h3>
+
+            <div className="p-4 bg-muted/30 rounded-lg mb-4">
+              <h4 className="font-semibold text-foreground mb-2">GHG Emission Thresholds</h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Grey cement clinker: ≤ 0.722 tCO2e/t clinker</li>
+                <li>• Cement from grey clinker: ≤ 0.469 tCO2e/t cement</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">Climate Adaptation - DNSH Thresholds</h3>
+
+            <div className="p-4 bg-muted/30 rounded-lg mb-4">
+              <h4 className="font-semibold text-foreground mb-2">Higher Thresholds for Adaptation Contribution</h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Grey cement clinker: ≤ 0.816 tCO2e/t clinker</li>
+                <li>• Cement from grey clinker: ≤ 0.530 tCO2e/t cement</li>
+              </ul>
+            </div>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">Do No Significant Harm (DNSH) Criteria</h3>
+
+            <StyledList
+              style="check"
+              items={[
+                "Climate adaptation: Comply with Appendix A criteria",
+                "Water: Comply with Appendix B water management criteria",
+                "Pollution prevention: Emissions within BAT-AEL limits, no significant cross-media effects",
+                "Biodiversity: Comply with Appendix D criteria for habitat protection"
+              ]}
+            />
+
+            <Callout type="info" title="Minimum Safeguards">
+              Activities must align with OECD Guidelines for Multinational Enterprises and UN Guiding Principles on Business and Human Rights.
+            </Callout>
+          </section>
+
           {/* Transition Plans Section */}
           <section id="transition-plans" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">Transition Plan Credibility</h2>
 
+            <h3 className="text-lg font-semibold text-foreground mb-3">Effectiveness Criteria</h3>
+
+            <StyledList
+              style="check"
+              items={[
+                "Clear and ambitious targets for GHG emission reduction",
+                "Milestones for lowering clinker-to-cement ratio",
+                "Comprehensive and transparent disclosure using standardized metrics",
+                "Investment in cutting-edge technologies (alternative fuels, efficient kilns, novel cements)",
+                "Collaboration and partnerships with government and scientific community",
+                "Rigorous monitoring, reporting, and verification frameworks"
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">Specificity Requirements</h3>
+
+            <StyledList
+              style="check"
+              items={[
+                "Disclosure of all material cement production assets at asset and company levels",
+                "Production methods, capacity, current emissions data",
+                "Commitment to exit unabated high emission production",
+                "Timeline for phasing out inefficient kilns",
+                "Decommissioning commitments for stranded assets",
+                "Clear CapEx sources for abatement investments",
+                "Human capital needs assessment for transition"
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">Key Actions (TPT-based)</h3>
+
+            <StyledList
+              style="arrow"
+              items={[
+                "Increase energy and material efficiency (waste heat recovery)",
+                "Scale up secondary material production (SCMs)",
+                "Transition to dry-process kilns or kiln electrification",
+                "Implement carbon capture, utilization, and storage (CCUS)",
+                "Explore alternative fuels (biogas, biomass, waste-derived fuels)",
+                "Use alternative binding materials in cement production"
+              ]}
+            />
+          </section>
+
+          {/* GHG Metrics Section */}
+          <section id="ghg-metrics" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">GHG Emissions Metrics</h2>
+
             <p className="text-muted-foreground mb-4">
-              Financial institutions assessing cement sector borrowers should evaluate transition plans based on:
+              Key GHG emission metrics relevant for assessing cement sector transition performance:
             </p>
 
             <StyledList
               style="check"
               items={[
-                "Clinker-to-cement ratio reduction targets and progress",
-                "Alternative fuel substitution rates and roadmap",
-                "CCS/CCU deployment plans and feasibility",
-                "Energy efficiency improvement commitments",
-                "Scope 1, 2, and 3 emission reduction targets aligned with science-based pathways",
-                "CapEx allocation for low-carbon technologies",
-                "Timeline for achieving key decarbonization milestones"
+                "Scope 1 and 2 emissions per unit of cement produced (tCO2e/tonne cement)",
+                "Current and projected Scope 1, 2, and 3 GHG emissions by cement plant",
+                "Emissions intensity by cement production process",
+                "Projected reduction due to technology changes at asset and corporate levels",
+                "Clinker-to-cement ratio",
+                "Alternative fuel substitution rate",
+                "Thermal energy consumption per tonne of clinker"
               ]}
             />
 
-            <Callout type="important" title="GHG Metrics">
-              Key metrics include CO2 per tonne of cite, clinker-to-cement ratio, alternative fuel rate, and thermal energy consumption per tonne of clinker.
+            <Callout type="warning" title="Carbon Lock-in Definition">
+              Carbon lock-in in the cement industry is defined as enabling carbon-intensive production methods (such as traditional rotary kilns) to persist, causing lower carbon alternatives (like alternative clinker materials or innovative kiln technologies) to be 'locked out'.
             </Callout>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">SBTi Requirements for Cement</h3>
+
+            <p className="text-muted-foreground mb-4">
+              According to SBTi, cement producers must:
+            </p>
+
+            <StyledList
+              style="number"
+              items={[
+                "Include all emissions within cement and concrete core boundary in targets",
+                "Include emissions from purchased intermediate products like clinker (Scope 3 Category 1)",
+                "Include emissions from use of sold products like ready-mix concrete (Scope 3 Category 11)",
+                "Set targets covering Scope 3 Category 3 fuel and energy-related emissions"
+              ]}
+            />
           </section>
 
           <SourceCitations sources={sources} />

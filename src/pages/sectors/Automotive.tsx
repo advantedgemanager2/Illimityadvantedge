@@ -13,11 +13,15 @@ const tocItems = [
   { id: "best-practices", title: "Best Practices", level: 2 },
   { id: "lifecycle-stages", title: "Lifecycle Stages", level: 2 },
   { id: "market-technology", title: "Market & Technology", level: 2 },
+  { id: "drivers-of-change", title: "Drivers of Change", level: 2 },
   { id: "impacts", title: "Environmental Impacts", level: 2 },
   { id: "regulation", title: "Regulation & Legislation", level: 2 },
   { id: "decarbonization", title: "Decarbonization Technologies", level: 2 },
   { id: "transition-plans", title: "Transition Plan Credibility", level: 2 },
+  { id: "target-setting", title: "Target Setting (SBTi)", level: 2 },
   { id: "kpis", title: "KPIs for Automotive", level: 2 },
+  { id: "locked-in-emissions", title: "Locked-in Emissions", level: 2 },
+  { id: "supply-chain", title: "Supply Chain Components", level: 2 },
 ];
 
 const sources = [
@@ -41,6 +45,34 @@ const sources = [
     author: "European Union",
     year: "2023",
     url: "https://eur-lex.europa.eu/eli/reg/2023/1804/oj",
+  },
+  {
+    id: 4,
+    title: "Global EV Outlook 2024",
+    author: "International Energy Agency (IEA)",
+    year: "2024",
+    url: "https://www.iea.org/reports/global-ev-outlook-2024",
+  },
+  {
+    id: 5,
+    title: "Life Cycle Analysis of Passenger Cars",
+    author: "ICCT",
+    year: "2021",
+    url: "https://theicct.org/",
+  },
+  {
+    id: 6,
+    title: "Transport Sector Guidance",
+    author: "Science Based Targets initiative (SBTi)",
+    year: "2023",
+    url: "https://sciencebasedtargets.org/sectors/transport",
+  },
+  {
+    id: 7,
+    title: "European Automobile Manufacturers Association",
+    author: "ACEA",
+    year: "2024",
+    url: "https://www.acea.auto/",
   },
 ];
 
@@ -187,6 +219,38 @@ const AutomotiveFallback = () => {
             </Callout>
           </section>
 
+          {/* Drivers of Change Section */}
+          <section id="drivers-of-change" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Drivers of Change</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Four main categories of drivers influence the automotive sector's transition:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Economic</h4>
+                <p className="text-sm text-muted-foreground">Rising fuel costs driving EV adoption; carbon pricing mechanisms; investment in green technology; supply chain cost optimization.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Technology</h4>
+                <p className="text-sm text-muted-foreground">Battery improvements (cost, range, charging); autonomous driving; connected cars (5G); hydrogen fuel cells; lightweight materials.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Society</h4>
+                <p className="text-sm text-muted-foreground">Consumer preference for sustainability; urbanization and mobility patterns; shared mobility growth; environmental awareness.</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold text-foreground mb-2">Policy/Environment</h4>
+                <p className="text-sm text-muted-foreground">Climate targets and regulations; emission standards; low-emission zones; incentives for zero-emission vehicles.</p>
+              </div>
+            </div>
+
+            <Callout type="info" title="EU ETS Impact">
+              The EU Emissions Trading System provides economic incentives for automotive companies to reduce emissions. Companies that reduce efficiently can profit by selling excess allowances.
+            </Callout>
+          </section>
+
           {/* Impacts Section */}
           <section id="impacts" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">Environmental Impacts</h2>
@@ -297,6 +361,50 @@ const AutomotiveFallback = () => {
             </Callout>
           </section>
 
+          {/* Target Setting Section */}
+          <section id="target-setting" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Target Setting (SBTi Approach)</h2>
+
+            <p className="text-muted-foreground mb-4">
+              The Science Based Targets initiative provides guidance for automotive sector target setting:
+            </p>
+
+            <h3 className="text-lg font-semibold text-foreground mb-3">Scope Coverage</h3>
+
+            <StyledList
+              style="check"
+              items={[
+                "Scope 1: Direct emissions from manufacturing",
+                "Scope 2: Purchased electricity and heat",
+                "Scope 3 Category 1: Supply chain (upstream)",
+                "Scope 3 Category 11: Use of sold products (downstream) - often largest source"
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">EU Emission Standards Targets</h3>
+
+            <div className="overflow-x-auto mb-4">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left py-2 font-semibold">Year</th>
+                    <th className="text-left py-2 font-semibold">Target (gCO2/km)</th>
+                    <th className="text-left py-2 font-semibold">Reduction vs 2021</th>
+                  </tr>
+                </thead>
+                <tbody className="text-muted-foreground">
+                  <tr className="border-b"><td className="py-2">2025</td><td>93.6</td><td>15%</td></tr>
+                  <tr className="border-b"><td className="py-2">2030</td><td>49.5</td><td>55%</td></tr>
+                  <tr><td className="py-2">2035</td><td>0</td><td>100%</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <Callout type="info" title="Minimum Ambition">
+              SBTi requires 1.5°C pathway alignment, 100% coverage of Scope 1+2 emissions, and Scope 3 target if emissions exceed 40% of total. Intensity metrics (gCO2/km) are preferred for vehicles.
+            </Callout>
+          </section>
+
           {/* KPIs Section */}
           <section id="kpis" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">KPIs for Automotive Sector</h2>
@@ -305,30 +413,101 @@ const AutomotiveFallback = () => {
               Key Performance Indicators for assessing automotive companies' transition progress:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Physical Emission Intensity</h4>
-                <p className="text-sm text-muted-foreground">gCO2/km for vehicle fleet (scope 3 downstream)</p>
+                <p className="text-sm text-muted-foreground">gCO2/km for vehicle fleet on well-to-wheel basis. EU targets: 93.6 (2025), 49.5 (2030), 0 (2035).</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Scope 1+2 Reduction</h4>
-                <p className="text-sm text-muted-foreground">Manufacturing emissions per vehicle produced</p>
+                <p className="text-sm text-muted-foreground">Manufacturing emissions per vehicle produced, aligned with 1.5°C pathway.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Low-Carbon Vehicle Share</h4>
-                <p className="text-sm text-muted-foreground">Percentage of BEV/FCEV in total sales</p>
+                <p className="text-sm text-muted-foreground">Percentage of BEV/PHEV/FCEV in total sales. Target: 100% ZEV by 2035 in EU.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">R&D Spending</h4>
-                <p className="text-sm text-muted-foreground">Investment in low-carbon technologies as % of revenue</p>
+                <p className="text-sm text-muted-foreground">Investment in EVs, hydrogen, efficiency as % of total R&D. Should show increasing trend.</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Scope 3 Upstream Intensity</h4>
-                <p className="text-sm text-muted-foreground">Supply chain emissions per vehicle</p>
+                <p className="text-sm text-muted-foreground">Supply chain emissions per vehicle (steel, aluminum, plastics, batteries).</p>
               </div>
               <div className="p-4 bg-muted/30 rounded-lg">
                 <h4 className="font-semibold text-foreground mb-2">Cumulative Downstream Emissions</h4>
-                <p className="text-sm text-muted-foreground">Lifetime use-phase emissions of vehicles sold</p>
+                <p className="text-sm text-muted-foreground">Lifetime use-phase emissions of vehicles sold - largest emission source for OEMs.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Locked-in Emissions Section */}
+          <section id="locked-in-emissions" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Locked-in Emissions</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Locked-in emissions for the automotive sector relate to:
+            </p>
+
+            <StyledList
+              style="arrow"
+              items={[
+                "Vehicle Fleet: Average lifespan 15+ years, cumulative emissions from vehicles already sold",
+                "Production Assets: ICE manufacturing facilities, engine and transmission plants",
+                "Infrastructure Lock-in: Fueling stations vs. charging infrastructure dependencies",
+                "Supply Chain: Dependencies on ICE-specific components"
+              ]}
+            />
+
+            <h3 className="text-lg font-semibold text-foreground mb-3 mt-6">Assessment Approach</h3>
+
+            <StyledList
+              style="number"
+              items={[
+                "Calculate cumulative emissions from sold vehicles over remaining lifetime",
+                "Assess committed emissions from planned ICE production",
+                "Compare against sector carbon budget",
+                "Evaluate stranded asset risk for ICE facilities"
+              ]}
+            />
+
+            <Callout type="warning" title="Mitigation Strategies">
+              Accelerate ICE phase-out timelines; invest in asset conversion (ICE to EV production); support early vehicle retirement schemes; develop circular economy for end-of-life vehicles.
+            </Callout>
+          </section>
+
+          {/* Supply Chain Components Section */}
+          <section id="supply-chain" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Supply Chain Components for Scope 3</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Key materials for assessing upstream Scope 3 emissions:
+            </p>
+
+            <div className="space-y-4 mb-6">
+              <div className="border-l-4 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">Steel (~54% of vehicle weight)</h4>
+                <p className="text-muted-foreground text-sm">Emissions: ~1.8 tCO2/t for BF-BOF. Decarbonization: EAF with scrap, hydrogen-based DRI, green steel certification.</p>
+              </div>
+
+              <div className="border-l-4 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">Aluminum (~12% of vehicle weight)</h4>
+                <p className="text-muted-foreground text-sm">Emissions: ~15 tCO2/t primary aluminum. Decarbonization: Recycled aluminum, inert anode technology, renewable energy.</p>
+              </div>
+
+              <div className="border-l-4 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">Plastics (~8-10% of vehicle weight)</h4>
+                <p className="text-muted-foreground text-sm">Varies by polymer type. Decarbonization: Bio-based plastics, recycled content, lightweight design optimization.</p>
+              </div>
+
+              <div className="border-l-4 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">EV Batteries (30-50% of EV production emissions)</h4>
+                <p className="text-muted-foreground text-sm">Mining, refining, cell production intensive. Decarbonization: Clean energy for production, recycling, second-life applications.</p>
+              </div>
+
+              <div className="border-l-4 border-primary pl-4">
+                <h4 className="font-semibold text-foreground">Glass (~3% of vehicle weight)</h4>
+                <p className="text-muted-foreground text-sm">Energy-intensive melting. Decarbonization: Electric melting, hydrogen fuel, increased recycled cullet.</p>
               </div>
             </div>
           </section>
