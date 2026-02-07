@@ -349,126 +349,472 @@ Volkswagen, Daimler, PSA, and Renault are leading multinational manufacturers in
   },
 
   targetSetting: {
-    title: "Automotive Target Setting (SBTi Approach)",
-    content: `The Science Based Targets initiative provides guidance for automotive sector target setting:
-
-**Scope Coverage:**
-- Scope 1: Direct emissions from manufacturing
-- Scope 2: Purchased electricity and heat
-- Scope 3: Supply chain (Category 1) and use of sold products (Category 11)
-
-**Key Metric:**
-- gCO2/km for passenger vehicles (well-to-wheel basis)
-- Includes upstream fuel/electricity production
-
-**Minimum Ambition:**
-- 1.5°C pathway alignment
-- Covers 100% of scope 1 and 2 emissions
-- Scope 3 target if >40% of total emissions
-
-**Intensity vs. Absolute Targets:**
-- Intensity metrics (gCO2/km) preferred for vehicles
-- Absolute targets for manufacturing operations
-- Combined approach recommended`
+    title: "Automotive Target Setting (SBTi Sectoral Approach)",
+    introduction: "SBTi has published methodology for target setting of the land transport sector, clarifying previously undefined methodologies for automotive manufacturers to accurately assess carbon budgets.",
+    generalCriteria: [
+      "All targets, whether absolute or intensity, covering land transport activities must be on a Well-to-Wheel (WTW) basis",
+      "Automotive manufacturer must set sector SDA targets and disclose/report base year, most recent year and target year activity data with metrics (passenger-kilometre or tonne-kilometres)",
+      "Emissions covered when using SDA Transport Tool must be in scope 3, related to transportation activities outside company's organisational boundary",
+      "Automakers are prohibited from using transport SDA to establish targets for scope 3 category 11, only for other scope 3 categories",
+      "Where intensity targets set for scope 3 using transport SDA are aggregated with other scope 3 targets on absolute basis, the intensity sub-target shall also be disclosed"
+    ],
+    specificCriteria: {
+      title: "Specific Criteria for Automaker Target Setting",
+      targetBoundary: {
+        description: "Use SBTi 'Corporate Near-Term Criteria' and 'Corporate Net-Zero Standard Criteria' for scope 1, 2 and 3 emissions (not category 11 of scope 3).",
+        requirements: [
+          "Portfolio of emissions across vehicle category should be specified without geographical exclusions",
+          "Calculation of emissions should reflect real life emissions using WLTP (Worldwide Harmonised Light Vehicle Test Procedure) or WHDC (World Harmonised Heavy-Duty Certification)"
+        ]
+      },
+      scope3Category11: {
+        description: "For calculation and target setting of category 11 scope 3 emissions:",
+        requirements: [
+          "Automakers shall use WTW basis",
+          "Must set absolute emission reduction targets for emissions from use of sold products consistent with limiting global warming to 1.5°C",
+          "Phase out of ICE cars and vans by 2035 in Europe and by 2040 globally",
+          "Set consistent interim targets"
+        ],
+        statementFormat: "Company X commits to work toward the phase out of new internal combustion engine vehicles by 2035 in leading markets and by 2040 globally [or add earlier dates]",
+        targetWording: "[Company Name] commits to reduce absolute scope 1 and 2 GHG emissions X% by [target year] from a [base year] base year, and absolute scope 3 GHG emissions from use of sold products X% by [target year] from a [base year] base year"
+      }
+    },
+    intensityVsAbsoluteTargets: {
+      title: "Emission Intensity vs Absolute Targets",
+      description: "SBTi allows automaker targets to be expressed in intensity terms, but companies must disclose credible and justifiable projected target year unit sales and use them to calculate intensity reductions equivalent to absolute target ambition.",
+      disclosureFormat: "Scope 3 category 11 automaker targets should be in passenger-kilometers or metric tonne-kilometer of sold manufactured vehicles"
+    },
+    minimumAmbition: {
+      title: "Minimum Ambition",
+      nearTerm: {
+        tool: "SBTi Corporate Near-Term Tool",
+        method: "Select 'absolute contraction approach' and input WTW absolute emission for lifetime of vehicles sold in base year for entire portfolio",
+        output: "Percentage reduction to be achieved for scope 3 category 11"
+      },
+      longTerm: {
+        tool: "SBTi Corporate Net-Zero Tool",
+        minimumAmbition: "4.2% yearly reduction with base year to 2020 for 1.5°C alignment"
+      }
+    },
+    scopeCoverage: {
+      scope1: "Direct emissions from manufacturing",
+      scope2: "Purchased electricity and heat",
+      scope3: "Supply chain (Category 1: purchased goods and services) and use of sold products (Category 11)"
+    },
+    keyMetric: "gCO2/km for passenger vehicles (well-to-wheel basis), includes upstream fuel/electricity production"
   },
 
   kpis: {
     title: "Key Performance Indicators",
+    methodology: "The approach applied for KPI selection is based on identification of relevant materials and processes under the technical screening criteria set by the EU Taxonomy Regulation. KPIs have been derived from target setting methodology by UNEP FI, ACT Initiative, Transition Plan Taskforce, WBCSD, WBA and academia.",
     indicators: [
       {
         name: "Physical Emission Intensity",
-        description: "gCO2/km for vehicle fleet on well-to-wheel basis",
-        benchmarks: "EU 2025: 93.6 gCO2/km; EU 2030: 49.5 gCO2/km; EU 2035: 0 gCO2/km"
+        description: "Average tank-to-wheel gram CO2 emissions per kilometre (gCO2/km) for newly registered passenger vehicles, quantified according to WLTP standards.",
+        introduction: "Disclosing targets in emission intensity metrics translates into the assessment of relative environmental impact. Financial institutions need to compare emission intensity targets against a reference point set by a climate scenario.",
+        issue: "Evaluating a borrower's performance using emission intensity indicators may distort alignment with carbon budget. Physical intensity metrics do not establish direct correlation with carbon budget - output can align with targets but production rate may cause carbon budget exceedance.",
+        solution: "Use emission intensity metrics to evaluate key transition activities, but also consider absolute emission metrics to assess if carbon budget is kept within disclosed targets.",
+        formula: "KPI ratio = (AANVy - AANVy+1) / (FINVy - FINVy+1)",
+        formulaComponents: {
+          AANVy: "Actual Average new vehicle emissions in year 0",
+          AANVy_plus1: "Actual Average new vehicle emissions in year 1",
+          FINVy: "Financial institution's Sectoral Average new vehicle emissions target in year 0 (1.5°C)",
+          FINVy_plus1: "Financial institution's Sectoral Average new vehicle emissions target in year 1 (1.5°C)"
+        },
+        benchmarks: {
+          tpi: {
+            title: "TPI Benchmarks (WLTP)",
+            nationalPledges: {
+              "2030": "110.9 gCO2/km",
+              "2050": "77.93 gCO2/km"
+            },
+            below2Degrees: {
+              "2030": "85.9 gCO2/km",
+              "2050": "24.83 gCO2/km"
+            },
+            onePointFiveDegrees: {
+              "2030": "55.16 gCO2/km",
+              "2050": "0.54 gCO2/km"
+            }
+          },
+          euEmissionStandards: {
+            title: "EU Emission Performance Standards (Regulation EU 2019/631)",
+            cars: [
+              { period: "2020-2024", target: "95 gCO2/km" },
+              { period: "2025-2029", target: "93.6 gCO2/km (15% reduction)" },
+              { period: "2030-2034", target: "49.5 gCO2/km (55% reduction)" },
+              { period: "2035+", target: "0 gCO2/km (100% reduction)" }
+            ],
+            vans: [
+              { period: "2020-2024", target: "147 gCO2/km" },
+              { period: "2025-2029", target: "153.9 gCO2/km then 125 gCO2/km (15% reduction)" },
+              { period: "2030-2034", target: "90.6 gCO2/km then 73.5 gCO2/km (55% reduction)" },
+              { period: "2035+", target: "0 gCO2/km (100% reduction)" }
+            ]
+          }
+        }
       },
       {
-        name: "Scope 1+2 Emission Reduction",
-        description: "Manufacturing emissions per vehicle produced",
-        target: "Aligned with 1.5°C pathway"
+        name: "Scope 1+2 Emission Reduction Alignment",
+        description: "Measure of alignment of company's near- and long-term scope 1 and 2 emissions intensity reduction targets with decarbonisation pathway.",
+        introduction: "Direct emissions from activities within operational boundaries (Scope 1) and emissions from electricity use (Scope 2) are contingent upon borrower's internal dependencies under management.",
+        issue: "Non-alignment creates transition risks that are legal, reputational, and financial. Financial institution must ascertain whether borrower is in compliance with emission objectives.",
+        solution: "Compare trend of company's target pathway to benchmark pathway trend and identify gap between both pathways in target year (commitment gap).",
+        formula: "Commitment Gap = (EIc(TY) - EIc(RY)) / (EIB(TY) - EIc(RY))",
+        formulaComponents: {
+          EIc_TY: "Company scope 1 and 2 emissions intensity at target year",
+          EIc_RY: "Company scope 1 and 2 emissions intensity at reporting year",
+          EIB_TY: "Company's benchmark scope 1 and 2 emissions intensity at target year"
+        },
+        benchmarks: {
+          "2030Target": { cars: "49.5 gCO2/km", vans: "153.9 gCO2/km" },
+          "2035_2050Target": { cars: "0 gCO2/km", vans: "0 gCO2/km" }
+        }
       },
       {
-        name: "Scope 3 Upstream Intensity",
-        description: "Emissions from supply chain per vehicle",
-        focus: "Steel, aluminum, plastics, batteries"
+        name: "Trend in Past Scope 3 Upstream Emission Intensity",
+        description: "Measure of alignment of past trend of company's scope 3 upstream emissions intensity with decarbonization pathway for each material.",
+        introduction: "Scope 3 upstream emissions stem from operations before production processes: purchased goods and services, capital goods, fuel and energy related activities, transportation and distribution, waste, business travel, employee commuting, and leased assets.",
+        issue: "Under ambitious EV adoption scenario, share of GHG emissions from material production projected to increase to 35% in 2030 and 60% in 2040 due to reduced in-use emissions from EVs and increased emissions from producing EV materials.",
+        solution: "Compare company's scope 3 upstream emission intensity gradient over past 5 years with decarbonization pathway trend gradient over next 5 years.",
+        materialBenchmarks: {
+          aluminum: { current: "16-20 tCO2/t (integrated), 0.5-1 tCO2/t (recycled)", target2030: "7-8 tCO2/t", target2050: "Near zero" },
+          steel: { current: "1.8-2.3 tCO2/t (BF), 0.3-0.7 tCO2/t (EAF)", target2030: "0.5 tCO2/t", target2050: "0.2 tCO2/t" },
+          glass: { current: "0.85-1.0 tCO2/t", target2030: "0.5 tCO2/t", target2050: "Net-zero" },
+          batteries: { current: "73-98 kgCO2/kWh", target2030: "40 kgCO2/kWh", target2050: "5-10 kgCO2/kWh" }
+        }
       },
       {
-        name: "Scope 3 Downstream (Use of Sold Products)",
-        description: "Lifetime emissions from vehicles sold",
-        note: "Largest emission source for automakers"
+        name: "Cumulative Scope 3 Downstream Emissions",
+        description: "Measure of alignment of cumulative scope 3 downstream emissions with carbon budget calculated from low-carbon benchmark pathway and projected sales over 5-year period.",
+        formula: "L.5years / B.5years",
+        formulaComponents: {
+          L_5years: "Total cumulative in-use GHG emissions implied by sales from RY+1 to RY+5",
+          B_5years: "Company's vehicles carbon budget over 5 years after reporting year"
+        },
+        note: "Absolute GHG emissions over time is most robust measure for assessing company's contribution to global warming. 5-year horizon balances forward-looking assessment with forecast accuracy."
       },
       {
         name: "R&D Spending on Low-Carbon Technologies",
-        description: "% of R&D budget on EVs, hydrogen, efficiency",
-        target: "Increasing trend aligned with transition"
+        description: "Ratio of R&D costs/investments in low-carbon technologies compared to total R&D investment.",
+        introduction: "Underlies level of CapEx borrower is investing in innovating and decarbonizing products and production processes.",
+        issue: "Lack of understanding regarding R&D spending on low-carbon technologies and limited information on CapEx in technology enabling sector decarbonization creates unfeasibility risks.",
+        solution: "Measure ratio of company's R&D investment in low-carbon technologies over last 3 years to total R&D expenditure over same period.",
+        scope: "Should include EV and hybrid vehicles, fuel-cell technologies, technologies reducing critical raw material processing, battery and fuel-cell recycling, and all 'net-zero technologies' under Net Zero Industry Act.",
+        benchmarks: {
+          horizonEurope: "35% of €95.5 billion budget for climate-related R&D",
+          fitFor55: "40-50% of total R&D budget toward low-carbon technologies for 2030 targets",
+          europeanBatteryAlliance: "50% of R&D budget by 2025 on battery technology, recycling, sustainability",
+          euTaxonomy: "50% or more by 2030 for sustainable transport and clean energy technologies",
+          greenDealIndustryPlan: "50% or more by 2025 on green technologies including zero-emission vehicles"
+        }
       },
       {
         name: "Share of Low-Carbon Vehicles",
-        description: "% of sales from BEV, PHEV, FCEV",
-        target: "100% ZEV sales by 2035 in EU"
+        description: "Measure of company's sales in last five years and expected growth in next three years of low-carbon vehicles, compared with 1.5°C scenario requirements.",
+        introduction: "GHG emissions intensity pathways cannot be met without change in drivetrain technology. Sales are direct output measure indicating business model change.",
+        dimensions: {
+          dimension1: "Gap analysis comparing company's share of total sales from low-carbon vehicles with sector benchmark",
+          dimension2: "Trend analysis comparing gradient of company's projected low-carbon vehicle share (RY to RY+3) with benchmark gradient"
+        },
+        benchmarks: {
+          "2026": "35-40% of new vehicle sales as low-carbon vehicles",
+          "2030": "50% of new vehicle sales as low-carbon vehicles",
+          "2035": "100% zero-emission vehicles (all sales)",
+          annualGrowthRate: "+5-7% annual growth in low-carbon vehicle sales (2024-2027)",
+          acea2030: "BEV market share projected to reach 50-60%",
+          euClimateLaw2050: "Full decarbonization of automotive sector (net-zero emissions)"
+        }
       }
     ]
   },
 
   lockedInEmissions: {
-    title: "Locked-in Emissions",
-    content: `Locked-in emissions for automotive relate to:
-
-**Vehicle Fleet:**
-- Average vehicle lifespan: 15+ years
-- Cumulative emissions from vehicles already sold
-- Regional differences in fleet turnover
-
-**Production Assets:**
-- ICE manufacturing facilities
-- Engine and transmission plants
-- Supply chain dependencies
-
-**Assessment Approach:**
-1. Calculate cumulative emissions from sold vehicles over remaining lifetime
-2. Assess committed emissions from planned ICE production
-3. Compare against sector carbon budget
-4. Evaluate stranded asset risk for ICE facilities
-
-**Mitigation:**
-- Accelerate ICE phase-out timelines
-- Invest in asset conversion (ICE to EV production)
-- Support early vehicle retirement schemes
-- Develop circular economy for end-of-life vehicles`
+    title: "Locked-in Emissions for the Automotive Sector",
+    definitions: {
+      keyAssets: "The sum of estimated scope 1 and 2 GHG emissions over the operating lifetime of active and firmly planned assets. Key assets are those owned or controlled by the company, consisting of existing and planned assets (stationary or mobile installations, facilities and equipment) that are sources of significant direct or energy-indirect GHG emissions. Firmly planned key assets are those the company will most likely deploy within next 5 years.",
+      soldProducts: "The volume of sales of products in the reporting year multiplied by the sum of estimated direct use-phase GHG emissions over their expected lifetime."
+    },
+    formulas: {
+      keyAssets: {
+        title: "Formula for Locked-in Emissions for Key Assets",
+        formula: "Cumulative emissions = Σ (Annual emissions × Remaining lifetime)",
+        description: "Emissions calculated based on remaining operational lifetime of both active and planned facilities"
+      },
+      fossilFuelAssets: {
+        title: "Formula for Fossil Fuel Assets",
+        formula: "Locked-in emissions = Σ (Facility emissions × Remaining operational years)",
+        description: "Applies to ICE manufacturing facilities and fossil fuel-dependent assets"
+      },
+      soldProducts: {
+        title: "Formula for Locked-in Emissions Associated with Sold Products",
+        formula: "Product locked-in emissions = Sales volume × Product emissions intensity × Product lifetime",
+        description: "Emissions calculated over products lifetime (15+ years average for vehicles), incorporating sales volume and emissions intensity"
+      },
+      cumulative: {
+        title: "Formula for Cumulative Locked-in Emissions",
+        formula: "Total locked-in = Facilities locked-in (Scope 1+2) + Products locked-in (Scope 3)",
+        description: "Accounts for both direct and indirect GHG emissions under Scope 1, 2 and 3 categories"
+      }
+    },
+    financialInstitutionAssessment: {
+      title: "How Financial Institutions Should Assess Carbon Lock-in Risk",
+      description: "Financial institutions encounter dynamic risk when evaluating locked-in emissions, inherently linked to borrower's carbon budget. Cumulative locked-in emissions influence the attribution factor as specified by UNEP-Fi and PCAF when there is fluctuation in emission intensity or absolute emissions.",
+      conditions: [
+        "The denominator variable of the attribution factor is contingent upon the asset type",
+        "The variable for corporate emissions is derived from self-reported data",
+        "The variable for corporate output is a productivity statistic (e.g., number of vehicles produced)"
+      ],
+      portfolioEmissionsFormula: {
+        description: "Portfolio emissions formula follows WACI (Weighted Average Carbon Emission Intensity) methodology. Primary metric is exhaust emissions in intensity format (emissions per kilometre).",
+        note: "For institutions using scope 1 and 2 emissions in target setting (typically absolute terms), conversion to intensity metric is necessary."
+      }
+    },
+    engagingWithLockedInEmissions: {
+      title: "How to Engage with Locked-in Emissions Exceeding Carbon Budget",
+      requiredData: [
+        "The allocation methodology used by borrower to allocate its carbon budget",
+        "Cumulative absolute direct and indirect scope 1, 2 and 3 emissions",
+        "Product emission intensity",
+        "Quantity of products produced"
+      ]
+    },
+    assessingCredibility: {
+      title: "How to Understand Whether Borrower's Carbon Budget is Credible",
+      description: "Only 2 allocation methodologies developed by SBTi can be used to scientifically allocate future emissions.",
+      methodologies: {
+        sda: {
+          name: "Sectoral Decarbonisation Approach (SDA)",
+          description: "First method that applies convergence approach to translate sectoral pathway from 2°C scenario to company-specific targets accounting for growth and initial performance.",
+          applicability: "Works well with carbon intensity of homogeneous sectors. Assumes company's carbon intensity reduction converges with sector at similar rate.",
+          notApplicableWhen: ["No available sectoral scenario", "The sector is heterogeneous"]
+        },
+        aca: {
+          name: "Absolute Contraction Approach (ACA)",
+          description: "Applicable for heterogeneous sectors where determination of meaningful emission intensity is less straightforward.",
+          methodology: "Companies set emission reduction targets aligned with global annual emissions reduction rate required to meet 1.5°C or WB-2°C.",
+          drawbacks: ["Does not acknowledge past efforts and investments for low-carbon transition", "Emission imbalances may occur due to mathematical construction of emission trajectories"]
+        }
+      },
+      stepsToEvaluate: [
+        "Assess what allocation approach is used by borrower",
+        "Understand if it is SDA or ACA",
+        "Understand whether target has been validated following SBTi Criteria Assessment Indicators (CAI) or complies with procedure for validation of SBTi targets",
+        "Use SBTi target setting tool and assess validity of disclosed data",
+        "Compare validity of disclosed data with cumulative locked-in emissions",
+        "Calculate if borrower's emission intensity exceeds or is in line with carbon budget"
+      ]
+    },
+    exceedingCarbonBudget: {
+      title: "What to Do If Emission Intensity Exceeds Carbon Budget",
+      pcafRequirements: ["Recognition", "Measurement", "Attribution", "Data quality", "Disclosure"],
+      attributionMethods: {
+        listedCompanies: {
+          formula: "Financed Emissions = Attribution Factor × Company Emissions",
+          attributionFactor: "Outstanding Amount / Enterprise Value Including Cash"
+        },
+        privateBonds: {
+          formula: "Financed Emissions = Attribution Factor × Company Emissions",
+          attributionFactor: "Outstanding Amount / (Total Debt + Total Equity)"
+        }
+      },
+      solution: "Understand which is the source of company emissions and if financed area is actively contributing to exceedance of borrower's carbon budget"
+    },
+    benchmarks: {
+      title: "EU Fleet Targets (WLTP)",
+      passengerCars: [
+        { period: "2020-2024", target: "95 gCO2/km", notes: "Baseline" },
+        { period: "2025-2029", target: "93.6 gCO2/km", notes: "15% reduction" },
+        { period: "2030-2034", target: "49.5 gCO2/km", notes: "55% reduction (Major decarbonisation)" },
+        { period: "2035+", target: "0 gCO2/km", notes: "100% reduction (Net-zero emissions)" }
+      ],
+      lightCommercialVehicles: [
+        { period: "2020-2024", target: "147 gCO2/km", notes: "Baseline" },
+        { period: "2025-2029", target: "125 gCO2/km", notes: "15% reduction" },
+        { period: "2030-2034", target: "73.5 gCO2/km", notes: "55% reduction" },
+        { period: "2035+", target: "0 gCO2/km", notes: "100% reduction" }
+      ]
+    }
   },
 
   supplyChainComponents: {
-    title: "Supply Chain Components for Scope 3",
-    components: [
-      {
-        material: "Aluminum",
+    title: "Supply Chain Components for Scope 3 Upstream Emissions",
+    introduction: "This section is applicable when borrowers lack GHG emissions data for category 1 scope 3 related to acquired goods and services. Until carbon accounting and emission intensity data are readily accessible, the optimal alternative is to ascertain whether materials used in vehicle production conform to EU standards for climate objectives.",
+    components: {
+      aluminum: {
+        title: "Aluminum",
+        importance: "Essential for automotive sector due to lightweight properties. Around 40% of aluminum end use in Europe is from transport sector. Low density (~2.71 g/cm3, one-third of steel) makes it suitable for lightweight vehicles. Reducing vehicle weight by 10% can lead to 6-8% improvement in fuel efficiency.",
         share: "~12% of vehicle weight",
-        emissions: "High energy intensity (~15 tCO2/t primary aluminum)",
-        decarbonization: "Recycled aluminum, inert anode technology, renewable energy"
+        emissions: "High energy intensity (16-20 tCO2/t integrated, 0.5-1 tCO2/t recycled)",
+        kpis: {
+          sasu: {
+            name: "Share of Secondary Aluminum Used (SASU)",
+            description: "Tracks percentage of recycled aluminum in production, directly reducing carbon emissions and production costs. Using secondary aluminum requires less energy than primary aluminum.",
+            targets: {
+              "2030": "42%",
+              "2035": "44%",
+              "2050": "56%"
+            }
+          },
+          snepa: {
+            name: "Share of Near Zero Emission Primary Aluminum Production (SNEPA)",
+            description: "Measures proportion of primary aluminum produced with near zero emissions using advanced technologies. Essential for meeting global net zero targets.",
+            targets: {
+              "2030": "7% of all primary aluminum",
+              "2035": "19%",
+              "2050": "96%"
+            }
+          },
+          ghgPerTonne: {
+            name: "GHG Emissions per Tonne of Aluminum",
+            description: "Ensures aluminum production aligns with EU Taxonomy environmental standards.",
+            euTaxonomyBenchmark: "≤ 1.484 tCO2e per ton of aluminum manufactured"
+          },
+          electricityCarbon: {
+            name: "Carbon Intensity of Electricity Used",
+            description: "Evaluates carbon intensity of electricity sources powering aluminum production.",
+            benchmark: "≤ 100 g CO2e/kWh for indirect emissions from electricity used"
+          },
+          electricityConsumption: {
+            name: "Electricity Consumption",
+            description: "Measures energy efficiency of aluminum production process.",
+            benchmark: "≤ 15.5 MWh per ton of aluminum"
+          }
+        }
       },
-      {
-        material: "Steel",
+      steel: {
+        title: "Steel",
+        importance: "Critical material constituting approximately 50-60% of average vehicle weight. Advanced high-strength steels (AHSS) achieve weight reductions of up to 25% compared to traditional mild steel. A 10% reduction in vehicle weight results in 6-8% improvement in fuel economy.",
         share: "~54% of vehicle weight",
-        emissions: "~1.8 tCO2/t for BF-BOF route",
-        decarbonization: "EAF with scrap, hydrogen-based DRI, green steel"
+        emissions: "~1.8-2.3 tCO2/t for BF-BOF route, 0.3-0.7 tCO2/t for EAF route",
+        kpis: {
+          carbonIntensity: {
+            name: "Carbon Intensity of Steel Products",
+            description: "Tracks GHG emissions (CO2e) per ton of steel. Helps monitor and reduce carbon footprint of materials used in manufacturing.",
+            euTaxonomyBenchmarks: [
+              { type: "Hot metal", threshold: "≤ 1.331 tCO2e/t steel" },
+              { type: "Sintered ore", threshold: "≤ 0.163 tCO2e/t steel" },
+              { type: "Coke (excluding lignite coke)", threshold: "≤ 0.144 tCO2e/t steel" },
+              { type: "Iron casting", threshold: "≤ 0.299 tCO2e/t steel" },
+              { type: "EAF high alloy steel", threshold: "≤ 0.266 tCO2e/t steel" },
+              { type: "EAF carbon steel", threshold: "≤ 0.209 tCO2e/t steel" }
+            ]
+          },
+          recycledContent: {
+            name: "Percentage of Recycled Content in Steel",
+            description: "Measures proportion of recycled steel in final product. Reduces need for raw material extraction, lowers energy consumption and GHG emissions.",
+            euTaxonomyBenchmarks: {
+              highAlloySteel: "≥ 70% recycled content",
+              carbonSteel: "≥ 90% recycled content"
+            }
+          },
+          nearZeroEmission: {
+            name: "Share of Near-Zero Emission Iron Production",
+            description: "Measures proportion of steel sourced from production methods using CCUS, electrolytic hydrogen-based production, or iron ore electrolysis.",
+            ieaProjections: {
+              "2030": { total: "8%", ccus: "3%", hydrogen: "5%", electrolysis: "0%" },
+              "2040": { total: "27%", ccus: "10%", hydrogen: "15%", electrolysis: "2%" },
+              "2050": { total: "95%", ccus: "37%", hydrogen: "44%", electrolysis: "14%" }
+            }
+          },
+          greenSteel: {
+            name: "Share of Green Steel in New Cars",
+            description: "Measures proportion of environmentally friendly, low-emission steel produced using recycled steel, CCUS, and hydrogen-based reduction.",
+            targets: {
+              "2030": "At least 40% of steel used in new cars sold in EU should be green steel",
+              "2035": "At least 75%",
+              "2040": "100%"
+            }
+          }
+        }
       },
-      {
-        material: "Plastics",
-        share: "~8-10% of vehicle weight",
-        emissions: "Varies by polymer type",
-        decarbonization: "Bio-based plastics, recycled content, lightweight design"
+      plastics: {
+        title: "Plastics",
+        importance: "Vital due to lightweight properties, durability, versatility. Make up about 10-15% of vehicle weight but occupy nearly 50% of total vehicle volume. A 10% reduction in vehicle weight improves fuel efficiency by 6-8%. EVs contain 10-15% more plastic than ICE vehicles.",
+        share: "~10-15% of vehicle weight, ~50% of volume",
+        emissions: "85-100 GJ per ton for materials like polypropylene, with 1.5-3.2 tons CO2/t",
+        kpis: {
+          prp: {
+            name: "Percentage of Recycled Plastic (PRP)",
+            description: "Based on proposed ELV Regulation Article 6. Measures percentage of total plastic in vehicle from recycled sources.",
+            target: "≥ 25% of plastic must be from recycled materials (post-consumer plastic waste)"
+          },
+          prpElv: {
+            name: "Percentage of Recycled Plastic from ELVs (PRP-ELV)",
+            description: "Measures percentage of recycled plastic specifically from end-of-life vehicles. Ensures closed-loop recycling within automotive industry.",
+            target: "≥ 25% of recycled plastic must come from end-of-life vehicles",
+            combinedTarget: "At least 6.25% of total plastic from recycled ELV materials"
+          },
+          ppEes: {
+            name: "Percentage of Plastic from Energy Efficient Suppliers (PP-EES)",
+            description: "Proportion of plastic from suppliers adhering to energy efficiency standards aligned with EU's 11.7% energy reduction target by 2030.",
+            target: "100% sourcing from suppliers meeting 11.7% energy efficiency standards by 2030"
+          },
+          biomassDerived: {
+            name: "Percentage of Biomass-Derived Plastics",
+            description: "Tracks proportion of biomass-derived plastics ensuring lower life cycle GHG emissions than fossil fuel-based plastics. Must be verified through ISO 14067:2018 or ISO 14064-1:2018.",
+            targets: {
+              "2030": "10%",
+              "2050": "18%"
+            }
+          },
+          chemicallyRecycled: {
+            name: "Percentage of Chemically Recycled Plastics",
+            description: "Measures plastics from chemical recycling processes. Chemical recycling breaks down plastics into molecular components, enabling production of high-quality materials from plastics that cannot be mechanically recycled.",
+            targets: {
+              "2030": "5-10%",
+              "2050": "19%"
+            }
+          }
+        }
       },
-      {
-        material: "Glass",
+      glass: {
+        title: "Glass",
         share: "~3% of vehicle weight",
-        emissions: "Energy-intensive melting process",
-        decarbonization: "Electric melting, hydrogen fuel, recycled cullet"
+        emissions: "Energy-intensive melting process, 0.85-1.0 tCO2/t",
+        kpis: {
+          carbonFootprint: {
+            name: "Carbon Footprint",
+            description: "Crucial metric for assessing environmental impact of glass in vehicle manufacturing.",
+            formula: "CFTotal = Aglass × CFunit",
+            formulaComponents: {
+              CFTotal: "Total carbon footprint from glass used (kg CO2)",
+              Aglass: "Total surface area of glass used (m²)",
+              CFunit: "Carbon footprint per square meter (kg CO2/m²)"
+            },
+            benchmark: "7 kg CO2/m² for Low-E glass (used by AGC and Guardian Glass)"
+          },
+          ghgEmissionIntensity: {
+            name: "GHG Emission Intensity",
+            description: "Based on IEA SDS pathways. Scope 1+2 emission intensity projections relative to 2020 baseline (base 100).",
+            projections: {
+              "2030": "73% of 2020 value",
+              "2035": "62% of 2020 value",
+              "2040": "53% of 2020 value",
+              "2045": "44% of 2020 value",
+              "2050": "35% of 2020 value"
+            },
+            note: "Glass shapers should add GHG emissions of glass purchased (scope 3) to their scope 1 and 2 emissions for consistency."
+          }
+        }
       },
-      {
-        material: "Batteries (EV)",
+      batteries: {
+        title: "Batteries (EV)",
         share: "30-50% of EV production emissions",
-        emissions: "Mining, refining, cell production",
+        emissions: "73-98 kgCO2/kWh (current), from mining, refining, cell production",
+        kpis: {
+          carbonIntensity: {
+            name: "Battery Carbon Intensity",
+            targets: {
+              current: "73-98 kgCO2/kWh",
+              "2030": "40 kgCO2/kWh",
+              "2050": "5-10 kgCO2/kWh"
+            }
+          }
+        },
         decarbonization: "Clean energy for production, battery recycling, second-life applications"
       }
-    ]
+    }
   },
 
   sources: {
