@@ -1,19 +1,19 @@
 project_id = "doaqwjdgllgcikjvlxbx"
 
 [functions.seed-content]
-verify_jwt = false
+verify_jwt = true
 
 [functions.setup-admin]
-verify_jwt = false
+verify_jwt = true
 
 [functions.seed-steel-content]
-verify_jwt = false
+verify_jwt = true
 
 [functions.seed-cement-content]
-verify_jwt = false
+verify_jwt = true
 
 [functions.seed-automotive-content]
-verify_jwt = false
+verify_jwt = true
 
 [functions.manage-users]
 verify_jwt = true
