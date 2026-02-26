@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { GraduationCap, Building2, ClipboardList, Factory, Car, Ship, Landmark } from "lucide-react";
+import { GraduationCap, Building2, ClipboardList, Factory, Car, Ship, Landmark, FileText } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -10,6 +10,8 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
+import { useNavigation } from "@/hooks/useNavigation";
+import { iconMap } from "@/components/docs/DynamicIcon";
 
 interface SearchItem {
   title: string;
@@ -20,8 +22,7 @@ interface SearchItem {
   icon: React.ElementType;
 }
 
-const searchIndex: SearchItem[] = [
-  // Know-How Tool
+const FALLBACK_SEARCH_INDEX: SearchItem[] = [
   { title: "Transition Finance", href: "/know-how/transition-finance", category: "Know-How", description: "Understanding transition finance mechanisms and EU regulatory framework", keywords: ["EU taxonomy", "sustainable finance", "regulation"], icon: GraduationCap },
   { title: "Transition Risks", href: "/know-how/transition-risks", category: "Know-How", description: "Assessing climate-related financial risks in banking portfolios", keywords: ["climate risk", "financial risk", "portfolio"], icon: GraduationCap },
   { title: "Greenwashing Risks", href: "/know-how/greenwashing-risks", category: "Know-How", description: "Identifying and mitigating greenwashing and transition washing risks", keywords: ["ESG", "compliance", "disclosure"], icon: GraduationCap },
@@ -29,24 +30,19 @@ const searchIndex: SearchItem[] = [
   { title: "Risk Assessment", href: "/know-how/risk-assessment", category: "Know-How", description: "Methodologies for transition risk assessment by banks", keywords: ["PD", "LGD", "credit risk"], icon: GraduationCap },
   { title: "Solutions Deployment", href: "/know-how/solutions-deployment", category: "Know-How", description: "Maximizing deployment of transition finance solutions", keywords: ["implementation", "best practices"], icon: GraduationCap },
   { title: "Litigation Risk", href: "/know-how/litigation-risk", category: "Know-How", description: "Climate change litigation risks for financial institutions", keywords: ["legal", "liability", "court"], icon: GraduationCap },
-  // Governance Tool
   { title: "Prudential Planning", href: "/governance/prudential-planning", category: "Governance", description: "Prudential transition planning requirements and best practices", keywords: ["ECB", "regulation", "capital"], icon: Building2 },
   { title: "Net Zero Management", href: "/governance/net-zero-management", category: "Governance", description: "Managing net zero commitments and portfolio alignment", keywords: ["NZBA", "targets", "emissions"], icon: Building2 },
   { title: "Finance Framework", href: "/governance/finance-framework", category: "Governance", description: "Building a robust transition finance framework", keywords: ["policy", "strategy", "governance"], icon: Building2 },
-  // Products
   { title: "KPIs Criteria", href: "/products/kpis-criteria", category: "Products", description: "Key performance indicators and credibility criteria", keywords: ["metrics", "measurement", "targets"], icon: ClipboardList },
   { title: "Corporate Loans", href: "/products/corporate-loans", category: "Products", description: "General corporate purpose loans for transition activities", keywords: ["lending", "credit", "financing"], icon: ClipboardList },
   { title: "Sustainability-Linked Loans", href: "/products/sll", category: "Products", description: "Sustainability-linked loan structures and pricing mechanisms", keywords: ["SLL", "margin ratchet", "KPI"], icon: ClipboardList },
   { title: "Contractual Solutions", href: "/products/contractual-solutions", category: "Products", description: "Contractual mechanisms for transition finance products", keywords: ["covenants", "terms", "conditions"], icon: ClipboardList },
   { title: "Loan Policy", href: "/products/loan-policy", category: "Products", description: "Transition loan products policy framework", keywords: ["policy", "guidelines", "standards"], icon: ClipboardList },
-  // Sectors
   { title: "Steel Sector", href: "/sectors/steel", category: "Sectors", description: "Transition pathways and KPIs for steel industry financing", keywords: ["heavy industry", "decarbonization", "EAF"], icon: Factory },
   { title: "Cement Sector", href: "/sectors/cement", category: "Sectors", description: "Cement industry transition assessment and financing", keywords: ["construction", "emissions", "CCUS"], icon: Landmark },
   { title: "Automotive Sector", href: "/sectors/automotive", category: "Sectors", description: "Automotive industry electrification and transition finance", keywords: ["EV", "electrification", "OEM"], icon: Car },
   { title: "Shipping Sector", href: "/sectors/shipping", category: "Sectors", description: "Maritime shipping decarbonization pathways", keywords: ["IMO", "maritime", "fuel"], icon: Ship },
 ];
-
-const categories = ["All", "Know-How", "Governance", "Products", "Sectors"];
 
 interface SearchDialogProps {
   open: boolean;
@@ -72,6 +68,26 @@ const SearchDialog = ({ open, onOpenChange }: SearchDialogProps) => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const { data: navCategories } = useNavigation();
+
+  const searchIndex = useMemo(() => {
+    if (!navCategories || navCategories.length === 0) return FALLBACK_SEARCH_INDEX;
+    return navCategories.flatMap((cat) =>
+      cat.pages.map((page) => ({
+        title: page.title,
+        href: `/${page.slug}`,
+        category: cat.name,
+        description: "",
+        keywords: [],
+        icon: iconMap[cat.icon] || FileText,
+      }))
+    );
+  }, [navCategories]);
+
+  const categories = useMemo(() => {
+    const cats = Array.from(new Set(searchIndex.map((i) => i.category)));
+    return ["All", ...cats];
+  }, [searchIndex]);
 
   const filteredItems = useMemo(() => {
     let items = searchIndex;

@@ -13,6 +13,9 @@ import BaselPillarsDiagram from "@/components/docs/BaselPillarsDiagram";
 import TransitionPlanDiagram from "@/components/docs/TransitionPlanDiagram";
 import CarbonLockInDiagram from "@/components/docs/CarbonLockInDiagram";
 import StrategyDecisionPlanDiagram from "@/components/docs/StrategyDecisionPlanDiagram";
+import CardGrid, { getCardGridData } from "@/components/docs/CardGrid";
+import KpiMetric, { getKpiMetricData } from "@/components/docs/KpiMetric";
+import ImageMedia, { getImageMediaData } from "@/components/docs/ImageMedia";
 import { usePageContent, PageSection, PageSource } from "@/hooks/usePageContent";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Json } from "@/integrations/supabase/types";
@@ -181,6 +184,21 @@ function renderSection(section: PageSection, index: number): ReactNode {
         return <DiagramComponent key={key} />;
       }
       return null;
+    }
+
+    case "card_grid": {
+      const cardData = getCardGridData(content);
+      return <CardGrid key={key} columns={cardData.columns} cards={cardData.cards} />;
+    }
+
+    case "kpi_metric": {
+      const kpiData = getKpiMetricData(content);
+      return <KpiMetric key={key} columns={kpiData.columns} metrics={kpiData.metrics} />;
+    }
+
+    case "image_media": {
+      const imageData = getImageMediaData(content);
+      return <ImageMedia key={key} {...imageData} />;
     }
 
     default:

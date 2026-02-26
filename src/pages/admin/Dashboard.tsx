@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { FileText, Clock, Edit2, UserPlus, Trash2, Users, Loader2 } from "lucide-react";
+import { FileText, Clock, Edit2, UserPlus, Trash2, Users, Loader2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -46,8 +48,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigation } from "@/hooks/useNavigation";
 
-const pageGroups = [
+const FALLBACK_PAGE_GROUPS = [
   {
     title: "Know-How",
     pages: [
@@ -97,25 +100,66 @@ interface ManagedUser {
   last_sign_in_at: string | null;
 }
 
+function generateSlug(title: string, categorySlug: string): string {
+  const pageSlug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+  return `${categorySlug}/${pageSlug}`;
+}
+
 export default function AdminDashboard() {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { user: currentUser } = useAuth();
+  const { data: navCategories } = useNavigation();
+
+  // User management state
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newRole, setNewRole] = useState("viewer");
+
+  // Page creation state
+  const [createPageOpen, setCreatePageOpen] = useState(false);
+  const [newPageTitle, setNewPageTitle] = useState("");
+  const [newPageSlug, setNewPageSlug] = useState("");
+  const [newPageCategory, setNewPageCategory] = useState("");
+  const [newPageDescription, setNewPageDescription] = useState("");
+
+  const { data: categories } = useQuery({
+    queryKey: ["admin-categories"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("page_categories")
+        .select("id, name, slug, sort_order")
+        .order("sort_order");
+      if (error) throw error;
+      return data;
+    },
+  });
 
   const { data: pages } = useQuery({
     queryKey: ["admin-pages"],
     queryFn: async () => {
       const { data, error } = await supabase
         .from("pages")
-        .select("slug, title, updated_at")
-        .order("updated_at", { ascending: false });
+        .select("id, slug, title, updated_at, category_id, is_published, sort_order")
+        .order("sort_order");
       if (error) throw error;
       return data;
     },
   });
+
+  const pageGroups = useMemo(() => {
+    if (!categories || categories.length === 0 || !pages) return FALLBACK_PAGE_GROUPS;
+    return categories.map((cat) => ({
+      title: cat.name,
+      pages: pages
+        .filter((p) => p.category_id === cat.id)
+        .map((p) => ({ slug: p.slug, title: p.title, id: p.id, updated_at: p.updated_at, is_published: p.is_published })),
+    }));
+  }, [categories, pages]);
 
   const { data: users, isLoading: usersLoading } = useQuery({
     queryKey: ["admin-users"],
@@ -145,7 +189,6 @@ export default function AdminDashboard() {
         body: { action: "create", email, password, role },
       });
       if (error) {
-        // Try to extract the actual error message from the response body
         const context = (error as any).context;
         if (context && typeof context.json === "function") {
           try {
@@ -202,18 +245,70 @@ export default function AdminDashboard() {
     },
   });
 
+  const createPageMutation = useMutation({
+    mutationFn: async (params: { title: string; slug: string; category_id: string; description: string }) => {
+      const maxSort = pages?.filter((p) => p.category_id === params.category_id)
+        .reduce((max, p) => Math.max(max, p.sort_order ?? 0), 0) ?? 0;
+      const { error } = await supabase.from("pages").insert({
+        title: params.title,
+        slug: params.slug,
+        description: params.description || null,
+        category_id: params.category_id,
+        sort_order: maxSort + 1,
+        is_published: true,
+      });
+      if (error) throw error;
+      return params.slug;
+    },
+    onSuccess: (slug) => {
+      queryClient.invalidateQueries({ queryKey: ["admin-pages"] });
+      queryClient.invalidateQueries({ queryKey: ["navigation"] });
+      setCreatePageOpen(false);
+      setNewPageTitle("");
+      setNewPageSlug("");
+      setNewPageCategory("");
+      setNewPageDescription("");
+      toast({ title: "Page created" });
+      navigate(`/admin/edit/${slug}`);
+    },
+    onError: (error: Error) => {
+      toast({ title: "Failed to create page", description: error.message, variant: "destructive" });
+    },
+  });
+
+  const deletePageMutation = useMutation({
+    mutationFn: async (pageId: string) => {
+      const { error } = await supabase.from("pages").delete().eq("id", pageId);
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["admin-pages"] });
+      queryClient.invalidateQueries({ queryKey: ["navigation"] });
+      toast({ title: "Page deleted" });
+    },
+    onError: (error: Error) => {
+      toast({ title: "Failed to delete page", description: error.message, variant: "destructive" });
+    },
+  });
+
   const handleCreateUser = (e: React.FormEvent) => {
     e.preventDefault();
     createUserMutation.mutate({ email: newEmail, password: newPassword, role: newRole });
   };
 
-  const getPageStatus = (slug: string) => {
-    const dbPage = pages?.find((p) => p.slug === slug);
-    return dbPage ? "published" : "draft";
+  const handleCreatePage = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newPageCategory) return;
+    createPageMutation.mutate({
+      title: newPageTitle,
+      slug: newPageSlug,
+      category_id: newPageCategory,
+      description: newPageDescription,
+    });
   };
 
-  const totalPages = pageGroups.reduce((acc, g) => acc + g.pages.length, 0);
-  const publishedPages = pages?.length || 0;
+  const totalPages = pages?.length ?? pageGroups.reduce((acc, g) => acc + g.pages.length, 0);
+  const publishedPages = pages?.filter((p) => p.is_published).length ?? 0;
 
   return (
     <AdminLayout>
@@ -409,13 +504,100 @@ export default function AdminDashboard() {
 
         {/* Page Groups */}
         <div className="space-y-8">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold text-foreground">Pages</h2>
+            <Dialog open={createPageOpen} onOpenChange={setCreatePageOpen}>
+              <DialogTrigger asChild>
+                <Button size="sm">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Create Page
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Create New Page</DialogTitle>
+                  <DialogDescription>
+                    Add a new page to the knowledge base.
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleCreatePage}>
+                  <div className="space-y-4 py-4">
+                    <div className="space-y-2">
+                      <Label>Category</Label>
+                      <Select value={newPageCategory} onValueChange={(v) => {
+                        setNewPageCategory(v);
+                        const cat = categories?.find((c) => c.id === v);
+                        if (cat && newPageTitle) {
+                          setNewPageSlug(generateSlug(newPageTitle, cat.slug));
+                        }
+                      }}>
+                        <SelectTrigger><SelectValue placeholder="Select category" /></SelectTrigger>
+                        <SelectContent>
+                          {categories?.map((c) => (
+                            <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Title</Label>
+                      <Input
+                        placeholder="Page title"
+                        value={newPageTitle}
+                        onChange={(e) => {
+                          setNewPageTitle(e.target.value);
+                          const cat = categories?.find((c) => c.id === newPageCategory);
+                          if (cat) {
+                            setNewPageSlug(generateSlug(e.target.value, cat.slug));
+                          }
+                        }}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Slug</Label>
+                      <Input
+                        placeholder="category/page-slug"
+                        value={newPageSlug}
+                        onChange={(e) => setNewPageSlug(e.target.value)}
+                        required
+                      />
+                      <p className="text-xs text-muted-foreground">URL path for this page</p>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Description (optional)</Label>
+                      <Textarea
+                        placeholder="Brief description of this page"
+                        value={newPageDescription}
+                        onChange={(e) => setNewPageDescription(e.target.value)}
+                        rows={2}
+                      />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit" disabled={createPageMutation.isPending || !newPageCategory}>
+                      {createPageMutation.isPending ? (
+                        <>
+                          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                          Creating...
+                        </>
+                      ) : (
+                        "Create Page"
+                      )}
+                    </Button>
+                  </DialogFooter>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+
           {pageGroups.map((group) => (
             <div key={group.title}>
-              <h2 className="text-xl font-semibold text-foreground mb-4">{group.title}</h2>
+              <h3 className="text-lg font-medium text-foreground mb-4">{group.title}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {group.pages.map((page) => {
-                  const status = getPageStatus(page.slug);
+                {group.pages.map((page: any) => {
                   const dbPage = pages?.find((p) => p.slug === page.slug);
+                  const status = dbPage ? (dbPage.is_published ? "published" : "draft") : "draft";
                   return (
                     <Card key={page.slug} className="group hover:shadow-md transition-shadow">
                       <CardHeader className="pb-2">
@@ -431,18 +613,46 @@ export default function AdminDashboard() {
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center justify-between">
-                          {dbPage && (
+                          {(dbPage || page.updated_at) && (
                             <div className="flex items-center gap-1 text-xs text-muted-foreground">
                               <Clock className="h-3 w-3" />
-                              {new Date(dbPage.updated_at).toLocaleDateString()}
+                              {new Date((dbPage?.updated_at || page.updated_at)).toLocaleDateString()}
                             </div>
                           )}
-                          <Link to={`/admin/edit/${page.slug}`}>
-                            <Button size="sm" variant="ghost">
-                              <Edit2 className="h-4 w-4 mr-1" />
-                              Edit
-                            </Button>
-                          </Link>
+                          <div className="flex items-center gap-1 ml-auto">
+                            <Link to={`/admin/edit/${page.slug}`}>
+                              <Button size="sm" variant="ghost">
+                                <Edit2 className="h-4 w-4 mr-1" />
+                                Edit
+                              </Button>
+                            </Link>
+                            {dbPage && (
+                              <AlertDialog>
+                                <AlertDialogTrigger asChild>
+                                  <Button size="sm" variant="ghost" className="text-destructive hover:text-destructive">
+                                    <Trash2 className="h-4 w-4" />
+                                  </Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                  <AlertDialogHeader>
+                                    <AlertDialogTitle>Delete page?</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                      This will permanently delete "{page.title}" and all its sections, sources, and version history. This cannot be undone.
+                                    </AlertDialogDescription>
+                                  </AlertDialogHeader>
+                                  <AlertDialogFooter>
+                                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                    <AlertDialogAction
+                                      onClick={() => deletePageMutation.mutate(dbPage.id)}
+                                      className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                                    >
+                                      Delete
+                                    </AlertDialogAction>
+                                  </AlertDialogFooter>
+                                </AlertDialogContent>
+                              </AlertDialog>
+                            )}
+                          </div>
                         </div>
                       </CardContent>
                     </Card>

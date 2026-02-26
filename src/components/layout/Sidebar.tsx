@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { ChevronDown, ChevronRight, GraduationCap, Building2, ClipboardList, Factory, Landmark, Car, Ship } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigation } from "@/hooks/useNavigation";
+import DynamicIcon, { iconMap } from "@/components/docs/DynamicIcon";
 
 interface NavItem {
   title: string;
@@ -11,7 +13,7 @@ interface NavItem {
   badge?: string;
 }
 
-const navigation: NavItem[] = [
+const FALLBACK_NAVIGATION: NavItem[] = [
   {
     title: "Transition Know-How Tool",
     icon: GraduationCap,
@@ -138,6 +140,33 @@ const NavItemComponent = ({ item, level = 0 }: { item: NavItem; level?: number }
 };
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const { data: categories } = useNavigation();
+
+  const navigation: NavItem[] = useMemo(() => {
+    if (!categories || categories.length === 0) return FALLBACK_NAVIGATION;
+
+    return categories.map((cat) => {
+      const Icon = iconMap[cat.icon];
+      if (cat.pages.length === 1) {
+        return {
+          title: cat.pages[0].title,
+          icon: Icon,
+          href: `/${cat.pages[0].slug}`,
+          badge: cat.pages[0].badge || undefined,
+        };
+      }
+      return {
+        title: cat.name,
+        icon: Icon,
+        children: cat.pages.map((page) => ({
+          title: page.title,
+          href: `/${page.slug}`,
+          badge: page.badge || undefined,
+        })),
+      };
+    });
+  }, [categories]);
+
   return (
     <>
       {/* Mobile/Tablet overlay */}
@@ -148,7 +177,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           aria-hidden="true"
         />
       )}
-      
+
       {/* Sidebar */}
       <aside
         className={cn(

@@ -10,10 +10,40 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
+    PostgrestVersion: "14.1"
   }
   public: {
     Tables: {
+      page_categories: {
+        Row: {
+          created_at: string | null
+          icon: string
+          id: string
+          name: string
+          slug: string
+          sort_order: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          name: string
+          slug: string
+          sort_order?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          icon?: string
+          id?: string
+          name?: string
+          slug?: string
+          sort_order?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       page_sections: {
         Row: {
           content: Json
@@ -142,36 +172,56 @@ export type Database = {
       }
       pages: {
         Row: {
+          badge: string | null
+          category_id: string | null
           created_at: string | null
           description: string | null
           id: string
+          is_published: boolean | null
           last_updated: string | null
           slug: string
+          sort_order: number | null
           tags: string[] | null
           title: string
           updated_at: string | null
         }
         Insert: {
+          badge?: string | null
+          category_id?: string | null
           created_at?: string | null
           description?: string | null
           id?: string
+          is_published?: boolean | null
           last_updated?: string | null
           slug: string
+          sort_order?: number | null
           tags?: string[] | null
           title: string
           updated_at?: string | null
         }
         Update: {
+          badge?: string | null
+          category_id?: string | null
           created_at?: string | null
           description?: string | null
           id?: string
+          is_published?: boolean | null
           last_updated?: string | null
           slug?: string
+          sort_order?: number | null
           tags?: string[] | null
           title?: string
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "pages_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "page_categories"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {

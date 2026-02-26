@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { toast } from "@/hooks/use-toast";
-import { Loader2, Save, Plus, Trash2, ArrowLeft, ExternalLink, GripVertical, Undo2, Redo2, Check, Clock, History, RotateCcw, Copy, ClipboardPaste } from "lucide-react";
+import { Loader2, Save, Plus, Trash2, ArrowLeft, ExternalLink, GripVertical, Undo2, Redo2, Check, Clock, History, RotateCcw, Copy, ClipboardPaste, X } from "lucide-react";
+import ImageUploader from "@/components/admin/ImageUploader";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useUndoRedo } from "@/hooks/useUndoRedo";
@@ -69,6 +70,9 @@ const sectionTypes = [
   { value: "table", label: "Table" },
   { value: "blockquote", label: "Blockquote" },
   { value: "diagram", label: "Diagram/Infographic" },
+  { value: "card_grid", label: "Card Grid" },
+  { value: "kpi_metric", label: "KPI / Metric Boxes" },
+  { value: "image_media", label: "Image / Media" },
 ];
 
 const diagramTypes = [
@@ -936,6 +940,198 @@ export default function EditPage() {
             </SelectContent>
           </Select>
         );
+      case "card_grid": {
+        const cards = ((content as Record<string, unknown>)?.cards as Array<Record<string, string>>) || [];
+        const gridColumns = ((content as Record<string, unknown>)?.columns as number) || 3;
+        return (
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Label className="text-xs">Columns</Label>
+              <Select value={String(gridColumns)} onValueChange={(v) =>
+                updateSection(index, { content: { ...(content as object), columns: parseInt(v) } })
+              }>
+                <SelectTrigger className="w-20 h-8"><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="2">2</SelectItem>
+                  <SelectItem value="3">3</SelectItem>
+                  <SelectItem value="4">4</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            {cards.map((card, ci) => (
+              <Card key={ci} className="p-3 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground font-medium">Card {ci + 1}</span>
+                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-destructive" onClick={() => {
+                    const next = [...cards]; next.splice(ci, 1);
+                    updateSection(index, { content: { ...(content as object), cards: next } });
+                  }}><X className="h-3 w-3" /></Button>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <Input placeholder="Icon (e.g. Factory)" className="h-8 text-sm" value={card.icon || ""} onChange={(e) => {
+                    const next = [...cards]; next[ci] = { ...next[ci], icon: e.target.value };
+                    updateSection(index, { content: { ...(content as object), cards: next } });
+                  }} />
+                  <Input placeholder="Title" className="h-8 text-sm" value={card.title || ""} onChange={(e) => {
+                    const next = [...cards]; next[ci] = { ...next[ci], title: e.target.value };
+                    updateSection(index, { content: { ...(content as object), cards: next } });
+                  }} />
+                </div>
+                <Textarea placeholder="Description" rows={2} className="text-sm" value={card.description || ""} onChange={(e) => {
+                  const next = [...cards]; next[ci] = { ...next[ci], description: e.target.value };
+                  updateSection(index, { content: { ...(content as object), cards: next } });
+                }} />
+                <Select value={card.color || ""} onValueChange={(v) => {
+                  const next = [...cards]; next[ci] = { ...next[ci], color: v };
+                  updateSection(index, { content: { ...(content as object), cards: next } });
+                }}>
+                  <SelectTrigger className="w-32 h-8"><SelectValue placeholder="Color" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="primary">Primary</SelectItem>
+                    <SelectItem value="emerald">Emerald</SelectItem>
+                    <SelectItem value="blue">Blue</SelectItem>
+                    <SelectItem value="amber">Amber</SelectItem>
+                    <SelectItem value="red">Red</SelectItem>
+                    <SelectItem value="purple">Purple</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Card>
+            ))}
+            <Button variant="outline" size="sm" onClick={() => {
+              const next = [...cards, { icon: "", title: "", description: "", color: "" }];
+              updateSection(index, { content: { ...(content as object), cards: next } });
+            }}><Plus className="h-3 w-3 mr-1" /> Add Card</Button>
+          </div>
+        );
+      }
+      case "kpi_metric": {
+        const metrics = ((content as Record<string, unknown>)?.metrics as Array<Record<string, string>>) || [];
+        const kpiColumns = ((content as Record<string, unknown>)?.columns as number) || 3;
+        return (
+          <div className="space-y-3">
+            <div className="flex items-center gap-2">
+              <Label className="text-xs">Columns</Label>
+              <Select value={String(kpiColumns)} onValueChange={(v) =>
+                updateSection(index, { content: { ...(content as object), columns: parseInt(v) } })
+              }>
+                <SelectTrigger className="w-20 h-8"><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="2">2</SelectItem>
+                  <SelectItem value="3">3</SelectItem>
+                  <SelectItem value="4">4</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            {metrics.map((metric, mi) => (
+              <Card key={mi} className="p-3 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-muted-foreground font-medium">Metric {mi + 1}</span>
+                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-destructive" onClick={() => {
+                    const next = [...metrics]; next.splice(mi, 1);
+                    updateSection(index, { content: { ...(content as object), metrics: next } });
+                  }}><X className="h-3 w-3" /></Button>
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <Input placeholder="Value (e.g. 23%)" className="h-8 text-sm" value={metric.value || ""} onChange={(e) => {
+                    const next = [...metrics]; next[mi] = { ...next[mi], value: e.target.value };
+                    updateSection(index, { content: { ...(content as object), metrics: next } });
+                  }} />
+                  <Input placeholder="Label" className="h-8 text-sm" value={metric.label || ""} onChange={(e) => {
+                    const next = [...metrics]; next[mi] = { ...next[mi], label: e.target.value };
+                    updateSection(index, { content: { ...(content as object), metrics: next } });
+                  }} />
+                </div>
+                <Input placeholder="Description (optional)" className="h-8 text-sm" value={metric.description || ""} onChange={(e) => {
+                  const next = [...metrics]; next[mi] = { ...next[mi], description: e.target.value };
+                  updateSection(index, { content: { ...(content as object), metrics: next } });
+                }} />
+                <div className="grid grid-cols-3 gap-2">
+                  <Select value={metric.trend || ""} onValueChange={(v) => {
+                    const next = [...metrics]; next[mi] = { ...next[mi], trend: v };
+                    updateSection(index, { content: { ...(content as object), metrics: next } });
+                  }}>
+                    <SelectTrigger className="h-8"><SelectValue placeholder="Trend" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="up">Up</SelectItem>
+                      <SelectItem value="down">Down</SelectItem>
+                      <SelectItem value="stable">Stable</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Input placeholder="Trend label" className="h-8 text-sm" value={metric.trendLabel || ""} onChange={(e) => {
+                    const next = [...metrics]; next[mi] = { ...next[mi], trendLabel: e.target.value };
+                    updateSection(index, { content: { ...(content as object), metrics: next } });
+                  }} />
+                  <Select value={metric.color || ""} onValueChange={(v) => {
+                    const next = [...metrics]; next[mi] = { ...next[mi], color: v };
+                    updateSection(index, { content: { ...(content as object), metrics: next } });
+                  }}>
+                    <SelectTrigger className="h-8"><SelectValue placeholder="Color" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="green">Green</SelectItem>
+                      <SelectItem value="red">Red</SelectItem>
+                      <SelectItem value="blue">Blue</SelectItem>
+                      <SelectItem value="amber">Amber</SelectItem>
+                      <SelectItem value="primary">Primary</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </Card>
+            ))}
+            <Button variant="outline" size="sm" onClick={() => {
+              const next = [...metrics, { value: "", label: "", description: "", trend: "", trendLabel: "", color: "" }];
+              updateSection(index, { content: { ...(content as object), metrics: next } });
+            }}><Plus className="h-3 w-3 mr-1" /> Add Metric</Button>
+          </div>
+        );
+      }
+      case "image_media": {
+        const imgSrc = getContentValue(content, "src");
+        return (
+          <div className="space-y-3">
+            {imgSrc ? (
+              <div className="space-y-2">
+                <img src={imgSrc} alt="" className="rounded-lg max-h-48 object-contain border border-border" />
+                <Button variant="destructive" size="sm" onClick={() =>
+                  updateSection(index, { content: { ...(content as object), src: "" } })
+                }><Trash2 className="h-3 w-3 mr-1" /> Remove Image</Button>
+              </div>
+            ) : (
+              <ImageUploader onUpload={(url) =>
+                updateSection(index, { content: { ...(content as object), src: url } })
+              } />
+            )}
+            <Input placeholder="Alt text (for accessibility)" value={getContentValue(content, "alt")} onChange={(e) =>
+              updateSection(index, { content: { ...(content as object), alt: e.target.value } })
+            } />
+            <Input placeholder="Caption (optional)" value={getContentValue(content, "caption")} onChange={(e) =>
+              updateSection(index, { content: { ...(content as object), caption: e.target.value } })
+            } />
+            <div className="grid grid-cols-2 gap-2">
+              <Select value={getContentValue(content, "width") || "full"} onValueChange={(v) =>
+                updateSection(index, { content: { ...(content as object), width: v } })
+              }>
+                <SelectTrigger className="h-8"><SelectValue placeholder="Width" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="full">Full</SelectItem>
+                  <SelectItem value="large">Large</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="small">Small</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={getContentValue(content, "alignment") || "center"} onValueChange={(v) =>
+                updateSection(index, { content: { ...(content as object), alignment: v } })
+              }>
+                <SelectTrigger className="h-8"><SelectValue placeholder="Alignment" /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="left">Left</SelectItem>
+                  <SelectItem value="center">Center</SelectItem>
+                  <SelectItem value="right">Right</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+        );
+      }
       default:
         return (
           <Textarea

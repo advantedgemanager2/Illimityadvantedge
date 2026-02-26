@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -14,12 +14,20 @@ import {
   Factory,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigation } from "@/hooks/useNavigation";
+import { iconMap } from "@/components/docs/DynamicIcon";
 
 interface AdminLayoutProps {
   children: ReactNode;
 }
 
-const pageGroups = [
+interface PageGroup {
+  title: string;
+  icon: React.ComponentType<{ className?: string }>;
+  pages: { slug: string; title: string }[];
+}
+
+const FALLBACK_PAGE_GROUPS: PageGroup[] = [
   {
     title: "Know-How",
     icon: BookOpen,
@@ -68,6 +76,16 @@ const pageGroups = [
 export default function AdminLayout({ children }: AdminLayoutProps) {
   const { user, signOut } = useAuth();
   const location = useLocation();
+  const { data: categories } = useNavigation();
+
+  const pageGroups: PageGroup[] = useMemo(() => {
+    if (!categories || categories.length === 0) return FALLBACK_PAGE_GROUPS;
+    return categories.map((cat) => ({
+      title: cat.name,
+      icon: iconMap[cat.icon] || FileText,
+      pages: cat.pages.map((p) => ({ slug: p.slug, title: p.title })),
+    }));
+  }, [categories]);
 
   return (
     <div className="min-h-screen flex bg-background">

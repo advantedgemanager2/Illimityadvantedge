@@ -41,6 +41,9 @@ import Shipping from "./pages/sectors/Shipping";
 import AdminDashboard from "./pages/admin/Dashboard";
 import EditPage from "./pages/admin/EditPage";
 
+// Dynamic pages
+import DynamicPage from "./pages/DynamicPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -100,6 +103,16 @@ const App = () => (
                 <ProtectedRoute>
                   <EditPage />
                 </ProtectedRoute>
+              }
+            />
+
+            {/* Dynamic page route for DB-created pages */}
+            <Route
+              path="/*"
+              element={
+                <AuthenticatedRoute>
+                  <DynamicPage />
+                </AuthenticatedRoute>
               }
             />
 
