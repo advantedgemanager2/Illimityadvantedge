@@ -143,7 +143,8 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const { data: categories } = useNavigation();
 
   const navigation: NavItem[] = useMemo(() => {
-    if (!categories || categories.length === 0) return FALLBACK_NAVIGATION;
+    const totalPages = categories?.reduce((sum, cat) => sum + cat.pages.length, 0) ?? 0;
+    if (!categories || categories.length === 0 || totalPages === 0) return FALLBACK_NAVIGATION;
 
     return categories.map((cat) => {
       const Icon = iconMap[cat.icon];

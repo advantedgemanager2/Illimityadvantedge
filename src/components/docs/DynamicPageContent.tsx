@@ -240,8 +240,8 @@ export default function DynamicPageContent({
 }: DynamicPageContentProps) {
   const { data: pageContent, isLoading, error } = usePageContent(slug);
 
-  // Show fallback if no dynamic content and fallback provided
-  if (!isLoading && !pageContent && fallback) {
+  // Show fallback if no dynamic content or empty sections and fallback provided
+  if (!isLoading && fallback && (!pageContent || pageContent.page_sections.length === 0)) {
     return <>{fallback}</>;
   }
 

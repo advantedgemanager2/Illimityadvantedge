@@ -106,9 +106,9 @@ const App = () => (
               }
             />
 
-            {/* Dynamic page route for DB-created pages */}
+            {/* Dynamic page route for DB-created pages (two-segment paths only) */}
             <Route
-              path="/*"
+              path="/:category/:page"
               element={
                 <AuthenticatedRoute>
                   <DynamicPage />

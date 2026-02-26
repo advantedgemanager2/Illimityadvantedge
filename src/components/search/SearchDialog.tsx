@@ -71,7 +71,8 @@ const SearchDialog = ({ open, onOpenChange }: SearchDialogProps) => {
   const { data: navCategories } = useNavigation();
 
   const searchIndex = useMemo(() => {
-    if (!navCategories || navCategories.length === 0) return FALLBACK_SEARCH_INDEX;
+    const totalPages = navCategories?.reduce((sum, cat) => sum + cat.pages.length, 0) ?? 0;
+    if (!navCategories || navCategories.length === 0 || totalPages === 0) return FALLBACK_SEARCH_INDEX;
     return navCategories.flatMap((cat) =>
       cat.pages.map((page) => ({
         title: page.title,

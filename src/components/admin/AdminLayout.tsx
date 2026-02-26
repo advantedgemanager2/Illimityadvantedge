@@ -79,7 +79,8 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const { data: categories } = useNavigation();
 
   const pageGroups: PageGroup[] = useMemo(() => {
-    if (!categories || categories.length === 0) return FALLBACK_PAGE_GROUPS;
+    const totalPages = categories?.reduce((sum, cat) => sum + cat.pages.length, 0) ?? 0;
+    if (!categories || categories.length === 0 || totalPages === 0) return FALLBACK_PAGE_GROUPS;
     return categories.map((cat) => ({
       title: cat.name,
       icon: iconMap[cat.icon] || FileText,
