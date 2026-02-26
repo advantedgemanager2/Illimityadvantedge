@@ -152,7 +152,7 @@ export default function AdminDashboard() {
   });
 
   const pageGroups = useMemo(() => {
-    if (!categories || categories.length === 0 || !pages) return FALLBACK_PAGE_GROUPS;
+    if (!categories || categories.length === 0 || !pages || pages.length === 0) return FALLBACK_PAGE_GROUPS;
     return categories.map((cat) => ({
       title: cat.name,
       pages: pages

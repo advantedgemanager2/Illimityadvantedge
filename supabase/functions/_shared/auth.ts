@@ -19,6 +19,22 @@ export async function verifyAdmin(
     };
   }
 
+  const adminClient = createClient(supabaseUrl, supabaseServiceKey);
+
+  // Allow service role key to bypass user auth (for server-to-server calls)
+  const token = authHeader.replace("Bearer ", "").trim();
+  try {
+    const payloadB64 = token.split(".")[1];
+    if (payloadB64) {
+      const payload = JSON.parse(atob(payloadB64));
+      if (payload.role === "service_role") {
+        return { adminClient };
+      }
+    }
+  } catch (_) {
+    // Not a valid JWT, fall through to user auth
+  }
+
   const callerClient = createClient(supabaseUrl, supabaseAnonKey, {
     global: { headers: { Authorization: authHeader } },
   });
@@ -34,8 +50,6 @@ export async function verifyAdmin(
       ),
     };
   }
-
-  const adminClient = createClient(supabaseUrl, supabaseServiceKey);
 
   const { data: roleData } = await adminClient
     .from("user_roles")
