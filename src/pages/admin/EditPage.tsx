@@ -415,8 +415,10 @@ export default function EditPage() {
 
   useEffect(() => {
     if (pageData) {
-      setTitle(pageData.title);
-      setDescription(pageData.description || "");
+      const newTitle = pageData.title;
+      const newDescription = pageData.description || "";
+      setTitle(newTitle);
+      setDescription(newDescription);
       const sortedSections = (pageData.page_sections || [])
         .sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0))
         .map((s) => ({
@@ -428,7 +430,7 @@ export default function EditPage() {
           sort_order: s.sort_order || 0,
         }));
       setSections(sortedSections);
-      
+
       // Load sources
       const sortedSources = (pageData.page_sources || [])
         .sort((a, b) => (a.source_number || 0) - (b.source_number || 0))
@@ -442,7 +444,10 @@ export default function EditPage() {
           url: s.url || "",
         }));
       setSources(sortedSources);
-      
+
+      // Set saved state to match DB data so unsaved changes tracking works correctly
+      setLastSavedState({ title: newTitle, description: newDescription, sections: sortedSections, sources: sortedSources });
+
       // Initialize history
       resetHistory({ sections: sortedSections, sources: sortedSources });
     } else if (!isLoading && slug) {
@@ -523,16 +528,16 @@ export default function EditPage() {
       return { page, isAutosave };
     },
     onSuccess: (result) => {
-      // Update saved state
-      setLastSavedState({ title, description, sections, sources });
       setLastSaveTime(new Date());
-      
+
       // Clear localStorage backup after successful save
       localStorage.removeItem(localStorageKey);
-      
+
+      // Re-fetch page data — the useEffect on pageData will update lastSavedState
+      // to match the DB state (with correct IDs), keeping hasUnsavedChanges accurate
       queryClient.invalidateQueries({ queryKey: ["admin-page", slug] });
       queryClient.invalidateQueries({ queryKey: ["admin-pages"] });
-      
+
       if (!result.isAutosave) {
         refetchVersions();
         toast({ title: "Saved", description: "Page content has been saved." });
@@ -601,21 +606,29 @@ export default function EditPage() {
     };
   }, [title, description, sections, sources, hasUnsavedChanges, localStorageKey, slug, lastSavedState]);
   
-  // Check for localStorage backup on page load
+  // Check for localStorage backup on page load — only show if backup differs from DB data
   useEffect(() => {
-    if (!slug) return;
-    
+    if (!slug || !pageData) return;
+
     const backupStr = localStorage.getItem(localStorageKey);
     if (backupStr) {
       try {
         const backup: LocalBackup = JSON.parse(backupStr);
-        setLocalBackup(backup);
-        setShowRestoreDialog(true);
+        // Only offer restore if backup content differs from what's in the DB
+        const dbTitle = pageData.title;
+        const dbDescription = pageData.description || "";
+        if (backup.title !== dbTitle || backup.description !== dbDescription) {
+          setLocalBackup(backup);
+          setShowRestoreDialog(true);
+        } else {
+          // Backup matches DB — discard it
+          localStorage.removeItem(localStorageKey);
+        }
       } catch {
         localStorage.removeItem(localStorageKey);
       }
     }
-  }, [slug, localStorageKey]);
+  }, [slug, localStorageKey, pageData]);
   
   // Warn before leaving with unsaved changes
   useEffect(() => {
