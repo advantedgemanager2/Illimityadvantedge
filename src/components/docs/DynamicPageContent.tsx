@@ -128,13 +128,17 @@ function renderSection(section: PageSection, index: number): ReactNode {
 
     case "callout":
       return (
-        <Callout
-          key={key}
-          type={(getContentValue(content, "type") as "info" | "warning" | "tip" | "important") || "info"}
-          title={getContentValue(content, "title") || section.title || undefined}
-        >
-          {getContentValue(content, "text")}
-        </Callout>
+        <div key={key} className="mb-6">
+          {section.title && (
+            <h3 className="text-xl font-semibold text-foreground mb-3">{section.title}</h3>
+          )}
+          <Callout
+            type={(getContentValue(content, "type") as "info" | "warning" | "tip" | "important") || "info"}
+            title={getContentValue(content, "title") || undefined}
+          >
+            {getContentValue(content, "text")}
+          </Callout>
+        </div>
       );
 
     case "list": {
