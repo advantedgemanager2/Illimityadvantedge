@@ -104,7 +104,7 @@ function getTableData(content: Json): {
 }
 
 // Render a single section based on its type
-function renderSection(section: PageSection, index: number): ReactNode {
+function renderSection(section: PageSection, index: number, pageSlug?: string): ReactNode {
   const content = section.content || {};
   const key = section.id || `section-${index}`;
 
@@ -238,7 +238,7 @@ function renderSection(section: PageSection, index: number): ReactNode {
           {section.title && (
             <h3 className="text-xl font-semibold text-foreground mb-3">{section.title}</h3>
           )}
-          <CtaButton {...ctaData} />
+          <CtaButton {...ctaData} pageSlug={pageSlug} />
         </div>
       );
     }
@@ -336,7 +336,7 @@ export default function DynamicPageContent({
           {cta.section.title && (
             <h4 className="text-sm font-semibold text-foreground mb-2">{cta.section.title}</h4>
           )}
-          <CtaButton {...cta.data} />
+          <CtaButton {...cta.data} pageSlug={slug} />
         </div>
       ))}
     </div>
@@ -365,7 +365,7 @@ export default function DynamicPageContent({
 
           {/* Render all sections */}
           {pageContent.page_sections.map((section, index) =>
-            renderSection(section, index)
+            renderSection(section, index, slug)
           )}
 
           {/* Source Citations */}

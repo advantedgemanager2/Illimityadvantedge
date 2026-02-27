@@ -1156,13 +1156,18 @@ export default function EditPage() {
                 updateSection(index, { content: { ...(content as object), buttonText: e.target.value } })
               }
             />
-            <Input
-              placeholder="URL (e.g. mailto:info@example.com or https://...)"
-              value={getContentValue(content, "url")}
-              onChange={(e) =>
-                updateSection(index, { content: { ...(content as object), url: e.target.value } })
-              }
-            />
+            <div className="space-y-1">
+              <Input
+                placeholder="URL (leave empty for contact form, or enter https://...)"
+                value={getContentValue(content, "url")}
+                onChange={(e) =>
+                  updateSection(index, { content: { ...(content as object), url: e.target.value } })
+                }
+              />
+              {!getContentValue(content, "url") && (
+                <p className="text-xs text-muted-foreground">Opens a contact form (name, email, role, message)</p>
+              )}
+            </div>
             <Textarea
               placeholder="Description text (shown next to or above the button)"
               value={getContentValue(content, "description")}
