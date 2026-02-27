@@ -16,6 +16,7 @@ import StrategyDecisionPlanDiagram from "@/components/docs/StrategyDecisionPlanD
 import CardGrid, { getCardGridData } from "@/components/docs/CardGrid";
 import KpiMetric, { getKpiMetricData } from "@/components/docs/KpiMetric";
 import ImageMedia, { getImageMediaData } from "@/components/docs/ImageMedia";
+import CtaButton, { getCtaButtonData } from "@/components/docs/CtaButton";
 import { usePageContent, PageSection, PageSource } from "@/hooks/usePageContent";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Json } from "@/integrations/supabase/types";
@@ -228,6 +229,20 @@ function renderSection(section: PageSection, index: number): ReactNode {
       );
     }
 
+    case "cta_button": {
+      const ctaData = getCtaButtonData(content);
+      // Side CTAs are rendered separately in the right column
+      if (ctaData.placement === "side") return null;
+      return (
+        <div key={key} className="mb-6">
+          {section.title && (
+            <h3 className="text-xl font-semibold text-foreground mb-3">{section.title}</h3>
+          )}
+          <CtaButton {...ctaData} />
+        </div>
+      );
+    }
+
     default:
       return (
         <p key={key} className="text-muted-foreground mb-4">
@@ -305,6 +320,28 @@ export default function DynamicPageContent({
   const tocItems = generateTocItems(pageContent.page_sections);
   const sources = formatSources(pageContent.page_sources);
 
+  // Extract side CTA sections for the right column
+  const sideCtas = pageContent.page_sections
+    .filter((s) => {
+      if (s.section_type !== "cta_button") return false;
+      const data = getCtaButtonData(s.content);
+      return data.placement === "side";
+    })
+    .map((s) => ({ section: s, data: getCtaButtonData(s.content) }));
+
+  const sideCtaContent = sideCtas.length > 0 ? (
+    <div className="space-y-4">
+      {sideCtas.map((cta, i) => (
+        <div key={cta.section.id || `side-cta-${i}`}>
+          {cta.section.title && (
+            <h4 className="text-sm font-semibold text-foreground mb-2">{cta.section.title}</h4>
+          )}
+          <CtaButton {...cta.data} />
+        </div>
+      ))}
+    </div>
+  ) : null;
+
   return (
     <DocsLayout>
       <div className="flex gap-8">
@@ -340,7 +377,20 @@ export default function DynamicPageContent({
           )}
         </article>
 
-        {tocItems.length > 0 && <TableOfContents items={tocItems} />}
+        {/* Right column: TOC with optional side CTAs below, or standalone side CTAs */}
+        {tocItems.length > 0 && (
+          <TableOfContents items={tocItems}>
+            {sideCtaContent}
+          </TableOfContents>
+        )}
+
+        {sideCtas.length > 0 && tocItems.length === 0 && (
+          <div className="hidden xl:block w-[240px] shrink-0">
+            <div className="sticky top-24">
+              {sideCtaContent}
+            </div>
+          </div>
+        )}
       </div>
     </DocsLayout>
   );

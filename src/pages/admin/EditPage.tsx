@@ -73,6 +73,7 @@ const sectionTypes = [
   { value: "card_grid", label: "Card Grid" },
   { value: "kpi_metric", label: "KPI / Metric Boxes" },
   { value: "image_media", label: "Image / Media" },
+  { value: "cta_button", label: "CTA Button" },
 ];
 
 const diagramTypes = [
@@ -1145,6 +1146,82 @@ export default function EditPage() {
           </div>
         );
       }
+      case "cta_button":
+        return (
+          <div className="space-y-3">
+            <Input
+              placeholder="Button text (e.g. Contact Us)"
+              value={getContentValue(content, "buttonText")}
+              onChange={(e) =>
+                updateSection(index, { content: { ...(content as object), buttonText: e.target.value } })
+              }
+            />
+            <Input
+              placeholder="URL (e.g. mailto:info@example.com or https://...)"
+              value={getContentValue(content, "url")}
+              onChange={(e) =>
+                updateSection(index, { content: { ...(content as object), url: e.target.value } })
+              }
+            />
+            <Textarea
+              placeholder="Description text (shown next to or above the button)"
+              value={getContentValue(content, "description")}
+              onChange={(e) =>
+                updateSection(index, { content: { ...(content as object), description: e.target.value } })
+              }
+              rows={2}
+            />
+            <div className="grid grid-cols-3 gap-2">
+              <div>
+                <Label className="text-xs mb-1 block">Placement</Label>
+                <Select
+                  value={getContentValue(content, "placement") || "inline"}
+                  onValueChange={(v) =>
+                    updateSection(index, { content: { ...(content as object), placement: v } })
+                  }
+                >
+                  <SelectTrigger className="h-8"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="inline">Bottom / Inline</SelectItem>
+                    <SelectItem value="side">Side Panel</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-xs mb-1 block">Style</Label>
+                <Select
+                  value={getContentValue(content, "variant") || "default"}
+                  onValueChange={(v) =>
+                    updateSection(index, { content: { ...(content as object), variant: v } })
+                  }
+                >
+                  <SelectTrigger className="h-8"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="default">Primary</SelectItem>
+                    <SelectItem value="secondary">Secondary</SelectItem>
+                    <SelectItem value="outline">Outline</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-xs mb-1 block">Size</Label>
+                <Select
+                  value={getContentValue(content, "size") || "default"}
+                  onValueChange={(v) =>
+                    updateSection(index, { content: { ...(content as object), size: v } })
+                  }
+                >
+                  <SelectTrigger className="h-8"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sm">Small</SelectItem>
+                    <SelectItem value="default">Default</SelectItem>
+                    <SelectItem value="lg">Large</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+        );
       default:
         return (
           <Textarea

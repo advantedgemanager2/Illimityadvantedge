@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,9 +10,10 @@ interface TocItem {
 
 interface TableOfContentsProps {
   items: TocItem[];
+  children?: ReactNode;
 }
 
-const TableOfContents = ({ items }: TableOfContentsProps) => {
+const TableOfContents = ({ items, children }: TableOfContentsProps) => {
   const [activeId, setActiveId] = useState<string>("");
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -89,6 +90,7 @@ const TableOfContents = ({ items }: TableOfContentsProps) => {
             On this page
           </p>
           <TocContent />
+          {children && <div className="mt-6">{children}</div>}
         </div>
       </div>
     </>
