@@ -57,9 +57,12 @@ const Callout = ({ type = "info", title, children }: CalloutProps) => {
         </span>
         <div className="flex-1 min-w-0">
           <span className={cn("text-xs font-semibold uppercase tracking-wide", labelColor)}>
-            {title || label}
+            {label}
           </span>
-          <div className="mt-1 text-sm text-foreground/90 leading-relaxed">
+          {title && (
+            <p className="font-semibold text-sm text-foreground mt-1">{title}</p>
+          )}
+          <div className={cn("text-sm text-foreground/90 leading-relaxed", title ? "mt-1" : "mt-1")}>
             {children}
           </div>
         </div>
