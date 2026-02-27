@@ -117,12 +117,14 @@ function renderSection(section: PageSection, index: number): ReactNode {
         </section>
       );
 
-    case "paragraph":
+    case "paragraph": {
+      const text = getContentValue(content, "text");
       return (
-        <p key={key} className="text-muted-foreground mb-4">
-          {getContentValue(content, "text")}
-        </p>
+        <div key={key} className="text-muted-foreground mb-4 whitespace-pre-line">
+          {text}
+        </div>
       );
+    }
 
     case "callout":
       return (
@@ -188,17 +190,38 @@ function renderSection(section: PageSection, index: number): ReactNode {
 
     case "card_grid": {
       const cardData = getCardGridData(content);
-      return <CardGrid key={key} columns={cardData.columns} cards={cardData.cards} />;
+      return (
+        <div key={key} className="mb-6">
+          {section.title && (
+            <h3 className="text-xl font-semibold text-foreground mb-3">{section.title}</h3>
+          )}
+          <CardGrid columns={cardData.columns} cards={cardData.cards} />
+        </div>
+      );
     }
 
     case "kpi_metric": {
       const kpiData = getKpiMetricData(content);
-      return <KpiMetric key={key} columns={kpiData.columns} metrics={kpiData.metrics} />;
+      return (
+        <div key={key} className="mb-6">
+          {section.title && (
+            <h3 className="text-xl font-semibold text-foreground mb-3">{section.title}</h3>
+          )}
+          <KpiMetric columns={kpiData.columns} metrics={kpiData.metrics} />
+        </div>
+      );
     }
 
     case "image_media": {
       const imageData = getImageMediaData(content);
-      return <ImageMedia key={key} {...imageData} />;
+      return (
+        <div key={key} className="mb-6">
+          {section.title && (
+            <h3 className="text-xl font-semibold text-foreground mb-3">{section.title}</h3>
+          )}
+          <ImageMedia {...imageData} />
+        </div>
+      );
     }
 
     default:
