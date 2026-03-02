@@ -31,6 +31,18 @@ import {
   DollarSign,
   Percent,
   Activity,
+  Package,
+  Boxes,
+  Fish,
+  Fuel,
+  Cog,
+  Anchor,
+  Cpu,
+  Battery,
+  Gauge,
+  Banknote,
+  MapPin,
+  Beaker,
   type LucideProps,
 } from "lucide-react";
 import type { ComponentType } from "react";
@@ -68,6 +80,18 @@ const iconMap: Record<string, ComponentType<LucideProps>> = {
   DollarSign,
   Percent,
   Activity,
+  Package,
+  Boxes,
+  Fish,
+  Fuel,
+  Cog,
+  Anchor,
+  Cpu,
+  Battery,
+  Gauge,
+  Banknote,
+  MapPin,
+  Beaker,
 };
 
 interface DynamicIconProps {

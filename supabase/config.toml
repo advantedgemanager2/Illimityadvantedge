@@ -26,3 +26,6 @@ verify_jwt = false
 
 [functions.seed-products-content]
 verify_jwt = true
+
+[functions.seed-shipping-content]
+verify_jwt = true

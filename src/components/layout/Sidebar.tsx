@@ -66,7 +66,6 @@ const FALLBACK_NAVIGATION: NavItem[] = [
     title: "Shipping",
     icon: Ship,
     href: "/sectors/shipping",
-    badge: "Coming Soon",
   },
 ];
 
