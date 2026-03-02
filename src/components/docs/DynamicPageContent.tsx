@@ -21,6 +21,32 @@ import { usePageContent, PageSection, PageSource } from "@/hooks/usePageContent"
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Json } from "@/integrations/supabase/types";
 
+// Parse inline markdown: **bold** and newlines into React elements
+function renderFormattedText(text: string): ReactNode {
+  if (!text) return null;
+  // Split by **bold** markers
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  const elements = parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    // Split remaining text by newlines for line breaks
+    const lines = part.split("\n");
+    if (lines.length === 1) return <span key={i}>{part}</span>;
+    return (
+      <span key={i}>
+        {lines.map((line, j) => (
+          <span key={j}>
+            {line}
+            {j < lines.length - 1 && <br />}
+          </span>
+        ))}
+      </span>
+    );
+  });
+  return <>{elements}</>;
+}
+
 interface DynamicPageContentProps {
   slug: string;
   breadcrumbs: { label: string; href?: string }[];
@@ -62,7 +88,7 @@ function getAccordionItems(content: Json): Array<{ title: string; content: React
     if (Array.isArray(items)) {
       return items.map((item) => ({
         title: item.title || "",
-        content: <p className="text-sm">{item.content}</p>,
+        content: <div className="text-sm">{renderFormattedText(item.content || "")}</div>,
       }));
     }
   }
@@ -111,18 +137,20 @@ function renderSection(section: PageSection, index: number, pageSlug?: string): 
   switch (section.section_type) {
     case "heading":
       return (
-        <section key={key} id={section.section_id} className="mb-10">
-          <h2 className="text-2xl font-semibold text-foreground mb-4">
-            {section.title || getContentValue(content, "text")}
-          </h2>
-        </section>
+        <h2
+          key={key}
+          id={section.section_id}
+          className="text-2xl font-semibold text-foreground mb-4 mt-10 first:mt-0 scroll-mt-24"
+        >
+          {section.title || getContentValue(content, "text")}
+        </h2>
       );
 
     case "paragraph": {
       const text = getContentValue(content, "text");
       return (
-        <div key={key} className="text-muted-foreground mb-4 whitespace-pre-line">
-          {text}
+        <div key={key} className="text-muted-foreground mb-4">
+          {renderFormattedText(text)}
         </div>
       );
     }
@@ -137,24 +165,29 @@ function renderSection(section: PageSection, index: number, pageSlug?: string): 
             type={(getContentValue(content, "type") as "info" | "warning" | "tip" | "important") || "info"}
             title={getContentValue(content, "title") || undefined}
           >
-            {getContentValue(content, "text")}
+            {renderFormattedText(getContentValue(content, "text"))}
           </Callout>
         </div>
       );
 
     case "list": {
       const listType = getContentValue(content, "listType") as "bullet" | "number" | "check" | "arrow";
+      const rawItems = getContentItems(content);
       return (
         <StyledList
           key={key}
           style={listType || "bullet"}
-          items={getContentItems(content)}
+          items={rawItems.map((item) => renderFormattedText(item))}
         />
       );
     }
 
     case "accordion":
-      return <AccordionSection key={key} items={getAccordionItems(content)} />;
+      return (
+        <div key={key} className="mb-8">
+          <AccordionSection items={getAccordionItems(content)} />
+        </div>
+      );
 
     case "table": {
       const tableData = getTableData(content);
@@ -175,7 +208,7 @@ function renderSection(section: PageSection, index: number, pageSlug?: string): 
           key={key}
           className="border-l-4 border-primary pl-4 py-2 my-6 bg-muted/30 rounded-r-lg"
         >
-          <p className="text-foreground italic">{getContentValue(content, "text")}</p>
+          <p className="text-foreground italic">{renderFormattedText(getContentValue(content, "text"))}</p>
           {getContentValue(content, "author") && (
             <cite className="text-sm text-muted-foreground mt-2 block">
               — {getContentValue(content, "author")}
@@ -246,7 +279,7 @@ function renderSection(section: PageSection, index: number, pageSlug?: string): 
     default:
       return (
         <p key={key} className="text-muted-foreground mb-4">
-          {getContentValue(content, "text")}
+          {renderFormattedText(getContentValue(content, "text"))}
         </p>
       );
   }
