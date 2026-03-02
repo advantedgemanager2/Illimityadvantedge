@@ -93,7 +93,7 @@ const SteelFallback = () => {
             items={[
               { label: "Home", href: "/" },
               { label: "Sectors", href: "/sectors/steel" },
-              { label: "Steel" },
+              { label: "Steel Sector" },
             ]}
           />
 
@@ -514,7 +514,7 @@ const Steel = () => {
       breadcrumbs={[
         { label: "Home", href: "/" },
         { label: "Sectors", href: "/sectors/steel" },
-        { label: "Steel" },
+        { label: "Steel Sector" },
       ]}
       navigation={{
         prev: { title: "Loan Policy", href: "/products/loan-policy", category: "Products" },

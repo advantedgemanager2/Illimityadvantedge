@@ -85,7 +85,7 @@ const AutomotiveFallback = () => {
             items={[
               { label: "Home", href: "/" },
               { label: "Sectors", href: "/sectors/steel" },
-              { label: "Automotive" },
+              { label: "Automotive Sector" },
             ]}
           />
 
@@ -541,7 +541,7 @@ const Automotive = () => {
       breadcrumbs={[
         { label: "Home", href: "/" },
         { label: "Sectors", href: "/sectors/steel" },
-        { label: "Automotive" },
+        { label: "Automotive Sector" },
       ]}
       navigation={{
         prev: { title: "Cement Sector", href: "/sectors/cement", category: "Sectors" },

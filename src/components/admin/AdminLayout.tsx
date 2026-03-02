@@ -65,9 +65,9 @@ const FALLBACK_PAGE_GROUPS: PageGroup[] = [
     title: "Sectors",
     icon: Factory,
     pages: [
-      { slug: "sectors/steel", title: "Steel" },
-      { slug: "sectors/cement", title: "Cement" },
-      { slug: "sectors/automotive", title: "Automotive" },
+      { slug: "sectors/steel", title: "Steel Sector" },
+      { slug: "sectors/cement", title: "Cement Sector" },
+      { slug: "sectors/automotive", title: "Automotive Sector" },
       { slug: "sectors/shipping", title: "Shipping" },
     ],
   },

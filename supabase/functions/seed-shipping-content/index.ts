@@ -28,13 +28,13 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The maritime shipping sector is the backbone of global trade, responsible for transporting over 90% of internationally traded goods by volume and over 70% by value. Despite this central economic role, the sector accounts for approximately 2\u20133% of global greenhouse gas (GHG) emissions \u2014 a share comparable to that of major emitting nations. Crucially, shipping exerts a powerful multiplier effect on global emissions: by enabling just-in-time production, globally dispersed supply chains, and long-haul logistics, it indirectly amplifies the carbon footprint of the entire global economy. Decarbonizing shipping is therefore not merely a technical priority but a strategic step toward making global production and consumption models compatible with the Paris Agreement.",
+        text: "The maritime shipping sector is the backbone of global trade, responsible for transporting **over 90% of internationally traded goods** by volume and over 70% by value. Despite this central economic role, the sector accounts for approximately **2\u20133% of global greenhouse gas (GHG) emissions** \u2014 a share comparable to that of major emitting nations. Crucially, shipping exerts a **powerful multiplier effect on global emissions**: by enabling just-in-time production, globally dispersed supply chains, and long-haul logistics, it indirectly amplifies the carbon footprint of the entire global economy. Decarbonizing shipping is therefore not merely a technical priority but a strategic step toward making global production and consumption models compatible with the Paris Agreement.",
       },
     },
     {
       section_type: "paragraph",
       content: {
-        text: "The sector faces a profound and multi-dimensional transition challenge. The IMO\u2019s 2023 GHG Strategy targets net-zero emissions by 2050 and a 40% reduction in carbon intensity by 2030. At the 83rd session of the Marine Environment Protection Committee (MEPC 83, April 2025), the IMO reached a historic milestone with the preliminary approval of the IMO Net-Zero Framework \u2014 a legally binding package combining a fuel carbon intensity standard and a global GHG pricing mechanism, applicable to ships above 5,000 gross tonnage from 2027. This framework is expected to be formally adopted at an extraordinary IMO session in October 2025.",
+        text: "The sector faces a profound and multi-dimensional transition challenge. The IMO\u2019s 2023 GHG Strategy targets **net-zero emissions by 2050** and a **40% reduction in carbon intensity by 2030**. At the 83rd session of the Marine Environment Protection Committee (MEPC 83, April 2025), the IMO reached a historic milestone with the preliminary approval of the **IMO Net-Zero Framework** \u2014 a legally binding package combining a fuel carbon intensity standard and a global GHG pricing mechanism, applicable to ships above 5,000 gross tonnage from 2027. This framework is expected to be formally adopted at an extraordinary IMO session in October 2025.",
       },
     },
     {
@@ -48,7 +48,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "For financial institutions, shipping presents a structurally complex transition exposure. Fleet assets have operational lifetimes of 20\u201330 years; carbon lock-in risk is systemic; and the sector\u2019s heterogeneity \u2014 across vessel types, routes, regulatory jurisdictions, and fuel compatibility \u2014 demands granular, vessel-specific assessment frameworks rather than generic sector-level approaches.",
+        text: "For financial institutions, shipping presents a **structurally complex transition exposure**. Fleet assets have operational lifetimes of **20\u201330 years**; carbon lock-in risk is systemic; and the sector\u2019s heterogeneity \u2014 across vessel types, routes, regulatory jurisdictions, and fuel compatibility \u2014 demands **granular, vessel-specific assessment frameworks** rather than generic sector-level approaches.",
       },
     },
 
@@ -62,13 +62,13 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The global shipping fleet comprises over 100,000 merchant vessels of varying sizes and types. The sector facilitates the movement of raw materials, energy resources, consumer goods, and food across continents, making it structurally indispensable to the global economy. Shipping is the lowest-emission mode of freight transport per tonne-kilometre, but its absolute emission volumes \u2014 estimated at 137.5 million tonnes of CO\u2082 within the EU-27 in 2022, up 8.5% from the prior year (EMSA, 2025) \u2014 and its projected growth make decarbonization urgently necessary.",
+        text: "The global shipping fleet comprises **over 100,000 merchant vessels** of varying sizes and types. The sector facilitates the movement of raw materials, energy resources, consumer goods, and food across continents, making it structurally indispensable to the global economy. Shipping is the **lowest-emission mode of freight transport per tonne-kilometre**, but its absolute emission volumes \u2014 estimated at **137.5 million tonnes of CO\u2082** within the EU-27 in 2022, up 8.5% from the prior year (EMSA, 2025) \u2014 and its projected growth make decarbonization urgently necessary.",
       },
     },
     {
       section_type: "paragraph",
       content: {
-        text: "The global maritime market is dominated by a handful of vessel categories by emission volume: bulk carriers, container ships, tankers, and LNG carriers collectively account for the largest share of financed assets and carbon exposure. The sector is cyclical in nature, with freight rates and vessel values fluctuating significantly based on trade volumes, commodity demand, and geopolitical disruptions \u2014 all of which affect the financial profile of shipowners and the credit risk assessment of lending institutions.",
+        text: "The global maritime market is dominated by a handful of vessel categories by emission volume: **bulk carriers, container ships, tankers, and LNG carriers** collectively account for the largest share of financed assets and carbon exposure. The sector is **cyclical in nature**, with freight rates and vessel values fluctuating significantly based on trade volumes, commodity demand, and geopolitical disruptions \u2014 all of which affect the financial profile of shipowners and the **credit risk assessment** of lending institutions.",
       },
     },
     {
@@ -82,7 +82,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The financial scale of the sector\u2019s transition is substantial. Ricardo\u2019s \u201cZero Emission Blueprint for Shipping\u201d identifies 265 essential initiatives, estimating that approximately USD 5 billion is required for the pre-commercial implementation phase alone, with total transition investment requirements estimated in the trillions over the coming decades. Banks active in ship finance are therefore both critically exposed to transition risk and strategically positioned to accelerate or delay the decarbonization of the global fleet.",
+        text: "The financial scale of the sector\u2019s transition is substantial. Ricardo\u2019s \u201cZero Emission Blueprint for Shipping\u201d identifies **265 essential initiatives**, estimating that approximately **USD 5 billion** is required for the pre-commercial implementation phase alone, with total transition investment requirements **estimated in the trillions** over the coming decades. Banks active in ship finance are therefore both **critically exposed to transition risk** and strategically positioned to accelerate or delay the decarbonization of the global fleet.",
       },
     },
 
@@ -96,7 +96,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The global commercial fleet encompasses seven principal vessel categories, each characterized by distinct structural, propulsion, operational, and cargo characteristics. For banks, a vessel-type-specific assessment framework is essential: the decarbonization potential, fuel compatibility, retrofit feasibility, and regulatory exposure of each category differ substantially, and a generic sector-level approach will systematically misassess transition risk and opportunity.",
+        text: "The global commercial fleet encompasses **seven principal vessel categories**, each characterized by distinct structural, propulsion, operational, and cargo characteristics. For banks, a **vessel-type-specific assessment framework** is essential: the decarbonization potential, fuel compatibility, retrofit feasibility, and regulatory exposure of each category differ substantially, and a generic sector-level approach will systematically misassess transition risk and opportunity.",
       },
     },
     {
@@ -167,7 +167,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "Assessing a vessel\u2019s transition potential requires analysis of its intrinsic technical and operational characteristics, which directly determine decarbonization feasibility, retrofit cost, regulatory compliance trajectory, and residual asset value. A standardized assessment framework must consider the following parameters:",
+        text: "Assessing a vessel\u2019s transition potential requires analysis of its **intrinsic technical and operational characteristics**, which directly determine **decarbonization feasibility, retrofit cost, regulatory compliance trajectory, and residual asset value**. A standardized assessment framework must consider the following parameters:",
       },
     },
     {
@@ -203,7 +203,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "Successfully navigating the shipping transition requires understanding the forces reshaping the sector. These drivers operate across regulatory, technological, market, and financial dimensions, and their interaction determines the pace and shape of the energy transition.",
+        text: "Successfully navigating the shipping transition requires understanding the forces reshaping the sector. These drivers operate across **regulatory, technological, market, and financial dimensions**, and their interaction determines the pace and shape of the energy transition.",
       },
     },
     {
@@ -275,7 +275,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "Achieving net-zero emissions in the maritime sector requires a combination of currently available technologies \u2014 which can deliver incremental but material emission reductions \u2014 and emerging breakthrough solutions that promise transformational change. No single technology will be sufficient; a layered, vessel-type-calibrated approach is required.",
+        text: "Achieving net-zero emissions in the maritime sector requires a combination of **currently available technologies** \u2014 which can deliver incremental but material emission reductions \u2014 and **emerging breakthrough solutions** that promise transformational change. No single technology will be sufficient; a **layered, vessel-type-calibrated approach** is required.",
       },
     },
     {
@@ -361,7 +361,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The environmental footprint of maritime shipping extends well beyond its direct greenhouse gas emissions. The sector\u2019s scale, geographic reach, and operational intensity generate a broad range of environmental impacts on atmosphere, ocean, and marine ecosystems.",
+        text: "The environmental footprint of maritime shipping extends **well beyond its direct greenhouse gas emissions**. The sector\u2019s scale, geographic reach, and operational intensity generate a broad range of **environmental impacts on atmosphere, ocean, and marine ecosystems**.",
       },
     },
     {
@@ -392,7 +392,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The maritime sector is subject to a layered and rapidly tightening regulatory architecture spanning international, European, and national levels. For banks, understanding this framework is essential for assessing counterparty transition vulnerability, identifying regulatory lock-in risk in financed assets, and calibrating credit pricing to forward-looking compliance trajectories.",
+        text: "The maritime sector is subject to a **layered and rapidly tightening regulatory architecture** spanning international, European, and national levels. For banks, understanding this framework is essential for assessing **counterparty transition vulnerability**, identifying **regulatory lock-in risk** in financed assets, and calibrating credit pricing to forward-looking compliance trajectories.",
       },
     },
     {
@@ -470,7 +470,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The EU Taxonomy Regulation (EU) 2020/852 classifies water transport activities under NACE codes H50.1 and H50.2. For a shipping activity to be considered sustainable under the Climate Change Mitigation objective, it must meet specific technical screening criteria relating to CO\u2082 emission intensity, compliance with IMO efficiency standards, and fuel type. The Taxonomy is a critical lever for determining a bank\u2019s Green Asset Ratio (GAR) and its access to taxonomy-aligned financing instruments.",
+        text: "The EU Taxonomy Regulation (EU) 2020/852 classifies water transport activities under **NACE codes H50.1 and H50.2**. For a shipping activity to be considered sustainable under the Climate Change Mitigation objective, it must meet specific technical screening criteria relating to **CO\u2082 emission intensity, compliance with IMO efficiency standards, and fuel type**. The Taxonomy is a critical lever for determining a bank\u2019s **Green Asset Ratio (GAR)** and its access to taxonomy-aligned financing instruments.",
       },
     },
 
@@ -525,7 +525,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "Despite the ambition of the framework, the EU Taxonomy presents structural weaknesses for maritime applications. The regulation lacks sufficient granularity for vessel sub-categories: guidance on hybrid propulsion, bio-based fuel lifecycle assessment, retrofit pathway eligibility, and vessel lifecycle management is incomplete. The DNSH principle \u2014 requiring an activity not to cause significant harm to any other environmental objective \u2014 is conceptually sound but practically ambivalent in the maritime context, where decarbonization technologies (e.g., biofuels, LNG) may generate indirect biodiversity, land-use, or methane emission trade-offs. These gaps reduce the Taxonomy\u2019s operational utility for banks assessing individual vessel-level Taxonomy alignment, and may produce heterogeneous GAR calculations across institutions.",
+        text: "Despite the ambition of the framework, the EU Taxonomy presents **structural weaknesses for maritime applications**. The regulation lacks sufficient granularity for vessel sub-categories: guidance on hybrid propulsion, bio-based fuel lifecycle assessment, retrofit pathway eligibility, and vessel lifecycle management is incomplete. The **DNSH principle** \u2014 requiring an activity not to cause significant harm to any other environmental objective \u2014 is conceptually sound but practically ambivalent in the maritime context, where decarbonization technologies (e.g., biofuels, LNG) may generate **indirect biodiversity, land-use, or methane emission trade-offs**. These gaps reduce the Taxonomy\u2019s operational utility for banks assessing individual vessel-level Taxonomy alignment, and may produce heterogeneous GAR calculations across institutions.",
       },
     },
     {
@@ -555,7 +555,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "The Poseidon Principles, launched in 2019 and now joined by over 30 leading ship finance banks, provide the primary sectoral framework for aligning bank credit portfolios with IMO decarbonization targets. The framework operates through the Annual Efficiency Ratio (AER) \u2014 carbon intensity per tonne of cargo per nautical mile \u2014 calculated from mandatory IMO Data Collection System (DCS) data. Banks aggregate the AER across their financed fleet and compare it to the IMO reference trajectory, generating a climate alignment score. A negative deviation indicates outperformance; a positive value signals underperformance relative to the Paris Agreement pathway. The Poseidon Principles create a direct link between vessel-level environmental performance and credit policy: compliant fleets attract preferential financing; non-compliant fleets face higher capital requirements or portfolio exclusion.",
+        text: "The **Poseidon Principles**, launched in 2019 and now joined by **over 30 leading ship finance banks**, provide the primary sectoral framework for aligning bank credit portfolios with IMO decarbonization targets. The framework operates through the **Annual Efficiency Ratio (AER)** \u2014 carbon intensity per tonne of cargo per nautical mile \u2014 calculated from mandatory IMO Data Collection System (DCS) data. Banks aggregate the AER across their financed fleet and compare it to the IMO reference trajectory, generating a **climate alignment score**. A negative deviation indicates outperformance; a positive value signals underperformance relative to the Paris Agreement pathway. The Poseidon Principles create a **direct link between vessel-level environmental performance and credit policy**: compliant fleets attract preferential financing; non-compliant fleets face higher capital requirements or portfolio exclusion.",
       },
     },
 
@@ -633,7 +633,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "Assessing the climate alignment and transition risk profile of a shipping counterparty requires a set of validated, vessel-level GHG metrics. These metrics must be capable of capturing both static design efficiency and dynamic operational performance, and must be integrable into the bank\u2019s credit risk assessment, ICAAP inputs, and Pillar 3 ESG disclosures.",
+        text: "Assessing the climate alignment and transition risk profile of a shipping counterparty requires a set of **validated, vessel-level GHG metrics**. These metrics must be capable of capturing both **static design efficiency and dynamic operational performance**, and must be integrable into the bank\u2019s credit risk assessment, **ICAAP inputs, and Pillar 3 ESG disclosures**.",
       },
     },
     {
@@ -671,7 +671,7 @@ const page = {
     {
       section_type: "paragraph",
       content: {
-        text: "Shipping companies seeking to set science-based targets under the SBTi Financial Institutions Net-Zero Standard (July 2025) must align their fleet-level emission reduction pathways with IMO\u2019s 1.5\u00b0C-compatible scenarios. Banks applying the Poseidon Principles are required to:",
+        text: "Shipping companies seeking to set science-based targets under the **SBTi Financial Institutions Net-Zero Standard** (July 2025) must align their fleet-level emission reduction pathways with **IMO\u2019s 1.5\u00b0C-compatible scenarios**. Banks applying the Poseidon Principles are required to:",
       },
     },
     {

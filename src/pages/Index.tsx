@@ -66,21 +66,21 @@ const toolCategories = [
 
 const sectors = [
   {
-    title: "Steel",
+    title: "Steel Sector",
     description: "Transition pathways and financing considerations for the steel industry.",
     icon: Factory,
     href: "/sectors/steel",
     color: "from-slate-500 to-slate-700",
   },
   {
-    title: "Cement",
+    title: "Cement Sector",
     description: "Decarbonization strategies and lending approaches for cement production.",
     icon: Landmark,
     href: "/sectors/cement",
     color: "from-stone-500 to-stone-700",
   },
   {
-    title: "Automotive",
+    title: "Automotive Sector",
     description: "EV transition, supply chain considerations, and financing frameworks.",
     icon: Car,
     href: "/sectors/automotive",

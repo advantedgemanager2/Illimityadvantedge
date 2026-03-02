@@ -60,7 +60,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 1,
-        content: { text: "Cement, a fundamental building material, plays a significant role in modern society. Its importance cannot be understated, especially considering its various applications in construction and infrastructure development. However, it is also a major source of CO2 emissions, contributing a substantial amount to global greenhouse gas emissions." }
+        content: { text: "Cement, a fundamental building material, plays a significant role in modern society. Its importance cannot be understated, especially considering its various applications in **construction and infrastructure development**. However, it is also a **major source of CO2 emissions**, contributing a substantial amount to **global greenhouse gas emissions**." }
       },
       {
         page_id: pageId,
@@ -68,7 +68,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 2,
-        content: { text: "As global demand for cement continues to grow, spurred by emerging markets and increasing urbanisation, the challenge lies in maintaining production levels while also reducing CO2 emissions. This is a complex issue, requiring a balanced approach to ensure that the need for cement is met without compromising environmental sustainability." }
+        content: { text: "As **global demand for cement continues to grow**, spurred by **emerging markets and increasing urbanisation**, the challenge lies in maintaining production levels while also **reducing CO2 emissions**. This is a complex issue, requiring a balanced approach to ensure that the need for cement is met without compromising environmental sustainability." }
       },
       {
         page_id: pageId,
@@ -76,7 +76,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 3,
-        content: { text: "Several key strategies have been identified to help cut emissions in cement production. These include improving energy efficiency during the production process, switching to lower-carbon fuels, and promoting material efficiency. The latter involves reducing the clinker-to-cement ratio and total demand, thereby minimising the amount of carbon-intensive clinker required." }
+        content: { text: "Several key strategies have been identified to **help cut emissions in cement production**. These include **improving energy efficiency**, **switching to lower-carbon fuels**, and **promoting material efficiency**. The latter involves **reducing the clinker-to-cement ratio** and total demand, thereby minimising the amount of carbon-intensive clinker required." }
       },
       {
         page_id: pageId,
@@ -84,7 +84,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 4,
-        content: { text: "Furthermore, the advancement of innovative near-zero emission production routes is also crucial. Such innovations are still in development and will require further research and investment, but they hold the promise of significantly reducing the carbon footprint of cement production." }
+        content: { text: "Furthermore, the advancement of **innovative near-zero emission production routes** is also crucial. Such innovations are **still in development** and will require **further research and investment**, but they hold the promise of **significantly reducing the carbon footprint** of cement production." }
       },
       {
         page_id: pageId,
@@ -92,7 +92,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 5,
-        content: { text: "In a scenario where net zero emissions are achieved by 2050, a goal that aligns with global efforts to mitigate climate change, cement production is expected to level off. Material efficiency strategies and carbon capture and storage (CCS) are likely to play a critical role in this process. The former can help optimise the use of cement throughout the construction value chain, while the latter can capture and store CO2 emissions, thus reducing their release into the atmosphere." }
+        content: { text: "In a scenario where **net zero emissions are achieved by 2050**, a goal that aligns with global efforts to mitigate climate change, cement production is expected to level off. **Material efficiency strategies** and **carbon capture and storage (CCS)** are likely to play a critical role in this process. The former can help optimise the use of cement throughout the construction value chain, while the latter can **capture and store CO2 emissions**, thus reducing their release into the atmosphere." }
       },
 
       // Cement Market
@@ -110,7 +110,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 7,
-        content: { text: "The global cement market has been experiencing significant growth, driven by various factors across different regions. As of 2023, the market reached a value of USD 383.02 billion, propelled by rising demand from the construction sector. It is anticipated to grow at a compound annual growth rate (CAGR) of 5.4% during the forecast period of 2024-2032, potentially reaching USD 614.88 billion by 2032. This growth is supported by increasing infrastructural projects and a focus on high-quality cement to ensure safety during natural calamities." }
+        content: { text: "The global cement market has been experiencing significant growth, driven by various factors across different regions. As of 2023, the market reached a value of **USD 383.02 billion**, propelled by rising demand from the construction sector. It is anticipated to grow at a **CAGR of 5.4%** during the **forecast period of 2024-2032**, potentially reaching **USD 614.88 billion by 2032**. This growth is supported by increasing infrastructural projects and a focus on high-quality cement to ensure safety during natural calamities." }
       },
       {
         page_id: pageId,
@@ -118,7 +118,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 8,
-        content: { text: "Regionally, the Asia-Pacific region accounted for a significant share, with a market size of USD 273.32 billion in 2022, mainly due to demand from developing nations like Southeast Asia, China, and India. The growth in this region is attributed to infrastructure and construction activities, with China playing a dominant role as both a producer and consumer. The demand for residential spaces in China is a key contributor to the market's expansion." }
+        content: { text: "Regionally, the **Asia-Pacific region** accounted for a significant share, with a market size of **USD 273.32 billion in 2022**, mainly due to demand from developing nations like **Southeast Asia, China, and India**. The growth in this region is attributed to **infrastructure and construction activities**, with **China playing a dominant role** as both a producer and consumer. The demand for residential spaces in China is a key contributor to the market's expansion." }
       },
       {
         page_id: pageId,
@@ -126,7 +126,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 9,
-        content: { text: "In terms of volume, the cement market is expected to reach 4.14 billion tons in 2024 and grow at a Compounded Annual Growth Rate of 7.23% to reach 5.88 billion tons by 2029. This growth is underpinned by an increase in residential constructions across the Asia-Pacific, growing infrastructural activities in the Middle East and Africa, and the abundance of raw materials like fly ash. However, the market faces challenges from government regulations on carbon emissions from cement manufacturing plants." }
+        content: { text: "In terms of volume, the cement market is expected to reach **4.14 billion tons in 2024** and grow at a **CAGR of 7.23%** to reach **5.88 billion tons by 2029**. This growth is underpinned by an increase in residential constructions across the Asia-Pacific, growing infrastructural activities in the Middle East and Africa, and the abundance of raw materials like fly ash. However, the market faces challenges from **government regulations on carbon emissions** from cement manufacturing plants." }
       },
       {
         page_id: pageId,
@@ -134,7 +134,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 10,
-        content: { text: "Key players in the cement market are focusing on expanding their product offerings and increasing their presence globally, developing strong regional presences, distribution channels, and product offerings, with strategies including new product development, acquisitions, and initiatives for zero-carbon construction materials." }
+        content: { text: "Key players in the cement market are focusing on **expanding their product offerings** and **increasing their presence globally**, developing strong regional presences, distribution channels, and product offerings, with strategies including **new product development**, **acquisitions**, and **initiatives for zero-carbon construction materials**." }
       },
 
       // Industry Mainstream Technology
@@ -152,7 +152,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 12,
-        content: { text: "The mainstream technologies in cement production are grounded in a process that has remained fundamentally consistent over the past century. At the core of these technologies is the production of clinker, the active ingredient in cement, which involves the high-temperature calcination of limestone (calcium carbonate) in large rotary kilns." }
+        content: { text: "The mainstream technologies in cement production are grounded in a process that has remained fundamentally consistent over the **past century**. At the core of these technologies is the **production of clinker**, the active ingredient in cement, which involves the **high-temperature calcination of limestone (calcium carbonate)** in **large rotary kilns**." }
       },
 
       // Cement Types
@@ -170,7 +170,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 14,
-        content: { text: "In the European Union (EU), the production of mainstream cement involves a series of complex processes aimed at creating a durable and versatile construction materials. More specific, there are several types of mainstream cement:" }
+        content: { text: "In the **European Union (EU)**, the production of mainstream cement involves a series of **complex processes** aimed at creating a durable and versatile **construction materials**. More specific, there are several **types of mainstream cement**:" }
       },
       {
         page_id: pageId,
@@ -239,7 +239,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 19,
-        content: { text: "Ordinary Portland Cement (OPC) is integral to the construction industry, serving as a foundational material for a wide range of projects. The production of OPC is highly energy-intensive, requiring temperatures up to 1450°C for clinker sintering in kilns. These kilns, which can be fueled by coal, oil, petroleum coke, or natural gas, contribute significantly to the CO2 emissions associated with cement production. The CO2 emissions result not only from the combustion of these fossil fuels but also from the chemical process of limestone decarbonisation, which releases CO2 as a byproduct." }
+        content: { text: "**Ordinary Portland Cement (OPC)** is integral to the construction industry, serving as a foundational material for a wide range of projects. The production of OPC is **highly energy-intensive**, requiring **temperatures up to 1450°C** for clinker sintering in kilns. These kilns, which can be fueled by **coal, oil, petroleum coke, or natural gas**, **contribute significantly to the CO2 emissions** associated with cement production. The CO2 emissions result not only from the combustion of these fossil fuels but also from the **chemical process of limestone decarbonisation**." }
       },
       {
         page_id: pageId,
@@ -255,7 +255,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 21,
-        content: { text: "Research at Imperial College London has explored several strategies for decarbonising the cement industry, highlighting the potential of carbon capture and storage (CCS) technologies, the use of biomass and municipal waste as alternative fuels, and the substitution of clinker with waste materials like blast furnace slag and coal ash. These approaches aim to significantly reduce the carbon footprint of cement production." }
+        content: { text: "Research at **Imperial College London** has explored several **strategies for decarbonising the cement industry**, highlighting the potential of **carbon capture and storage (CCS) technologies**, the use of **biomass and municipal waste as alternative fuels**, and the **substitution of clinker with waste materials** like blast furnace slag and coal ash. These approaches aim to significantly reduce the carbon footprint of cement production." }
       },
 
       // Low Heat Cement
@@ -273,7 +273,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 23,
-        content: { text: "Low Heat Cement (LHC), as the name suggests, is a special type of cement that generates less heat of hydration during the setting process compared to Ordinary Portland Cement (OPC). Its unique properties make it suitable for large-scale concrete works, where the management of heat is critical to prevent thermal cracking." }
+        content: { text: "**Low Heat Cement (LHC)**, as the name suggests, is a special type of cement that **generates less heat of hydration** during the setting process compared to **Ordinary Portland Cement (OPC)**. Its unique properties make it suitable for **large-scale concrete works**, where the **management of heat is critical** to prevent thermal cracking." }
       },
       {
         page_id: pageId,
@@ -318,7 +318,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 26,
-        content: { text: "Several opportunities could be pursued to mitigate environmental footprint advancement of the building materials sector, including traditional cement production. They could emerge as a viable alternative to Ordinary Portland Cement (OPC), and they may be characterised by reduced carbon emissions, enhanced energy efficiency, and utilization of renewable or recycled materials." }
+        content: { text: "Several opportunities could be pursued to **mitigate environmental footprint** advancement of the **building materials sector**, including traditional cement production. They could emerge as a **viable alternative to Ordinary Portland Cement (OPC)**, and they may be characterised by **reduced carbon emissions**, **enhanced energy efficiency**, and **utilization of renewable or recycled materials**." }
       },
       {
         page_id: pageId,
@@ -369,7 +369,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 30,
-        content: { text: "4 main drivers of change apply to hard to abate sectors, namely the economy, technology, society and the environment. How a cement producer or a financial institution exposed to the sector is capable of anticipating these drivers and of responding to each change effectively defines the success of an organization." }
+        content: { text: "**4 main drivers of change** apply to **hard to abate sectors**: **economy, technology, society and the environment**. How a cement producer or a financial institution exposed to the sector is capable of **anticipating these drivers** and **responding to each change effectively** defines the success of an organization." }
       },
       {
         page_id: pageId,
@@ -452,7 +452,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 35,
-        content: { text: "Real estate investment funds operating in alignment with the EU Taxonomy standards are increasingly emphasizing the use of green cement, driven by life cycle assessment (LCA) requirements. The construction sector contributes to approximately 30% of global carbon emissions, with at least 8% stemming from the production of essential construction materials like cement and steel." }
+        content: { text: "Real estate investment funds operating in alignment with the **EU Taxonomy standards** are increasingly emphasizing the use of **green cement**, driven by **life cycle assessment (LCA) requirements**. The **construction sector contributes to approximately 30% of global carbon emissions**, with **at least 8% stemming from cement and steel production**." }
       },
       {
         page_id: pageId,
@@ -485,7 +485,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 38,
-        content: { text: "Net-zero in the cement industry necessitates the adoption of breakthrough cement manufacturing technologies that will require high capital investments. To meet emission reduction goals, the industry must undergo a radical transformation. Solutions such as carbon capture and storage present opportunities but might not be entirely within the immediate scope of the cement industry." }
+        content: { text: "**Net-zero in the cement industry** necessitates the adoption of **breakthrough cement manufacturing technologies** that will require **high capital investments**. To meet **emission reduction goals**, the industry must undergo a **radical transformation**. Solutions such as **carbon capture and storage** present opportunities but might not be entirely within the immediate scope of the cement industry." }
       },
       {
         page_id: pageId,
@@ -538,7 +538,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 41,
-        content: { text: "The production of ordinary Portland cement (OPC), which amounts to roughly 3.5 billion tons annually, is particularly carbon-intensive. Each ton of cement produced results in the emission of 561 to 622 kilograms of CO2, varying based on factors such as the raw materials used, the type of cement kiln, and the fuels burned." }
+        content: { text: "The production of **ordinary Portland cement (OPC)** amounts to roughly **3.5 billion tons annually** and is **particularly carbon-intensive**. Each ton of cement produced results in the emission of **561 to 622 kilograms of CO2**, varying based on factors such as the raw materials used, the type of cement kiln, and the fuels burned." }
       },
       {
         page_id: pageId,
@@ -579,7 +579,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 44,
-        content: { text: "Optimizing the energy use within cement production is a primary focus for the industry. This includes transitioning to more energy-efficient kiln types, such as precalciner kilns, and integrating waste heat recovery systems that repurpose heat from the clinker cooling and exhaust gases. Advanced automation and smart systems for kiln operation and monitoring can also contribute to more efficient energy use and reduced emissions." }
+        content: { text: "**Optimizing the energy use** within cement production is a **primary focus for the industry**. This includes **transitioning to more energy-efficient kiln types**, such as **precalciner kilns**, and **integrating waste heat recovery systems**. **Advanced automation and smart systems** for kiln operation and monitoring can also contribute to **more efficient energy use and reduced emissions**." }
       },
 
       // Waste Heat Recovery
@@ -597,7 +597,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 46,
-        content: { text: "Cement manufacturing generates significant amounts of waste heat, particularly during the calcination process in the kiln. Waste heat recovery (WHR) systems capture this thermal energy for reuse within the plant, generating electricity or preheating raw materials. This contributes to overall energy efficiency and reduces the need for external energy sources." }
+        content: { text: "Cement manufacturing generates **significant amounts of waste heat**, particularly during the **calcination process in the kiln**. **Waste heat recovery (WHR) systems** capture this thermal energy for reuse within the plant, **generating electricity or preheating raw materials**. This contributes to **overall energy efficiency** and **reduces the need for external energy sources**." }
       },
 
       // Alternative Raw Materials: SCMs
@@ -615,7 +615,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 48,
-        content: { text: "SCMs, such as fly ash from coal-fired power plants, ground granulated blast-furnace slag (GGBFS), and silica fume, can partially replace cement clinker. The use of SCMs not only reduces the carbon intensity of cement production but also often enhances the durability and performance of the resulting concrete." }
+        content: { text: "**SCMs**, such as **fly ash**, **ground granulated blast-furnace slag (GGBFS)**, and **silica fume**, can **partially replace cement clinker**. The use of SCMs **not only reduces the carbon intensity** of cement production but also **often enhances the durability and performance** of the resulting concrete." }
       },
 
       // Alternative Fuels
@@ -633,7 +633,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 50,
-        content: { text: "The use of alternative fuels (AF), including biomass, waste-derived fuels, and industrial by-products, is a significant lever for reducing the carbon footprint of cement production. Alternative fuels can replace a portion of the traditional fossil fuels used in the kiln, thereby reducing direct CO2 emissions. Many cement plants have already integrated AFs into their fuel mix, with some achieving substitution rates exceeding 80%." }
+        content: { text: "The use of **alternative fuels (AF)**, including **biomass**, **waste-derived fuels**, and **industrial by-products**, is a **significant lever for reducing the carbon footprint**. Alternative fuels can **replace a portion of traditional fossil fuels**, thereby **reducing direct CO2 emissions**. Many cement plants have already integrated AFs into their fuel mix, with some **achieving substitution rates exceeding 80%**." }
       },
 
       // CCUS
@@ -651,7 +651,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 52,
-        content: { text: "CCUS represents a pivotal technology in the decarbonisation of the cement industry. CCS involves the capture of CO2 emissions from cement plants and their permanent storage in geological formations, effectively removing them from the atmosphere. CCU, on the other hand, involves the conversion of captured CO2 into valuable products, such as synthetic fuels, chemicals, or building materials." }
+        content: { text: "**CCUS represents a pivotal technology** in the **decarbonisation of the cement industry**. **CCS involves the capture of CO2 emissions** from cement plants and their **permanent storage in geological formations**. **CCU** involves the **conversion of captured CO2 into valuable products**, such as **synthetic fuels, chemicals, or building materials**." }
       },
 
       // CCS
@@ -669,7 +669,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 54,
-        content: { text: "The cement industry is exploring several CCS technologies, including post-combustion capture, oxyfuel combustion, and direct capture of CO2 from the kiln gases. Projects such as the CLEANKER project in Italy and the Norcem CCS project in Norway are pioneering efforts to integrate CCS into cement production at scale." }
+        content: { text: "The cement industry is exploring several **CCS technologies**, including **post-combustion capture**, **oxyfuel combustion**, and **direct capture of CO2 from kiln gases**. Projects such as the **CLEANKER project in Italy** and the **Norcem CCS project in Norway** are **pioneering efforts to integrate CCS** into cement production at scale." }
       },
       {
         page_id: pageId,
@@ -706,7 +706,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 57,
-        content: { text: "CCU offers a pathway to add value to captured CO2 by transforming it into commercial products. In the cement industry, captured CO2 can be used to produce synthetic aggregates, carbonated building materials, or even fuels and chemicals through various chemical processes. Heidelberg Materials, formerly HeidelbergCement, is exploring CCU technologies at several of its sites, including the production of carbon-cured concrete products that sequester CO2." }
+        content: { text: "**CCU offers a pathway** to **add value to captured CO2** by **transforming it into commercial products**. In the cement industry, captured CO2 can be used to produce **synthetic aggregates**, **carbonated building materials**, or **fuels and chemicals**. **Heidelberg Materials** is exploring **CCU technologies** at several sites, including the production of **carbon-cured concrete products**." }
       },
 
       // Low-Carbon Technologies
@@ -724,7 +724,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 59,
-        content: { text: "The exploration and implementation of low-carbon technologies and alternative binding agents represent a new approach to reducing the carbon footprint of the cement industry. This strategy involves developing new types of cement that require less energy to produce and emit lower amounts of CO2 during their life cycle compared to traditional Portland cement. Geopolymers offer not only a reduction in CO2 emissions but also superior material properties in certain applications." }
+        content: { text: "The **exploration and implementation of low-carbon technologies** and **alternative binding agents** represent a **new approach to reducing the carbon footprint**. This strategy involves **developing new types of cement** that **require less energy to produce** and **emit lower amounts of CO2** during their life cycle. **Geopolymers** offer not only a **reduction in CO2 emissions** but also **superior material properties**." }
       },
 
       // Kiln Technology
@@ -742,7 +742,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 61,
-        content: { text: "Innovations in kiln technology aim to address the heart of cement manufacturing—the production of clinker. Research into alternative chemical compositions for clinker that require lower calcination temperatures could drastically reduce the energy consumption and CO2 emissions. These processes involve the synthesis of clinker at temperatures up to 700 degrees Celsius lower than traditional methods." }
+        content: { text: "**Innovations in kiln technology** aim to address the **heart of cement manufacturing**—the **production of clinker**. Research into **alternative chemical compositions for clinker** that **require lower calcination temperatures** could **drastically reduce the energy consumption and CO2 emissions**. These processes involve **synthesis of clinker at temperatures up to 700 degrees Celsius lower** than traditional methods." }
       },
 
       // Renewable Energy
@@ -760,7 +760,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 63,
-        content: { text: "The shift towards renewable energy sources for cement production operations is critical for reducing the industry's carbon footprint. This encompasses both the direct use of renewable energy, such as solar thermal systems for process heat, and the procurement of renewable electricity for powering manufacturing operations. Cement manufacturers can invest in onsite renewable energy generation or enter into power purchase agreements (PPAs) with renewable energy providers." }
+        content: { text: "The **shift towards renewable energy sources** for cement production is **critical for reducing the industry's carbon footprint**. This encompasses **direct use of renewable energy**, such as **solar thermal systems for process heat**, and **procurement of renewable electricity**. Cement manufacturers can **invest in onsite renewable energy generation** or **enter into power purchase agreements (PPAs)**." }
       },
 
       // Supply Chain Sustainability
@@ -778,7 +778,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 65,
-        content: { text: "Achieving sustainability in the cement industry extends beyond manufacturing processes to encompass the entire supply chain. Enhancing supply chain sustainability involves implementing practices that minimize environmental impact, such as optimizing logistics to reduce transportation emissions, sourcing raw materials responsibly, and ensuring suppliers adhere to environmental standards." }
+        content: { text: "Achieving sustainability in the cement industry **extends beyond manufacturing processes** to **encompass the entire supply chain**. Enhancing supply chain sustainability involves **implementing practices that minimize environmental impact**, such as **optimizing logistics to reduce transportation emissions**, **sourcing raw materials responsibly**, and **ensuring suppliers adhere to environmental standards**." }
       },
 
       // Material Recovery
@@ -796,7 +796,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 67,
-        content: { text: "Adoption of circular economy principles within the cement industry represents a crucial step towards sustainability. This includes the development of technologies and systems for recycling concrete, recovering aggregates and cementitious materials from demolition waste, and reusing these materials in new concrete mixes or other applications." }
+        content: { text: "Adoption of **circular economy principles** within the cement industry represents a **crucial step towards sustainability**. This includes the **development of technologies and systems for recycling concrete**, **recovering aggregates and cementitious materials** from demolition waste, and **reusing these materials** in new concrete mixes or other applications." }
       },
 
       // Water Management
@@ -814,7 +814,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 69,
-        content: { text: "Water plays a crucial role in cement production, not only in the processing of raw materials and cooling of equipment but also in the concrete mix itself. Adopting sustainable water management practices is essential for reducing the industry's water footprint and ensuring the responsible use of this vital resource. The implementation of water recycling and reuse systems within cement plants can significantly reduce freshwater consumption." }
+        content: { text: "**Water plays a crucial role** in cement production, not only in **processing of raw materials and cooling**, but also in **the concrete mix itself**. Adopting **sustainable water management practices** is **essential for reducing the industry's water footprint**. The implementation of **water recycling and reuse systems** can **significantly reduce freshwater consumption**." }
       },
 
       // Major Industry Impacts
@@ -832,7 +832,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 71,
-        content: { text: "The cement industry has several major serious impacts on climate, environment and public health, which can lead to legal liabilities and reputational risks. Comprehension of such impacts is a prerequisite for managing such potential liabilities and risks effectively and to evaluate the boundaries and the manifestations of greenwashing risks." }
+        content: { text: "The cement industry has **several major serious impacts on climate, environment and public health**, which can lead to **legal liabilities and reputational risks**. Comprehension of such impacts is **a prerequisite for managing potential liabilities** and **evaluate the boundaries of greenwashing risks**." }
       },
       {
         page_id: pageId,
@@ -871,7 +871,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 74,
-        content: { text: "The cement industry is known for its intensive use of materials and energy, contributing significantly to global carbon dioxide (CO2) emissions. The conventional cement manufacturing process accounts for approximately 7% of global and 4% of EU CO2 emissions. The average emissions per tonne of cement produced in EU cement plants are close to 0.6 tCO2, considering direct emissions (scope 1), indirect emissions such as CO2 embedded in electricity use (scope 2) and raw material sourcing (scope 3)." }
+        content: { text: "The cement industry is known for its **intensive use of materials and energy**, **contributing significantly to global CO2 emissions**. The conventional cement manufacturing process accounts for approximately **7% of global** and **4% of EU CO2 emissions**. The **average emissions per tonne of cement produced in EU plants are close to 0.6 tCO2**, considering **scope 1, 2, and 3 emissions**." }
       },
       {
         page_id: pageId,
@@ -897,7 +897,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 77,
-        content: { text: "In the entire life cycle assessment (LCA) process leading to cement production, various waste types are generated at different stages. This waste, particularly from raw materials like limestone and other additives, can concentrate or release naturally occurring heavy metals (Cd, Co, Cr, Pb and Ni), posing a risk of soil contamination. The soluble components of cement kiln dust are susceptible to leaching when in direct contact with soil, polluting groundwaters." }
+        content: { text: "In the entire **life cycle assessment (LCA) process**, various **waste types are generated** at different stages. This waste can **release naturally occurring heavy metals (Cd, Co, Cr, Pb and Ni)**, posing a **risk of soil contamination**. The **soluble components of cement kiln dust** are **susceptible to leaching**, **polluting groundwaters**." }
       },
 
       // Water Use
@@ -915,7 +915,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 79,
-        content: { text: "Cement production demands a significant quantity of water for various purposes, including cooling, dust removal, and material processing. The production of one ton of cement generally requires approximately 0.35 ton of water. Businesses in the cement industry face various risks, including physical, regulatory, and reputational challenges related to water management." }
+        content: { text: "Cement production **demands a significant quantity of water** for various purposes, including **cooling, dust removal, and material processing**. The production of **one ton of cement generally requires approximately 0.35 ton of water**. Businesses face various **risks**, including **physical, regulatory, and reputational challenges** related to water management." }
       },
 
       // Biodiversity
@@ -933,7 +933,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 81,
-        content: { text: "Cement production heavily relies on the extraction of raw materials, predominantly limestone, which requires extensive quarrying and mining activities. These activities result in deforestation and land degradation, disrupting local ecosystems and reducing biodiversity. The cement industry has recognized the importance of biodiversity and has adopted measures to mitigate its impact on ecosystems." }
+        content: { text: "Cement production **heavily relies on the extraction of raw materials**, predominantly **limestone**, which requires **extensive quarrying and mining activities**. These activities result in **deforestation and land degradation**, **disrupting local ecosystems** and **reducing biodiversity**. The cement industry has adopted measures to mitigate its impact on ecosystems." }
       },
 
       // Air Pollution
@@ -951,7 +951,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 83,
-        content: { text: "Cement production generates various pollutants that affect air quality. The combustion of fossil fuels and raw material processing releases pollutants such as sulfur dioxide (SO2), nitrogen oxides (NOx), particulate matter (PM), and volatile organic compounds (VOCs). These emissions have significant implications for public health and the environment." }
+        content: { text: "Cement production **generates various pollutants** that **affect air quality**. The **combustion of fossil fuels** and **raw material processing releases pollutants** such as **sulfur dioxide (SO2), nitrogen oxides (NOx), particulate matter (PM), and volatile organic compounds (VOCs)**. These emissions have **significant implications for public health and the environment**." }
       },
 
       // Public Health
@@ -969,7 +969,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 85,
-        content: { text: "The release of hazardous pollutants, including heavy metals and particulate matter, from cement plants raises significant public health concerns. Chronic exposure to cement dust and emissions can lead to respiratory problems, skin ailments, and other health issues. Heavy metals, when ingested through contaminated water or crops, can have severe health consequences." }
+        content: { text: "The **release of hazardous pollutants**, including **heavy metals and particulate matter**, from cement plants raises **significant public health concerns**. **Chronic exposure to cement dust and emissions** can lead to **respiratory problems, skin ailments, and other health issues**. **Heavy metals** can have **severe health consequences**." }
       },
 
       // Transportation Emissions
@@ -987,7 +987,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 87,
-        content: { text: "The cement industry's carbon footprint extends beyond production emissions. The transportation of raw materials to cement plants and finished products to construction sites contributes significant emissions. This is often overlooked but is a substantial part of the industry's overall environmental impact." }
+        content: { text: "The cement industry's **carbon footprint extends beyond production emissions**. The **transportation of raw materials** to cement plants and **finished products to construction sites** **contributes significant emissions**. This is often overlooked but is a **substantial part of the industry's overall environmental impact**." }
       },
 
       // Concrete Waste
@@ -1005,7 +1005,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 89,
-        content: { text: "Concrete waste from construction and demolition (C&D) activities presents a significant environmental challenge. Historically, C&D waste has been predominantly directed to landfills. However, there is a growing global movement towards recycling concrete, with initiatives aimed at crushing and reusing this material, thereby reducing waste and the need for virgin materials." }
+        content: { text: "**Concrete waste from construction and demolition (C&D) activities** presents a **significant environmental challenge**. Historically, C&D waste has been **predominantly directed to landfills**. However, there is a **growing global movement towards recycling concrete**, with initiatives aimed at **crushing and reusing this material**, thereby **reducing waste** and the need for virgin materials." }
       },
 
       // EU Policies
@@ -1023,7 +1023,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 91,
-        content: { text: "Several EU policies and regulations significantly impact the cement industry, driving the sector towards more sustainable practices and reduced emissions." }
+        content: { text: "**Several EU policies and regulations** significantly **impact the cement industry**, **driving the sector towards more sustainable practices** and **reduced emissions**." }
       },
 
       // IED
@@ -1041,7 +1041,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 93,
-        content: { text: "The IED is the main EU instrument regulating pollutant emissions from industrial installations, including cement plants. It mandates that operators use Best Available Techniques (BAT) and establishes emission limit values for pollutants. The directive requires cement plants to operate under strict environmental permits that set out conditions aligned with BAT conclusions." }
+        content: { text: "The **IED is the main EU instrument** regulating **pollutant emissions from industrial installations**, including cement plants. It **mandates operators use Best Available Techniques (BAT)** and **establishes emission limit values**. The directive **requires cement plants to operate under strict environmental permits** aligned with **BAT conclusions**." }
       },
 
       // CBAM Policy
@@ -1059,7 +1059,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 95,
-        content: { text: "Since the entry into force of the Transitional Phase, importers of non-EU cement must report the greenhouse gas emissions (GHG) embedded in their imports. In the Permanent Phase, importers will need to surrender CBAM certificates priced according to the weekly average auction price of EU ETS allowances. The phasing-out of free allocation under the EU ETS will occur simultaneously with the phasing-in of CBAM from 2026 to 2034." }
+        content: { text: "Since the **Transitional Phase**, importers of **non-EU cement must report greenhouse gas emissions (GHG)** embedded in their imports. In the **Permanent Phase**, importers will need to **surrender CBAM certificates** priced according to **EU ETS allowances**. The **phasing-out of free allocation under EU ETS** will occur simultaneously with the **phasing-in of CBAM from 2026 to 2034**." }
       },
 
       // Circular Economy
@@ -1077,7 +1077,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 97,
-        content: { text: "The Circular Economy Action Plan (CEAP) addresses product design and the quality and safety of secondary materials, with implications for the cement production sector. The CEAP will focus on high-impact intermediary products such as cement, ensuring that the industry progresses towards more sustainable production methods." }
+        content: { text: "The **Circular Economy Action Plan (CEAP)** addresses **product design** and the **quality and safety of secondary materials**, with implications for the cement sector. The CEAP will **focus on high-impact intermediary products** such as cement, **ensuring the industry progresses towards more sustainable production methods**." }
       },
 
       // EU Taxonomy
@@ -1095,7 +1095,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 99,
-        content: { text: "To align with the EU Taxonomy Regulation, eligible activities in the cement production sector must make a 'substantial contribution' to the six environmental objectives and must not harm any of them (Do No Significant Harm). Activities must also be carried out in compliance with minimum social safeguards." }
+        content: { text: "To align with the **EU Taxonomy Regulation**, eligible activities must make a **'substantial contribution' to the six environmental objectives** and must **not harm any of them (Do No Significant Harm)**. Activities must also **comply with minimum social safeguards**." }
       },
       {
         page_id: pageId,
@@ -1149,7 +1149,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 104,
-        content: { text: "The economic activity within the cement production sector must implement adaptation solutions that substantially reduce the most important physical climate risks. A robust climate risk and vulnerability assessment must be performed proportionate to the scale of the activity and its expected lifespan." }
+        content: { text: "The cement production sector must **implement adaptation solutions** that **substantially reduce the most important physical climate risks**. A **robust climate risk and vulnerability assessment** must be **performed proportionate to the scale** of the activity and its **expected lifespan**." }
       },
 
       // Waste Shipment
@@ -1167,7 +1167,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 106,
-        content: { text: "The Waste Shipment Regulation aims to stop exports of waste that have harmful environmental and health impacts in third countries. Under the new rules, waste exports to non-OECD countries will be restricted and only allowed if third countries are willing to receive certain wastes and are able to manage them sustainably." }
+        content: { text: "The **Waste Shipment Regulation** aims to **stop exports of waste** that have **harmful environmental and health impacts** in third countries. Under the **new rules**, **waste exports to non-OECD countries will be restricted** and only allowed if third countries **are able to manage them sustainably**." }
       },
 
       // CPR
@@ -1185,7 +1185,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 108,
-        content: { text: "Construction works are a major customer of the cement industry. Cement-based products used in construction works must comply with the provisions of Regulation (EU) no. 305/2011. The Commission is reviewing the CPR to develop environmental performance requirements for construction products with a unified method to establish the environmental footprint of all construction products." }
+        content: { text: "**Construction works are a major customer** of the cement industry. **Cement-based products** must comply with **Regulation (EU) no. 305/2011**. The Commission is **reviewing the CPR** to **develop environmental performance requirements** with a **unified method to establish the environmental footprint** of all construction products." }
       },
 
       // Renovation Wave
@@ -1203,7 +1203,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 110,
-        content: { text: "The Renovation Wave for Europe is an ambitious programme to trigger renovation in the building sector through a mix of measures. The primary objective is to at least double the annual energy renovation rate (from 1% to 2%) of both residential and non-residential buildings. Buildings are responsible for about 40% of the EU's overall energy consumption and for 36% of its GHG emissions from energy." }
+        content: { text: "The **Renovation Wave for Europe** is an **ambitious programme** to **trigger renovation in the building sector**. The **primary objective is to at least double the annual energy renovation rate** (from **1% to 2%**) of **both residential and non-residential buildings**. **Buildings are responsible for about 40% of EU's overall energy consumption** and **36% of its GHG emissions from energy**." }
       },
 
       // Transition Plan Credibility
@@ -1363,7 +1363,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         sort_order: 122,
-        content: { text: "This consolidated Q&A includes all general and sector specific questions for companies headquartered in the EU whose main activity is the production of cement. Questions under the heading Stage I shall be submitted to the relevant client at the initial onboarding stage, while questions under the heading Stage II can be submitted at a later stage." }
+        content: { text: "This **consolidated Q&A** includes **all general and sector specific questions** for companies **headquartered in the EU** whose **main activity is the production of cement**. Questions under **Stage I** shall be submitted at the **initial onboarding stage**, while **Stage II** questions can be submitted at a **later stage**." }
       }
     ];
 

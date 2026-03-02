@@ -48,17 +48,17 @@ const FALLBACK_NAVIGATION: NavItem[] = [
     ],
   },
   {
-    title: "Steel",
+    title: "Steel Sector",
     icon: Factory,
     href: "/sectors/steel",
   },
   {
-    title: "Cement",
+    title: "Cement Sector",
     icon: Landmark,
     href: "/sectors/cement",
   },
   {
-    title: "Automotive",
+    title: "Automotive Sector",
     icon: Car,
     href: "/sectors/automotive",
   },

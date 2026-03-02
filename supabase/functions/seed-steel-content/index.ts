@@ -65,7 +65,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The worldwide need for steel has been steadily increasing and is projected to keep rising. The steel industry is anticipated to be one of the few industries remaining reliant on coal in 2050, as it plays a crucial role as a reducing agent.'
+          text: 'The **worldwide need for steel** has been **steadily increasing** and is projected to keep rising. The steel industry is anticipated to be **one of the few industries remaining reliant on coal in 2050**, as it plays a crucial role as a reducing agent.'
         },
         sort_order: 2
       },
@@ -74,7 +74,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Electricity-based production and the use of various technologies such as carbon capture and hydrogen-based production are expected to be decisive in achieving a Near Zero in the meantime.'
+          text: '**Electricity-based production** and the use of various technologies such as **carbon capture and hydrogen-based production** are expected to be **decisive in achieving a Near Zero** in the meantime.'
         },
         sort_order: 3
       },
@@ -83,7 +83,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Nevertheless, there is a general consensus over the urgency to discontinue production from unmitigated Blast Furnace-Basic Oxygen Furnace (BF-BOF) facilities at the earliest opportunity.'
+          text: 'Nevertheless, there is **a general consensus over the urgency** to discontinue production from **unmitigated Blast Furnace-Basic Oxygen Furnace (BF-BOF) facilities** at the earliest opportunity.'
         },
         sort_order: 4
       },
@@ -125,7 +125,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Based on EU Commission\'s data, European steel demand is differentiated, with distinct regional demand patterns and prices. Some steel producers act as opportunists, shifting their supplies across the globe to take advantage of price arbitrage. The level of imports is not uniform across Europe, as the majority of imported steel is of lower quality and basic grades, which does not meet the requirements of certain industries, such as the automotive industry, that require more specialized steel.'
+          text: '**Based on EU Commission\'s data**, European steel demand is **differentiated**, with distinct regional demand patterns and prices. Some steel producers act as opportunists, **shifting their supplies across the globe** to take advantage of price arbitrage. The **majority of imported steel is of lower quality and basic grades**, which does not meet the requirements of certain industries, such as the automotive industry, that require more specialized steel.'
         },
         sort_order: 8
       },
@@ -144,7 +144,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'According to Roland Berger, the construction industry comprises 38% of the total steel demand in Europe. Automotive, mechanical engineering, and metalware industries make up 16%, 15%, and 14% of the demand, respectively. The IEA estimates that demand for steel is expected to increase by one-third between 2020 and 2050.'
+          text: 'According to Roland Berger, the **construction industry comprises 38%** of the total steel demand in Europe. **Automotive, mechanical engineering, and metalware industries** make up **16%, 15%, and 14%** of the demand, respectively. The IEA estimates that **demand for steel is expected to increase by one-third between 2020 and 2050**.'
         },
         sort_order: 10
       },
@@ -153,7 +153,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'OECD studies estimate that profitability is still below sustainable levels for many steelmaking firms. According to McKinsey, the EU steel sector should undertake a targeted divestment of unprofitable or low-profit products and non-core assets or businesses.'
+          text: 'OECD studies estimate that **profitability is still below sustainable levels** for many steelmaking firms. According to McKinsey, the EU steel sector should undertake a **targeted divestment of unprofitable or low-profit products** and non-core assets or businesses.'
         },
         sort_order: 11
       },
@@ -178,7 +178,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'In the European Union, steel production is currently carried out through two primary methods, each characterised by distinct raw material and energy requirements.'
+          text: 'In the European Union, steel production is currently carried out through **two primary methods**, each characterised by **distinct raw material and energy requirements**.'
         },
         sort_order: 14
       },
@@ -187,7 +187,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The first method (the integrated route) involves a Blast Furnace-Basic Oxygen Furnace (BF-BOF) utilising mined iron ore, which undergoes a sequence of energy-intensive procedures and it is transformed into iron and then, thanks to a basic oxygen converter and the addition of scrap metal, leads to the production of virgin steel.'
+          text: 'The **first method (the integrated route)** involves a **Blast Furnace-Basic Oxygen Furnace (BF-BOF)** utilising mined iron ore, which undergoes a sequence of **energy-intensive procedures** and it is transformed into iron and then, thanks to a basic oxygen converter and the addition of scrap metal, leads to the **production of virgin steel**.'
         },
         sort_order: 15
       },
@@ -196,7 +196,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The second method (the recycling route) entails the utilisation of recycled steel scrap, which is directly melted into steel using an Electric Arc Furnace (EAF).'
+          text: 'The **second method (the recycling route)** entails the utilisation of **recycled steel scrap**, which is directly melted into steel using an **Electric Arc Furnace (EAF)**.'
         },
         sort_order: 16
       },
@@ -224,7 +224,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The basic process of the integrated route consists of two primary phases, namely iron production and subsequent steel production. This is due to the fact that the extracted iron ore, chemically represented as Fe2O3, must initially undergo reduction to obtain iron (Fe). The iron ore reduction process occurs in the presence of carbon sources such as coke and coal within a blast furnace.'
+          text: 'The integrated route consists of **two primary phases: iron production and subsequent steel production**. This is due to the fact that the extracted iron ore, chemically represented as **Fe2O3**, must initially undergo **reduction to obtain iron (Fe)**. The iron ore reduction process occurs in the presence of **carbon sources such as coke and coal** within a **blast furnace**.'
         },
         sort_order: 19
       },
@@ -233,7 +233,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Sinter or pellets are produced through an agglomeration process (sintering and/or pelletizing). This process necessitates high temperatures of approximately 1,000 degrees Celsius, which are achieved through the utilisation of coal and natural gas. This particular stage typically necessitates an energy input of 1-2 gigajoules per metric tonne of pellets or sinter.'
+          text: 'Sinter or pellets are produced through an **agglomeration process (sintering and/or pelletizing)**. This process necessitates **high temperatures of approximately 1,000 degrees Celsius**, which are achieved through the utilisation of **coal and natural gas**. This stage typically necessitates an **energy input of 1-2 gigajoules per metric tonne**.'
         },
         sort_order: 20
       },
@@ -242,7 +242,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'In the process of blast furnace operation, the introduction of sinter or pellets and coke occurs, alongside the injection of hot air and pulverised coal. This combination leads to the formation of reducing gases through the reaction of coke, which then interacts with iron ore, facilitating the removal of oxygen from iron ore in the blast furnace and resulting in the production of hot metal.'
+          text: 'In **blast furnace operation**, the introduction of **sinter or pellets and coke** occurs, alongside the **injection of hot air and pulverised coal**. This combination leads to the **formation of reducing gases** through the reaction of coke, which then interacts with iron ore, facilitating the **removal of oxygen** from iron ore and resulting in the **production of hot metal**.'
         },
         sort_order: 21
       },
@@ -251,7 +251,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'In the steel production process, the molten metal is introduced into the basic oxygen furnace (BOF), wherein oxygen is injected into the metal to effectively diminish its carbon content from approximately 4% to levels that conform to steel grade specifications, often below 1%.'
+          text: 'In the steel production process, the **molten metal** is introduced into the **basic oxygen furnace (BOF)**, wherein **oxygen is injected** to effectively **diminish its carbon content from approximately 4% to below 1%** to conform to steel grade specifications.'
         },
         sort_order: 22
       },
@@ -277,7 +277,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The primary steel manufacturing pathway, which necessitates around 21 GJ/t crude steel, constituted 73% of worldwide steel production in 2020 and 56% in the European Union. In the BF-BOF steelmaking pathway, carbon serves as both an energy source and a crucial element for the purpose of binding and eliminating oxygen from iron ore, hence leading to the generation of CO2 emissions during the process. The processing stage in the blast furnace is very carbon dioxide-intensive, accounting for more than 50% of the overall carbon dioxide emissions associated with the final product. The average carbon dioxide emissions per tonne of crude steel produced using the BF-BOF pathway is approximately 1.9 tCO2/t.'
+          text: 'The primary steel pathway necessitates around **21 GJ/t crude steel**, constituting **73% of worldwide production in 2020** and **56% in the EU**. In **BF-BOF steelmaking**, carbon serves as both **energy source and crucial element** for binding and eliminating oxygen from iron ore, generating **CO2 emissions during the process**. The **blast furnace stage is very carbon dioxide-intensive**, accounting for **more than 50% of overall CO2 emissions**. The **average CO2 emissions using BF-BOF is approximately 1.9 tCO2/t**.'
         },
         sort_order: 25
       },
@@ -295,7 +295,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The production of steel by the secondary (recycling) method involves the utilisation of an electric arc furnace to melt recycled steel scrap, iron or sponge iron: the electric arc that melts the metal when graphite electrodes make contact with the recycled metal.'
+          text: 'The **secondary (recycling) method** involves the utilisation of an **electric arc furnace** to **melt recycled steel scrap, iron or sponge iron**. The **electric arc** melts the metal when **graphite electrodes make contact** with the recycled metal.'
         },
         sort_order: 27
       },
@@ -304,7 +304,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Arc temperatures can reach even 3,500 degrees Celsius while the hot metal during the smelting process of recycled steel scrap in an electric arc furnace (EAF) reaches 1,600-1,800 degrees Celsius. Electricity serves as the primary energy source for this particular process. The secondary steelmaking route necessitates around 2.5-3 gigajoules per metric tonne of basic steel.'
+          text: '**Arc temperatures can reach 3,500 degrees Celsius** while **hot metal reaches 1,600-1,800 degrees Celsius** during smelting. **Electricity serves as the primary energy source** for this process. The **secondary steelmaking route necessitates around 2.5-3 gigajoules per metric tonne**.'
         },
         sort_order: 28
       },
@@ -313,7 +313,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'EAFs are capable of producing all types of steel, from metal for basic products such as reinforcing bar to stainless and highly alloyed special steels, where flexibility and smaller capacities are advantageous.'
+          text: '**EAFs are capable of producing all types of steel**, from basic products such as reinforcing bar to **stainless and highly alloyed special steels**, where **flexibility and smaller capacities are advantageous**.'
         },
         sort_order: 29
       },
@@ -329,7 +329,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The utilisation of electricity is predominant in the secondary steelmaking process. Direct emissions amount to approximately 0.06 to 0.1 tCO2/t steel. On average, an Electric Arc Furnace (EAF) consumes around 500 kilowatt-hours (kWh) of power per metric tonne of steel produced. Based on the prevailing average CO2 intensity of electricity throughout the EU, the cumulative emissions amount to around 0.2-0.3 metric tonnes of CO2 per metric tonne of steel. The mitigation of indirect emissions could be achieved through the use of renewable electricity in the EAF process.'
+          text: '**Electricity is predominant** in secondary steelmaking. **Direct emissions amount to approximately 0.06 to 0.1 tCO2/t steel**. An **EAF consumes around 500 kilowatt-hours (kWh) per metric tonne** of steel. Based on **EU average CO2 intensity**, **cumulative emissions amount to around 0.2-0.3 tCO2/t**. The **use of renewable electricity in EAF** could mitigate indirect emissions.'
         },
         sort_order: 31
       },
@@ -354,7 +354,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Responsible Steel International Standard Version 2.1 requires steel businesses to set science-based GHG emission reduction objectives and implement methods to meet them. The 2.1 standard developed a unique dataset to enable the evaluation of emissions from any tonne of steel produced anywhere in the world with any level of scrap content. IIGCC recommend using the Responsible Steel emission boundary, which includes Scope 1, Scope 2 and upstream Scope 3 including emissions associated with material extraction, material preparation and processing and transportation.'
+          text: '**Responsible Steel Version 2.1** requires steel businesses to set **science-based GHG emission reduction objectives**. The **2.1 standard developed a unique dataset** to evaluate emissions from any tonne of steel produced worldwide with any scrap content level. **IIGCC recommends** using the **Responsible Steel emission boundary**, which includes **Scope 1, Scope 2 and upstream Scope 3** emissions.'
         },
         sort_order: 34
       },
@@ -385,7 +385,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Recommends bio-based products for steelmaking decarbonization and by boosting efficiency. The Steel Climate Standard Biomass promotes replacing fossil-based carbon in the steel sector to minimise CO2 emissions. Biomass resources like straw, corn stalks, sugarcane bagasse, sawdust, bark, timber harvests, logging leftovers and industrial waste can replace coal in steelmaking with a renewable, carbon-rich alternative. Biochar-based BF ironmaking will increase gross emissions by 50% compared to current coal-based production, but net CO2 emissions might be lowered to 50 kg CO2/t molten iron due to biochar\'s burden-free classification.'
+          text: 'Recommends **bio-based products** for steelmaking decarbonization by boosting efficiency. The **Steel Climate Standard Biomass** promotes **replacing fossil-based carbon** to minimise CO2 emissions. **Biomass resources** like straw, corn stalks, sugarcane bagasse, and industrial waste can **replace coal** with a **renewable, carbon-rich alternative**. **Biochar-based BF ironmaking** increases gross emissions by 50% but might lower **net CO2 emissions to 50 kg CO2/t molten iron**.'
         },
         sort_order: 37
       },
@@ -401,7 +401,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'They do not set out best steel sector decarbonization options but are extremely useful for distinguishing emissions from primary steel manufacturing and secondary steel manufacture from scrap, making emissions comparisons fairer and for identifying benchmark emissions scenarios like the International Energy Agency Net-Zero by 2050 Scenario and the Mission Possible Partnership\'s Technology Moratorium Scenario strategies.'
+          text: 'These principles are **extremely useful for distinguishing emissions** from **primary steel manufacturing and secondary steel manufacture from scrap**, making **emissions comparisons fairer**. They help identify **benchmark emissions scenarios** like the **International Energy Agency Net-Zero by 2050 Scenario** and the **Mission Possible Partnership strategies**.'
         },
         sort_order: 39
       },
@@ -417,7 +417,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Has identified four technology routes that have the potential to contribute to the decarbonization of the steel industry with the aim of doubling the recycled steel production.'
+          text: 'Has identified **four technology routes** with the potential to contribute to **steel decarbonization** with the aim of **doubling recycled steel production**.'
         },
         sort_order: 41
       },
@@ -448,7 +448,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'SteelZero members commit to procuring 100% net-zero steel by 2050 and to procuring at least 50% steel that meets ResponsibleSteel criteria by 2030. Members make public disclosures of Scope 3 emissions and engage with their steel supply chains to work with steelmakers to develop net zero strategies, invest in innovation and implement low-emissions projects.'
+          text: '**SteelZero members commit** to procuring **100% net-zero steel by 2050** and at least **50% ResponsibleSteel-compliant steel by 2030**. Members make **public disclosures of Scope 3 emissions** and **engage with steel supply chains** to develop **net zero strategies** and **implement low-emissions projects**.'
         },
         sort_order: 44
       },
@@ -466,7 +466,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The steel industry has significant environmental impacts beyond climate change, including waste production, water use, air pollution, and public health concerns.'
+          text: 'The steel industry has **significant environmental impacts beyond climate change**, including **waste production, water use, air pollution, and public health concerns**.'
         },
         sort_order: 46
       },
@@ -521,7 +521,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Directive 2010/75/EU on industrial emissions (IED) is the key EU instrument regulating pollutant emissions from industrial installations. The aim of the IED is to prevent or, where not possible, minimise pollutant emissions from various industrial sources across the EU. The IED requires the application of Best Available Techniques (BAT) as the basis for setting permit conditions for these installations.'
+          text: '**Directive 2010/75/EU (IED)** is the **key EU instrument regulating pollutant emissions** from industrial installations. The **aim is to prevent or minimise emissions** from various industrial sources. The **IED requires application of Best Available Techniques (BAT)** as the basis for setting permit conditions.'
         },
         sort_order: 50
       },
@@ -537,7 +537,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The EU\'s Circular Economy Action Plan promotes the transition to a circular economy, where the value of products and materials is maintained for as long as possible. For steel, this means increasing recycling rates, improving scrap quality, and designing products for easier recycling.'
+          text: 'The **EU\'s Circular Economy Action Plan** promotes the **transition to a circular economy**, where **value of products and materials is maintained**. For steel, this means **increasing recycling rates**, **improving scrap quality**, and **designing products for easier recycling**.'
         },
         sort_order: 52
       },
@@ -587,7 +587,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The revised Regulation on shipments of waste (April 2024) has three goals: ensuring that the EU does not export its waste challenges to third countries; increasing traceability of shipments of waste and facilitating recycling and reuse in the EU; and better tackling illegal waste shipments. Under the new rules, waste exports to non-OECD countries will be restricted.'
+          text: 'The **revised Waste Shipment Regulation (April 2024)** has **three goals**: **ensuring EU does not export waste challenges**, **increasing traceability**, and **facilitating recycling and reuse in the EU**, and **tackling illegal waste shipments**. **Waste exports to non-OECD countries** will be **restricted**.'
         },
         sort_order: 57
       },
@@ -603,7 +603,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Construction, buildings and engineering works are a major customer of the steel industry as they use around 50% of all steel consumed in Europe. Structural steel products used in construction works must comply with the provisions of Regulation (EU) No 305/2011. The Commission is reviewing the CPR to develop environmental performance requirements for construction products.'
+          text: '**Construction, buildings and engineering works** are a **major customer** of the steel industry, using around **50% of all steel consumed in Europe**. **Structural steel products** must comply with **Regulation (EU) No 305/2011**. The Commission is reviewing the **CPR to develop environmental performance requirements** for construction products.'
         },
         sort_order: 59
       },
@@ -619,7 +619,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Launched by the G20 in 2016, GFSEC works to address the problem of global excess capacity by tackling distortive government policies. In its 2022 Report, GFSEC evidences that excess capacity continues to be a significant challenge for the global steel industry; therefore, tackling excess capacity is crucial to foster decarbonisation.'
+          text: '**Launched by the G20 in 2016**, GFSEC works to **address global excess capacity** by **tackling distortive government policies**. The **2022 Report** evidences that **excess capacity remains a significant challenge** for the global steel industry, and **tackling excess capacity is crucial to foster decarbonisation**.'
         },
         sort_order: 61
       },
@@ -635,7 +635,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The European Commission\'s Renovation Wave aims to at least double the annual energy renovation rate (from 1% to 2%) of buildings. The primary objective is to reduce buildings\' GHG emissions by 60%, their final energy consumption by 14% and energy consumption for heating and cooling by 18% to achieve the 2030 target of reducing GHGs emissions by 55%.'
+          text: 'The **European Commission\'s Renovation Wave** aims to **at least double the annual energy renovation rate (from 1% to 2%)**. The **primary objective** is to **reduce buildings\' GHG emissions by 60%**, **final energy consumption by 14%**, and **heating/cooling consumption by 18%** to achieve the **2030 target of reducing GHG emissions by 55%**.'
         },
         sort_order: 63
       },
@@ -653,7 +653,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Four main drivers of change apply to hard to abate sectors: economy, technology, society and the environment. How a steel producer or a financial institution exposed to the sector is capable of anticipating these drivers and responding effectively defines the success of an organization.'
+          text: '**Four main drivers of change** apply to hard to abate sectors: **economy, technology, society and the environment**. How a **steel producer or financial institution** can **anticipate these drivers and respond effectively** defines the **success of an organization**.'
         },
         sort_order: 65
       },
@@ -721,7 +721,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Various decarbonization technologies are available or under development for the steel sector. These range from incremental improvements to existing processes to breakthrough technologies that could fundamentally transform steel production.'
+          text: '**Various decarbonization technologies** are **available or under development**. These range from **incremental improvements to existing processes** to **breakthrough technologies** that could **fundamentally transform steel production**.'
         },
         sort_order: 69
       },
@@ -767,7 +767,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Integration of green hydrogen presents a viable approach to attaining environmentally sustainable steel production. Hydrogen exhibits promising potential as a viable alternative to coke in blast furnaces, which might potentially yield a reduction in emissions of approximately 20 percent. Hydrogen further exhibits promising potential as an alternative reductant in the manufacture of direct reduced iron, which can then be employed in the steelmaking process conducted in an electric arc furnace. The incorporation of green hydrogen in this specific process has the potential to enable the attainment of near carbon-neutral steel production.'
+          text: '**Integration of green hydrogen** presents a **viable approach** to **environmentally sustainable steel production**. Hydrogen exhibits **promising potential as an alternative to coke**, which might yield a **reduction of approximately 20%** in emissions. **Hydrogen as an alternative reductant** in **direct reduced iron (DRI)** can enable **near carbon-neutral steel production** in an **electric arc furnace**.'
         },
         sort_order: 74
       },
@@ -793,7 +793,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'CCUS technologies can capture CO2 emissions from steel production processes for storage or utilisation. Norway\'s Northern Lights project can store up to 1.5 Mt carbon captured in Europe in its first phase. For CBI eligibility, CCS or CCUS should capture at least 70% of all emissions.'
+          text: '**CCUS technologies** can **capture CO2 emissions** from steel production for **storage or utilisation**. **Norway\'s Northern Lights project** can **store up to 1.5 Mt carbon** in its first phase. For **CBI eligibility, CCUS should capture at least 70% of emissions**.'
         },
         sort_order: 77
       },
@@ -809,7 +809,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Two main key technologies are electrolytic processes in which iron ore is solely reduced by electricity at high temperatures (Molten Oxide Electrolysis - MOE) or low temperatures (electrowinning/Low Temperature Electrolysis - LTE). According to the IEA, LTE and MOE are promising methods for decarbonizing steel production starting from the end of this decade.'
+          text: '**Two main electrolytic processes**: **Molten Oxide Electrolysis (MOE)** at **high temperatures** and **Low Temperature Electrolysis (LTE)** where **iron ore is solely reduced by electricity**. According to the **IEA, LTE and MOE are promising methods** for **decarbonizing steel production** starting from **the end of this decade**.'
         },
         sort_order: 79
       },
@@ -825,7 +825,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Another technology is the reduction of iron ore to steel using inputs free of fossil fuels, such as hydrogen plasma in a single reactor which is being developed in the SuSteel project. This technology is highly integrated and has the potential to be very efficient, but it is still in the early stages of development and will not be available until 2040 to 2050.'
+          text: '**Hydrogen plasma** technology reduces **iron ore to steel** using **fossil fuel-free inputs** in a **single reactor** developed in the **SuSteel project**. This **highly integrated technology** is **very efficient** but **still in early stages** and will **not be available until 2040 to 2050**.'
         },
         sort_order: 81
       },
@@ -944,7 +944,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Financed emissions are directly linked to the emission intensity of a borrower\'s operations. In steelmaking, the majority of emissions arise from Scope 1 and Scope 2 activities, which are primarily associated with the energy and emission efficiency of machinery. A financial institution\'s ability to assess the emission intensity of financed technologies creates an opportunity to proactively mitigate risks stemming from the client\'s deviation from sectoral emission pathways.'
+          text: '**Financed emissions** are **directly linked to emission intensity** of borrower operations. In steelmaking, **majority of emissions arise from Scope 1 and 2**, associated with **energy and emission efficiency of machinery**. A **financial institution\'s ability to assess emission intensity** creates an opportunity to **proactively mitigate risks** from client **deviation from sectoral pathways**.'
         },
         sort_order: 90
       },
@@ -1011,7 +1011,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Evaluating the credibility of a steel company\'s transition plan is essential for financial institutions. A credible transition plan should demonstrate clear pathways to decarbonization, backed by concrete actions and investments.'
+          text: '**Evaluating the credibility** of a **steel company\'s transition plan** is **essential for financial institutions**. A **credible transition plan** should **demonstrate clear pathways to decarbonization**, backed by **concrete actions and investments**.'
         },
         sort_order: 96
       },
@@ -1053,7 +1053,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The specific measure of emission intensity for the steel sector is scope 1 and greenhouse gas emissions from steelmaking, per unit of crude steel produced in units of metric tonnes of CO2 equivalent per tonne of crude steel.'
+          text: 'The **specific measure of emission intensity** for the steel sector is **Scope 1 and Scope 2 greenhouse gas emissions** from steelmaking, measured in **metric tonnes of CO2 equivalent per tonne of crude steel**.'
         },
         sort_order: 100
       },
@@ -1147,7 +1147,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Disclosing targets in emission intensity metrics provides a relative assessment of the environmental impact of different elements of the net zero transition within the steel sector. Emissions Intensity is a commonly used metric: the World Steel Association uses it as the sole CO2 indicator; Responsible Steel calls for steelmakers to report GHG Emissions Intensity for Plants; and the SBTi Sectoral Decarbonization Approach sets targets based on carbon Emissions Intensity.'
+          text: '**Disclosing targets in emission intensity metrics** provides a **relative assessment of environmental impact** in the **net zero transition**. **Emissions Intensity is commonly used**: the **World Steel Association** uses it as the **sole CO2 indicator**; **Responsible Steel** calls for **GHG Emissions Intensity reporting**; and the **SBTi Sectoral Decarbonization Approach** sets **targets based on carbon Emissions Intensity**.'
         },
         sort_order: 108
       },
@@ -1204,7 +1204,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The direct emissions from activities within the operational boundaries of the company and the emissions from the use of electricity are known as Scope 1 and 2 of a borrower. It is crucial for a financial institution to assess the congruence of scope 1 and 2 emission reduction targets to determine whether the borrower is aligning its internal operations with the climate objective.'
+          text: '**Scope 1 and 2 emissions** are **direct emissions from operational activities** and **emissions from electricity use**. It is **crucial for financial institutions to assess** the **congruence of Scope 1 and 2 reduction targets** to determine if the **borrower is aligning operations with climate objectives**.'
         },
         sort_order: 112
       },
@@ -1234,7 +1234,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The emissions intensity of purchased crude steel refers to the indirect emissions associated with the production of crude steel before it reaches the purchasing entity. The KPI is a measure of the alignment of the company\'s recent purchased crude steel emissions intensity trend with that of its decarbonization pathway.'
+          text: 'The **emissions intensity of purchased crude steel** refers to the **indirect emissions associated with crude steel production** before it reaches the purchasing entity. The **KPI measures the alignment** of the **company\'s purchased crude steel emissions intensity trend** with its **decarbonization pathway**.'
         },
         sort_order: 115
       },
@@ -1250,7 +1250,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Investment in research and development of climate change mitigation technologies is a key indicator of a company\'s commitment to transition. This includes investments in hydrogen-based production, CCUS, electrolysis, and other breakthrough technologies.'
+          text: '**Investment in R&D of climate change mitigation technologies** is a **key indicator** of a **company\'s commitment to transition**. This includes **investments in hydrogen-based production, CCUS, electrolysis, and other breakthrough technologies**.'
         },
         sort_order: 117
       },
@@ -1266,7 +1266,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Increasing the use of scrap in steel production is one of the most effective ways to reduce emissions. A company\'s strategy for increasing scrap utilization should be evaluated as part of its overall transition plan.'
+          text: '**Increasing the use of scrap** in steel production is **one of the most effective ways to reduce emissions**. A **company\'s strategy for increasing scrap utilization** should be **evaluated as part of its overall transition plan**.'
         },
         sort_order: 119
       },
@@ -1284,7 +1284,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'Locked-in emissions refer to the future GHG emissions that are committed by existing capital stock, infrastructure, and operational decisions. For the steel sector, this is particularly relevant given the long lifespan of blast furnaces and other production assets.'
+          text: '**Locked-in emissions** refer to the **future GHG emissions committed by existing capital stock**, **infrastructure, and operational decisions**. For the **steel sector**, this is **particularly relevant given the long lifespan of blast furnaces** and other production assets.'
         },
         sort_order: 121
       },
@@ -1300,7 +1300,7 @@ Deno.serve(async (req) => {
         section_type: 'paragraph',
         title: null,
         content: {
-          text: 'The locked-in emissions KPI measures the total future emissions committed by a company\'s existing assets based on their remaining operational lifetime and emission intensity. This helps financial institutions assess the carbon lock-in risk of borrowers.'
+          text: 'The **locked-in emissions KPI** measures the **total future emissions committed** by a **company\'s existing assets** based on their **remaining operational lifetime and emission intensity**. This helps **financial institutions assess the carbon lock-in risk** of borrowers.'
         },
         sort_order: 123
       },
