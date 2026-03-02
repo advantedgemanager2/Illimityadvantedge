@@ -83,10 +83,10 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Special case: Shipping page badge
+    // Clear any stale badges on shipping page
     await supabase
       .from("pages")
-      .update({ badge: "Coming Soon" })
+      .update({ badge: null })
       .eq("slug", "sectors/shipping");
 
     console.log("Categories seeded and pages linked successfully");

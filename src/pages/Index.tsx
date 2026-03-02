@@ -92,7 +92,6 @@ const sectors = [
     icon: Ship,
     href: "/sectors/shipping",
     color: "from-cyan-500 to-cyan-700",
-    comingSoon: true,
   },
 ];
 
