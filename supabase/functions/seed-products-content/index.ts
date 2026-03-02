@@ -3,6 +3,70 @@ import { getCorsHeaders } from "../_shared/cors.ts";
 import { verifyAdmin } from "../_shared/auth.ts";
 
 const pages = [
+  // ===== 0. KPIs CREDIBILITY CRITERIA =====
+  {
+    slug: "products/kpis-criteria",
+    title: "KPIs Credibility Criteria",
+    description: "A further critical objective in the pursuit of Near Zero, Net Zero and EU Green Deal objectives is the utilisation of credible KPIs that accurately represent the impact of operations on the real economy.",
+    tags: ["KPIs", "Credibility", "Transition Plans", "Hard-to-Abate Sectors"],
+    last_updated: "2025-01-07",
+    sections: [
+      { section_id: "introduction", section_type: "heading", title: "Introduction", content: { text: "Introduction" } },
+      { section_type: "paragraph", content: { text: "A further critical objective in the pursuit of Near Zero, Net Zero and EU Green Deal objectives is the utilisation of credible KPIs that accurately represent the impact of operations on the real economy. This enables the financial institution to circumvent policy and regulatory risks, as well as greenwashing, which would otherwise impede the climate transition." } },
+      { section_type: "callout", content: { type: "info", title: "Core Purpose", text: "Credible KPIs enable financial institutions to circumvent policy and regulatory risks, as well as greenwashing, which would otherwise impede the climate transition." } },
+
+      { section_id: "rationale", section_type: "heading", title: "Rationale Behind the Use of Credible KPIs", content: { text: "Rationale Behind the Use of Credible KPIs" } },
+      { section_type: "paragraph", content: { text: "The importance of evaluating the credibility of transition plans by implementing KPIs that reflect the client's impact on the real economy lies in the current sustainability reporting standards only provide the minimum requirements, which do not reflect the client's alignment with the sectoral climate goals. Additionally, the EU's regulations do not provide a binding definition of credible transition plans." } },
+      { section_type: "paragraph", content: { text: "This results in a gap that must be addressed through an internal governance analysis conducted by the financial institution. This analysis must be in accordance with the EU Green Deal guidelines, the climate targets of the financial institution, and the decarbonization strategy of the client, which affects the bank's financed emissions." } },
+      { section_type: "callout", content: { type: "warning", title: "Regulatory Imperative", text: "The impending necessity for financial institutions to develop prudential transition plans in accordance with the guidelines of the European Banking Authority (EBA) is the justification for this. The challenging task of identifying the scope and attributes of their clients' climate transition plans, which are derived from enterprise risk management practices, climate science, monitoring of technological innovations, EU climate policy, and legal sources, hinders this." } },
+
+      { section_id: "credibility-criteria", section_type: "heading", title: "Credibility Criteria: Areas of Interest", content: { text: "Credibility Criteria: Areas of Interest" } },
+      { section_type: "paragraph", content: { text: "Particularly pertinent to credit institutions is the identification of transition indicators, which are key performance indicators (KPIs) that can quantify the client's transition pathway, as well as its governance of carbon transition risks, impacts, and opportunities, and \"how the transition and alignment are embedded within a business model.\"" } },
+      { section_type: "paragraph", content: { text: "Key performance indicators (KPIs) may mitigate disparities between prudential and non-prudential transition strategies. Furthermore, key performance indicators (KPIs) should not only assess the company's alignment with Near Zero or Net Zero, but also whether it is consistently aligning with the objectives of the EU Green Deal (EGD) to optimise the transition efforts of EU private and public institutions." } },
+      { section_type: "paragraph", content: { text: "The financial institution must address several critical areas that pertain to the credibility criteria. Areas that can be identified include the following:" } },
+
+      { section_id: "resource-allocation", section_type: "heading", title: "Client's Ability to Allocate Resources", content: { text: "Client's Ability to Allocate Resources" } },
+      { section_type: "paragraph", content: { text: "The ability of the client to implement and assess if and how the availability and allocation of financial resources at an affordable cost for R&D and CapEx in transition-enabling and low-carbon technologies and for a sufficient duration impinge on the implementation of such actions." } },
+
+      { section_id: "transition-vulnerability", section_type: "heading", title: "Client's Transition Vulnerability", content: { text: "Client's Transition Vulnerability" } },
+      { section_type: "paragraph", content: { text: "The degree of vulnerability to transition risks of the borrower and its governance of the transition process, considering the relevance of opportunities from technological developments and impacts from environmental and climate regulations applicable or foreseeable to the sector of activity of the counterparty." } },
+      { section_type: "paragraph", content: { text: "While these aspects are better assessed through a qualitative analysis of the transition plan, weak spots such as carbon emissions intensity and time horizon for phasing-out high-emitting assets and phasing-in transition-enabling and low-carbon technologies should be included in specific quantitative KPIs." } },
+
+      { section_id: "lock-in-risk", section_type: "heading", title: "Carbon Lock-In Risk Management", content: { text: "Carbon Lock-In Risk Management" } },
+      { section_type: "callout", content: { type: "important", title: "Most Critical Risk", text: "Carbon lock-in risk, in light of the lifetime of high-emitting assets in hard-to-abate sectors, is the most critical risk." } },
+      { section_type: "paragraph", content: { text: "Its management involves carrying out Life Cycle Assessments, assessing the level of locked-in emissions at asset and project level, focusing on decarbonisation levers that can also bring a production cost reduction, identifying credible decarbonisation levers and transition-enabling technologies, setting up internal roles for the carrying out of an implementation plan, identifying financial resources, and creating a timeline for action." } },
+      { section_type: "paragraph", content: { text: "The assessment of the client's delay in transitioning to a low-carbon economy is firstly quantitative by reference to the level of locked-in emissions over time benchmarked against the climate objectives of the EU Climate Law and to the choice for the technology adopted, benchmarked against the technologies identified by the bank." } },
+      { section_type: "paragraph", content: { text: "Such an assessment is also qualitative, through a valuation of the process adopted by the assessment of the opportunities and credible mitigation, and it is carried out through an analysis of the clients' transition plans." } },
+
+      { section_id: "decarbonization-pathway", section_type: "heading", title: "Robustness of the Planned Decarbonization Pathway", content: { text: "Robustness of the Planned Decarbonization Pathway" } },
+      { section_type: "paragraph", content: { text: "The client decarbonization plans should be integrated in the overall business strategy and cover the transition to environmental objectives." } },
+      { section_type: "paragraph", content: { text: "These aspects are unlikely to be caught effectively through the use of quantitative KPIs as they will require an in-depth analysis of the client's decision-making processes, but they can be singled-out through an engagement process with the client, following a credibility assessment of its transition plan." } },
+
+      { section_id: "internal-audit", section_type: "heading", title: "Client's Internal Audit", content: { text: "Client's Internal Audit" } },
+      { section_type: "paragraph", content: { text: "If the client has assessed if delayed decarbonization, failure to decarbonize and the materialisation of transition risks will impact the business model and its creditworthiness." } },
+
+      { section_id: "non-public-data", section_type: "heading", title: "Non-Public Data Gathering", content: { text: "Non-Public Data Gathering" } },
+      { section_type: "paragraph", content: { text: "The express collection of non-public data through the engagement with clients in sectors or business lines which present material exposures to ESG risks." } },
+
+      { section_id: "first-line-defense", section_type: "heading", title: "First Line of Defense", content: { text: "First Line of Defense" } },
+      { section_type: "paragraph", content: { text: "The establishment of a first line of defense which is composed of a dialogue engagement with counterparties in which the consistency with the institution's prudential transition planning is assessed." } },
+
+      { section_id: "prudential-adjustment", section_type: "heading", title: "Prudential Transition Planning Adjustment", content: { text: "Prudential Transition Planning Adjustment" } },
+      { section_type: "paragraph", content: { text: "The adjustment by credit institutions of their prudential transition planning framework as a consequence of the failing of the exposure that the clients have due to the lack of their adaptive capacity to decarbonise or to prepare a sound transition plan:" } },
+      { section_type: "list", content: { listType: "check", items: ["The investment of the credit institutions in clients which have credible transition plans at the level of the undertaking or at the activity level.", "Credit institutions to ensure that the economic activities with credible science based targets are supported by information ensuring integrity, transparency and accountability of the data.", "The introduction by the client in its transition plan of information which include, milestones, activities, processes and resources encouraging the client to have them time bound, science-based and actionable."] } },
+
+      { section_id: "key-considerations", section_type: "heading", title: "Key Considerations for Transition Plan Credibility", content: { text: "Key Considerations for Transition Plan Credibility" } },
+      { section_type: "paragraph", content: { text: "The transition plan credibility and the risk associated to it should consider the impact on credit risk valuation, capital allocation, reputational risk and the definition and boundaries of greenwashing and related legal liability." } },
+      { section_type: "paragraph", content: { text: "Credibility of the transition plan engages with accounting issues such as impairment. Also consideration should be given as to whether the Net Zero transition commitment should be interpreted as a \"constructive obligation\" for the purpose of recognizing a provision in financial statements." } },
+      { section_type: "paragraph", content: { text: "Credibility is also impacted by the enforceability in the member states of effective, proportionate and dissuasive sanctions against clients and their directors and external auditors." } },
+      { section_type: "callout", content: { type: "tip", title: "Critical First Step", text: "Identifying the nature and attributes of scientific, regulatory, legal, risk management and technological issues is a critical first step in arranging an effective transition governance that is transition plan-focused." } },
+    ],
+    sources: [
+      { source_number: 1, title: "Sustainability-Linked Loan Principles", author: "LMA/APLMA/LSTA", year: "2023" },
+      { source_number: 2, title: "EU Taxonomy Technical Screening Criteria", author: "European Commission", year: "2021" },
+    ],
+  },
+
   // ===== 1. CORPORATE LOANS =====
   {
     slug: "products/corporate-loans",
