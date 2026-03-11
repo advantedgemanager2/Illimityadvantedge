@@ -547,59 +547,107 @@ Deno.serve(async (req) => {
         continue;
       }
 
-      // Delete existing sections and sources
-      await supabase.from("page_sections").delete().eq("page_id", page.id);
-      await supabase.from("page_sources").delete().eq("page_id", page.id);
-
-      // Insert sections
+      // NON-DESTRUCTIVE: Upsert sections individually by section_id
+      // Existing sections not in the seed data are LEFT UNTOUCHED
+      let sectionsUpserted = 0;
+      let sectionsSkipped = 0;
       if (pageData.sections && pageData.sections.length > 0) {
-        const sectionsToInsert = pageData.sections.map((s, idx) => ({
-          page_id: page.id,
-          section_id: s.section_id || `section-${idx}`,
-          section_type: s.section_type,
-          title: s.title || null,
-          content: s.content,
-          sort_order: idx,
-        }));
-        
-        const { error: sectionsError } = await supabase
-          .from("page_sections")
-          .insert(sectionsToInsert);
-        
-        if (sectionsError) {
-          console.error(`Error inserting sections for ${pageData.slug}:`, sectionsError);
-          results.push({ slug: pageData.slug, error: `Sections: ${sectionsError.message}` });
-          continue;
+        for (let idx = 0; idx < pageData.sections.length; idx++) {
+          const s = pageData.sections[idx];
+          const sectionId = s.section_id || `section-${idx}`;
+
+          // Check if this section already exists
+          const { data: existing } = await supabase
+            .from("page_sections")
+            .select("id")
+            .eq("page_id", page.id)
+            .eq("section_id", sectionId)
+            .maybeSingle();
+
+          if (existing) {
+            // Update existing section content and sort_order
+            const { error: updateError } = await supabase
+              .from("page_sections")
+              .update({
+                section_type: s.section_type,
+                title: s.title || null,
+                content: s.content,
+                sort_order: s.sort_order ?? idx,
+              })
+              .eq("id", existing.id);
+
+            if (updateError) {
+              console.error(`Error updating section ${sectionId} for ${pageData.slug}:`, updateError);
+            } else {
+              sectionsUpserted++;
+            }
+          } else {
+            // Insert new section — does not touch any existing sections
+            const { error: insertError } = await supabase
+              .from("page_sections")
+              .insert({
+                page_id: page.id,
+                section_id: sectionId,
+                section_type: s.section_type,
+                title: s.title || null,
+                content: s.content,
+                sort_order: s.sort_order ?? idx,
+              });
+
+            if (insertError) {
+              console.error(`Error inserting section ${sectionId} for ${pageData.slug}:`, insertError);
+              sectionsSkipped++;
+            } else {
+              sectionsUpserted++;
+            }
+          }
         }
       }
 
-      // Insert sources
+      // NON-DESTRUCTIVE: Upsert sources by source_number
+      // Existing sources not in the seed data are LEFT UNTOUCHED
+      let sourcesUpserted = 0;
       if (pageData.sources && pageData.sources.length > 0) {
-        const sourcesToInsert = pageData.sources.map((s: { source_number: number; title: string; author?: string; year?: string; url?: string }) => ({
-          page_id: page.id,
-          source_number: s.source_number,
-          title: s.title,
-          author: s.author || null,
-          year: s.year || null,
-          url: s.url || null,
-        }));
+        for (const s of pageData.sources as { source_number: number; title: string; author?: string; year?: string; url?: string }[]) {
+          const { data: existingSource } = await supabase
+            .from("page_sources")
+            .select("id")
+            .eq("page_id", page.id)
+            .eq("source_number", s.source_number)
+            .maybeSingle();
 
-        const { error: sourcesError } = await supabase
-          .from("page_sources")
-          .insert(sourcesToInsert);
-
-        if (sourcesError) {
-          console.error(`Error inserting sources for ${pageData.slug}:`, sourcesError);
-          results.push({ slug: pageData.slug, error: `Sources: ${sourcesError.message}` });
-          continue;
+          if (existingSource) {
+            await supabase
+              .from("page_sources")
+              .update({
+                title: s.title,
+                author: s.author || null,
+                year: s.year || null,
+                url: s.url || null,
+              })
+              .eq("id", existingSource.id);
+          } else {
+            await supabase
+              .from("page_sources")
+              .insert({
+                page_id: page.id,
+                source_number: s.source_number,
+                title: s.title,
+                author: s.author || null,
+                year: s.year || null,
+                url: s.url || null,
+              });
+          }
+          sourcesUpserted++;
         }
       }
 
-      results.push({ 
-        slug: pageData.slug, 
-        success: true, 
-        sectionsCount: pageData.sections?.length || 0, 
-        sourcesCount: pageData.sources?.length || 0 
+      results.push({
+        slug: pageData.slug,
+        success: true,
+        sectionsUpserted,
+        sectionsSkipped,
+        sourcesUpserted,
       });
     }
 
