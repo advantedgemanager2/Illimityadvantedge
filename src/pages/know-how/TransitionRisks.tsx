@@ -11,6 +11,7 @@ const tocItems = [
   { id: "introduction", title: "Introduction", level: 2 },
   { id: "bottom-up-assessment", title: "Bottom-up Transition Risk Assessment", level: 2 },
   { id: "risk-drivers", title: "Transition Risk Drivers", level: 3 },
+  { id: "top-down-assessment", title: "Top-Down Transition Risk Assessment", level: 2 },
   { id: "sector-level-drivers", title: "Transition Risk Drivers at Sector Level", level: 2 },
   { id: "types-of-risks", title: "Types of Transition Risks", level: 3 },
   { id: "sectoral-drivers", title: "Main Sectoral Drivers", level: 3 },
@@ -98,6 +99,34 @@ const TransitionRisksFallback = () => {
                 ]}
               />
             </section>
+          </section>
+
+          {/* Top-Down Transition Risk Assessment Section */}
+          <section id="top-down-assessment" className="mb-10">
+            <h2 className="text-2xl font-semibold text-foreground mb-4">Top-Down Transition Risk Assessment</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Understanding top-down transition risks through macroeconomic, sectoral, and portfolio-level analysis is a critical complement to borrower-level assessments. It allows lenders to identify systemic exposures, calibrate portfolio strategy, and anticipate regulatory and market pressures before they materialise at the individual credit level.
+            </p>
+
+            <StyledList
+              style="number"
+              items={[
+                "Map the sovereign and supranational policy landscape, including the ambition and implementation credibility of Nationally Determined Contributions (NDCs), national energy transition plans, and sectoral decarbonisation mandates, distinguishing between legislated commitments and stated policy intentions",
+                "Classify portfolio exposures by sector using standardised taxonomies (NACE, GICS) and assign transition risk intensity ratings based on sector-level carbon intensity, regulatory exposure, and susceptibility to technology substitution, distinguishing between high, medium, and low transition risk sectors",
+                "Measure financed emissions across the portfolio using PCAF-compliant methodologies, expressing carbon intensity as tCO₂e per million EUR financed, and benchmark against applicable sectoral and regional decarbonisation pathways to identify portfolio-level alignment gaps",
+                "Assess the implied temperature alignment of the portfolio using forward-looking metrics — including PACTA, SBTi Portfolio Coverage, or Temperature Alignment Score methodologies — and compare the resulting portfolio trajectory against 1.5°C and well-below-2°C scenarios",
+                "Apply macro-level transition scenarios — at minimum an orderly and a disorderly or delayed transition aligned with NGFS or IEA NZE frameworks — across short- (up to 3 years), medium- (3–10 years), and long-term (beyond 10 years) horizons to estimate aggregate portfolio value-at-risk from carbon price trajectories, energy mix shifts, and policy tightening",
+                "Identify sectoral and geographic concentrations in high-transition-risk exposures and assess potential contagion effects within the portfolio, including second-order transmission through supply chain interdependencies and shared market structures among borrowers",
+                "Evaluate the trajectory and ambition of carbon pricing regimes at sovereign and supranational level — including EU ETS phase reforms and CBAM expansion to new sectors — and estimate the aggregate cost burden these mechanisms may impose on carbon-intensive portfolio segments under each scenario",
+                "Analyse macro-level transmission channels through which transition dynamics — including structural energy price volatility, labour market displacement in carbon-intensive sectors, and accelerated capital reallocation flows toward green assets — may affect the aggregate creditworthiness of the portfolio",
+                "Assess the implications of emerging prudential frameworks — including EBA climate risk guidelines, ECB climate stress testing requirements, and Basel climate-related disclosure standards — for capital adequacy, provisioning levels, and supervisory expectations across the portfolio",
+                "Aggregate stranded asset exposure across the portfolio by identifying sectors and asset classes most vulnerable to accelerated economic depreciation under transition scenarios, and estimate the portfolio-level impact on expected loss, LGD distributions, and economic capital requirements",
+                "Benchmark sectoral portfolio weights against IEA, IPCC, or SBTi sectoral decarbonisation pathways to identify structural misalignments between current portfolio composition and a Paris-aligned lending strategy, and define rebalancing targets over short, medium, and long-term horizons",
+                "Quantify the portfolio-level green and transition finance opportunity by identifying sectors, geographies, and borrower profiles where transition dynamics create demand for sustainable lending instruments — including green loans, sustainability-linked facilities, and transition bonds — aligned with the EU Taxonomy and applicable green bond standards",
+                "Assess the policy credibility gap between current sovereign and sectoral commitments and the measures required to achieve portfolio alignment with Paris Agreement goals, and model the transition risk implications of a late and abrupt policy correction, including the potential for disorderly repricing of carbon-intensive assets across the portfolio",
+              ]}
+            />
           </section>
 
           {/* Sector Level Drivers Section */}
@@ -193,6 +222,10 @@ const TransitionRisksFallback = () => {
             <h2 className="text-2xl font-semibold text-foreground mb-4">Business Model Disruption</h2>
 
             <p className="text-muted-foreground mb-4">
+              Business model disruption risk arises when the transition renders a borrower&apos;s core revenue model structurally unviable — not through regulatory cost alone, but through fundamental shifts in the competitive landscape, technology stack, or value chain that incremental adaptation cannot reverse. It is distinct from technology and policy risk in that it operates at the enterprise level, threatening the going concern basis of the borrower rather than specific assets or compliance obligations.
+            </p>
+
+            <p className="text-muted-foreground mb-4">
               A business model could be disrupted as a result of acute and chronic physical risks and of other transition risks. For companies in hard-to-abate sectors, resilience and creation of long-term value by avoiding that assets become stranded should be the main transition objective.
             </p>
 
@@ -276,6 +309,10 @@ const TransitionRisksFallback = () => {
           <section id="legal-accounting" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">Legal and Accounting Risks</h2>
 
+            <p className="text-muted-foreground mb-4">
+              Legal risk encompasses climate change litigation, regulatory enforcement actions, and evolving fiduciary duty standards that may impose direct financial liability on corporates and the financial institutions that finance them. The expanding body of climate case law — including Milieudefensie v Shell, KlimaSeniorinnen v Switzerland (ECtHR, 2024), and financial institution-specific proceedings brought by ClientEarth — confirms that courts across jurisdictions are increasingly willing to impose binding transition obligations on both borrowers and lenders.
+            </p>
+
             <h4 className="font-semibold text-foreground mb-2">Increased Exposure to Liability Risk</h4>
             <p className="text-muted-foreground mb-4">
               Liability could be triggered for non-compliance with more stringent environmental, climate and human rights-related legislation (such as CSDDD, and regulation of existing products and services).
@@ -301,6 +338,10 @@ const TransitionRisksFallback = () => {
             <h2 className="text-2xl font-semibold text-foreground mb-4">Reputational Risk</h2>
 
             <p className="text-muted-foreground mb-4">
+              Reputational risk arises when the gap between a financial institution&apos;s stated sustainability commitments and its actual financing behaviour is publicly exposed — through NGO campaigns, greenwashing allegations, or supervisory scrutiny of ESG disclosures. It translates rapidly into commercial consequences, including reduced access to green capital markets, loss of institutional investor confidence, and erosion of customer relationships.
+            </p>
+
+            <p className="text-muted-foreground mb-4">
               Reputational risks, in a transition context, are threats that can result from a company&apos;s association with environmentally damaging practices and with socially impacting conducts. Eventually, reputational damage can impact revenues, profitability, enterprise value and increased crisis management costs.
             </p>
 
@@ -322,6 +363,10 @@ const TransitionRisksFallback = () => {
           {/* Policy-driven Market Risk Section */}
           <section id="policy-driven-market" className="mb-10">
             <h2 className="text-2xl font-semibold text-foreground mb-4">Policy-driven Market Risk</h2>
+
+            <p className="text-muted-foreground mb-4">
+              Policy-driven market risk captures the financial impact on asset values, commodity prices, and sector revenues caused by government intervention in support of the transition — distinct from preference risk, which is demand-led. Carbon price increases, fossil fuel subsidy phase-outs, and regulated product bans such as the 2035 ICE vehicle phase-out alter the relative valuation of assets and compress operating margins for carbon-sensitive borrowers in ways that must be explicitly modelled under transition scenarios.
+            </p>
 
             <p className="text-muted-foreground mb-4">
               Trends in market and consumer sentiment deriving from policy sources will become increasingly relevant (e.g. in the steel and cement sectors, the impact of real estate buyers and investors in SFDR funds demanding Net Zero aligned steel and cement in constructions due to embodied carbon emission considerations).
