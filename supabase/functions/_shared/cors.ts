@@ -1,8 +1,15 @@
 const allowedOrigins = Deno.env.get("ALLOWED_ORIGINS")?.split(",") ?? [];
 
+function isAllowed(origin: string): boolean {
+  if (allowedOrigins.includes(origin)) return true;
+  // Accept any Vercel preview deployment
+  if (origin.endsWith(".vercel.app") && origin.startsWith("https://")) return true;
+  return false;
+}
+
 export function getCorsHeaders(req: Request): Record<string, string> {
   const origin = req.headers.get("Origin") ?? "";
-  const allowed = allowedOrigins.includes(origin) ? origin : allowedOrigins[0] ?? "";
+  const allowed = isAllowed(origin) ? origin : allowedOrigins[0] ?? "";
 
   return {
     "Access-Control-Allow-Origin": allowed,
