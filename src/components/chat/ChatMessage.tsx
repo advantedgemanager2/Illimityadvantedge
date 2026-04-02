@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Bot, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { ChatMessage as ChatMessageType } from "@/hooks/useChat";
@@ -6,11 +5,12 @@ import type { ChatMessage as ChatMessageType } from "@/hooks/useChat";
 interface ChatMessageProps {
   message: ChatMessageType;
   isStreaming?: boolean;
+  onLinkClick?: (href: string) => void;
 }
 
-// Parse markdown links [Title](/slug#section) into React Router <Link> components
+// Parse markdown links [Title](/slug#section) into clickable elements
 // Also handles basic bold (**text**)
-function renderContent(content: string) {
+function renderContent(content: string, onLinkClick?: (href: string) => void) {
   const linkRegex = /\[([^\]]+)\]\((\/([\w/-]+(?:#[\w-]+)?))\)/g;
   const parts: Array<string | { text: string; href: string }> = [];
   let lastIndex = 0;
@@ -32,13 +32,17 @@ function renderContent(content: string) {
       return <TextSegment key={i} text={part} />;
     }
     return (
-      <Link
+      <a
         key={i}
-        to={part.href}
-        className="text-primary hover:underline underline-offset-2 font-medium"
+        href={part.href}
+        onClick={(e) => {
+          e.preventDefault();
+          onLinkClick?.(part.href);
+        }}
+        className="text-primary hover:underline underline-offset-2 font-medium cursor-pointer"
       >
         {part.text}
-      </Link>
+      </a>
     );
   });
 }
@@ -76,7 +80,7 @@ function TextSegment({ text }: { text: string }) {
   );
 }
 
-export default function ChatMessage({ message, isStreaming }: ChatMessageProps) {
+export default function ChatMessage({ message, isStreaming, onLinkClick }: ChatMessageProps) {
   const isUser = message.role === "user";
 
   return (
@@ -108,7 +112,7 @@ export default function ChatMessage({ message, isStreaming }: ChatMessageProps) 
         )}
       >
         <div className="whitespace-pre-wrap break-words">
-          {renderContent(message.content)}
+          {renderContent(message.content, onLinkClick)}
           {isStreaming && !message.content && (
             <span className="typing-indicator">
               <span className="typing-dot" />

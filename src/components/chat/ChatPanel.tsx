@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bot, Trash2 } from "lucide-react";
 import {
   Sheet,
@@ -22,6 +23,27 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
   const { messages, isStreaming, sendMessage, stopStreaming, clearMessages } =
     useChat();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  // Handle link clicks: close panel, navigate, and scroll to hash
+  const handleLinkClick = useCallback(
+    (href: string) => {
+      onOpenChange(false);
+      // Split path and hash
+      const [path, hash] = href.split("#");
+      navigate(path);
+      // Scroll to section after page renders
+      if (hash) {
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 300);
+      }
+    },
+    [navigate, onOpenChange]
+  );
 
   // Auto-scroll to bottom on new messages
   useEffect(() => {
@@ -106,6 +128,7 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
                     msg.role === "assistant" &&
                     i === messages.length - 1
                   }
+                  onLinkClick={handleLinkClick}
                 />
               ))
             )}
