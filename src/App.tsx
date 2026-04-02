@@ -44,6 +44,16 @@ import EditPage from "./pages/admin/EditPage";
 // Dynamic pages
 import DynamicPage from "./pages/DynamicPage";
 
+// Chat
+import ChatButton from "./components/chat/ChatButton";
+import { useAuth } from "@/contexts/AuthContext";
+
+function AuthenticatedChatButton() {
+  const { user, isLoading } = useAuth();
+  if (isLoading || !user) return null;
+  return <ChatButton />;
+}
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -118,6 +128,7 @@ const App = () => (
 
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <AuthenticatedChatButton />
         </BrowserRouter>
       </AuthProvider>
     </TooltipProvider>
