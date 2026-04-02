@@ -24,12 +24,9 @@ CREATE TABLE public.page_section_embeddings (
 CREATE INDEX idx_embeddings_page_id ON public.page_section_embeddings(page_id);
 CREATE INDEX idx_embeddings_page_slug ON public.page_section_embeddings(page_slug);
 
--- IVFFlat index for cosine similarity search
--- Note: requires at least ~100 rows before it's effective.
--- For initial population, the planner falls back to sequential scan which is fine.
-CREATE INDEX idx_embeddings_vector ON public.page_section_embeddings
-  USING ivfflat (embedding extensions.vector_cosine_ops)
-  WITH (lists = 100);
+-- No vector index for now — sequential scan gives perfect recall and is
+-- fast enough for <5000 rows. Add an HNSW index if the table grows beyond
+-- ~10k rows: CREATE INDEX ... USING hnsw (embedding vector_cosine_ops);
 
 -- 4. Updated-at trigger
 CREATE TRIGGER update_page_section_embeddings_updated_at
