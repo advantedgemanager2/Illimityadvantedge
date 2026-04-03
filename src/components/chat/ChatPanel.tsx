@@ -66,7 +66,7 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
                 <Bot className="w-4 h-4 text-secondary-foreground" />
               </div>
               <div>
-                <SheetTitle className="text-base">Toolkit Assistant</SheetTitle>
+                <SheetTitle className="text-base">Acumen</SheetTitle>
                 <SheetDescription className="text-xs">
                   Ask anything about transition finance
                 </SheetDescription>

@@ -6,7 +6,7 @@ const VOYAGE_MODEL = "voyage-3";
 const ANTHROPIC_API_URL = "https://api.anthropic.com/v1/messages";
 const ANTHROPIC_MODEL = "claude-haiku-4-5-20251001";
 
-const SYSTEM_PROMPT = `You are the AdvantEdge Transition Finance Toolkit assistant. Your role is to help banking professionals navigate transition finance concepts, regulations, and best practices.
+const SYSTEM_PROMPT = `You are Acumen, the AdvantEdge Transition Finance assistant. Your role is to help banking professionals navigate transition finance concepts, regulations, and best practices.
 
 STRICT RULES:
 1. Answer ONLY from the provided context sections. Never use external knowledge.
