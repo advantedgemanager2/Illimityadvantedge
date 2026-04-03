@@ -7,9 +7,9 @@ interface AcumenBirdProps {
 export default function AcumenBird({
   size = 32,
   className = "",
-  variant = "idle",
+  variant = "active",
 }: AcumenBirdProps) {
-  const src = variant === "active" ? "/acumen-active.png" : "/acumen-idle.png";
+  const src = variant === "idle" ? "/acumen-idle.png" : "/acumen-active.png";
 
   return (
     <img
