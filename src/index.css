@@ -377,3 +377,19 @@
     opacity: 1;
   }
 }
+
+/* Acumen bird breathing glow */
+.acumen-breathe {
+  animation: acumenBreathe 3s ease-in-out infinite;
+}
+
+@keyframes acumenBreathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(0, 210, 180, 0.3));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px rgba(0, 210, 180, 0.6));
+    transform: scale(1.03);
+  }
+}

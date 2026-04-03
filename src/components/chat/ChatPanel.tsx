@@ -1,6 +1,6 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Bot, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -11,6 +11,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { useChat } from "@/hooks/useChat";
+import AcumenBird from "./AcumenBird";
+import AcumenEntrance from "./AcumenEntrance";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 
@@ -24,6 +26,17 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
     useChat();
   const scrollRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const hasEntered = useRef(false);
+  const [showEntrance, setShowEntrance] = useState(false);
+  const [entranceDone, setEntranceDone] = useState(false);
+
+  // Trigger entrance animation on first open
+  useEffect(() => {
+    if (open && !hasEntered.current) {
+      hasEntered.current = true;
+      setShowEntrance(true);
+    }
+  }, [open]);
 
   // Handle link clicks: close panel, navigate, and scroll to hash
   const handleLinkClick = useCallback(
@@ -56,14 +69,24 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
         side="right"
-        className="w-full sm:max-w-md p-0 flex flex-col gap-0"
+        className="w-full sm:max-w-md p-0 flex flex-col gap-0 relative"
       >
+        {/* Entrance animation overlay */}
+        {showEntrance && !entranceDone && (
+          <AcumenEntrance
+            onComplete={() => {
+              setEntranceDone(true);
+              setShowEntrance(false);
+            }}
+          />
+        )}
+
         {/* Header */}
         <SheetHeader className="px-4 py-3 border-b border-border flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
-                <Bot className="w-4 h-4 text-secondary-foreground" />
+              <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
+                <AcumenBird size={20} />
               </div>
               <div>
                 <SheetTitle className="text-base">Acumen</SheetTitle>
@@ -93,7 +116,7 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
             {messages.length === 0 ? (
               <div className="text-center py-12 px-4">
                 <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
-                  <Bot className="w-6 h-6 text-secondary" />
+                  <AcumenBird size={32} />
                 </div>
                 <p className="text-sm font-medium text-foreground mb-2">
                   How can I help?

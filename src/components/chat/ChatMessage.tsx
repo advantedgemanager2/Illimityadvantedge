@@ -1,4 +1,5 @@
-import { Bot, User } from "lucide-react";
+import { User } from "lucide-react";
+import AcumenBird from "./AcumenBird";
 import { cn } from "@/lib/utils";
 import type { ChatMessage as ChatMessageType } from "@/hooks/useChat";
 
@@ -99,7 +100,7 @@ export default function ChatMessage({ message, isStreaming, onLinkClick }: ChatM
             : "bg-secondary text-secondary-foreground"
         )}
       >
-        {isUser ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
+        {isUser ? <User className="w-3.5 h-3.5" /> : <AcumenBird size={16} />}
       </div>
 
       {/* Bubble */}
