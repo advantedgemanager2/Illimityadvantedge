@@ -27,6 +27,7 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const hasEntered = useRef(false);
+  const headerIconRef = useRef<HTMLDivElement>(null);
   const [showEntrance, setShowEntrance] = useState(false);
   const [entranceDone, setEntranceDone] = useState(false);
 
@@ -74,6 +75,7 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
         {/* Entrance animation overlay — fixed to match the Sheet's fixed positioning */}
         {showEntrance && !entranceDone && (
           <AcumenEntrance
+            targetRef={headerIconRef}
             onComplete={() => {
               setEntranceDone(true);
               setShowEntrance(false);
@@ -85,7 +87,7 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
         <SheetHeader className="px-4 py-3 border-b border-border flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
+              <div ref={headerIconRef} className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center">
                 <AcumenBird size={20} />
               </div>
               <div>

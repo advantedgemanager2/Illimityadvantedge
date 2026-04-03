@@ -1,7 +1,8 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, type RefObject } from "react";
 import AcumenBird from "./AcumenBird";
 
 interface AcumenEntranceProps {
+  targetRef: RefObject<HTMLDivElement | null>;
   onComplete: () => void;
 }
 
@@ -19,19 +20,21 @@ interface Particle {
 const COLORS = ["#00D2B4", "#0A9C8A", "#FFC83C", "#00D2B4"];
 const DURATION = 2500; // ms
 
-export default function AcumenEntrance({ onComplete }: AcumenEntranceProps) {
+export default function AcumenEntrance({ targetRef, onComplete }: AcumenEntranceProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const birdRef = useRef<HTMLDivElement>(null);
   const startTime = useRef(0);
   const particles = useRef<Particle[]>([]);
   const animFrame = useRef(0);
 
+  // Landing target coordinates (calculated once from the header icon ref)
+  const landingPos = useRef({ x: 52, y: 44 });
+
   // Quadratic bezier: start (upper-right), control (center-up), end (header icon position)
   const getPath = useCallback((t: number, w: number, h: number) => {
     const start = { x: w + 40, y: -40 };
-    const control = { x: w * 0.4, y: h * 0.08 };
-    // End: approximate header icon position (left area of sheet, ~48px from left, ~28px from top)
-    const end = { x: 52, y: 44 };
+    const end = landingPos.current;
+    const control = { x: w * 0.4, y: end.y * 0.3 };
 
     const mt = 1 - t;
     return {
@@ -48,15 +51,25 @@ export default function AcumenEntrance({ onComplete }: AcumenEntranceProps) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Size canvas to the sheet panel
-    const parent = canvas.parentElement;
-    if (parent) {
-      canvas.width = parent.clientWidth;
-      canvas.height = parent.clientHeight;
+    // Size canvas to the overlay container
+    const container = canvas.parentElement;
+    if (container) {
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
     }
 
     const w = canvas.width;
     const h = canvas.height;
+
+    // Calculate landing position from the header icon element
+    if (targetRef.current && container) {
+      const iconRect = targetRef.current.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+      landingPos.current = {
+        x: iconRect.left - containerRect.left + iconRect.width / 2,
+        y: iconRect.top - containerRect.top + iconRect.height / 2,
+      };
+    }
 
     startTime.current = performance.now();
     particles.current = [];
