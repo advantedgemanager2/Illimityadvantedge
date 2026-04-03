@@ -69,9 +69,9 @@ export default function ChatPanel({ open, onOpenChange }: ChatPanelProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent
         side="right"
-        className="w-full sm:max-w-md p-0 flex flex-col gap-0 relative"
+        className="w-full sm:max-w-md p-0 flex flex-col gap-0"
       >
-        {/* Entrance animation overlay */}
+        {/* Entrance animation overlay — fixed to match the Sheet's fixed positioning */}
         {showEntrance && !entranceDone && (
           <AcumenEntrance
             onComplete={() => {

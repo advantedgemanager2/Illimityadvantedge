@@ -146,7 +146,7 @@ export default function AcumenEntrance({ onComplete }: AcumenEntranceProps) {
   }, [getPath, onComplete]);
 
   return (
-    <div className="absolute inset-0 z-50 pointer-events-none overflow-hidden">
+    <div className="fixed inset-y-0 right-0 w-full sm:max-w-md z-[51] pointer-events-none overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       <div ref={birdRef} className="absolute" style={{ willChange: "transform" }}>
         <AcumenBird size={80} variant="active" className="" />
