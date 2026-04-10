@@ -40,6 +40,7 @@ import Shipping from "./pages/sectors/Shipping";
 // Admin
 import AdminDashboard from "./pages/admin/Dashboard";
 import EditPage from "./pages/admin/EditPage";
+import ReorderPages from "./pages/admin/ReorderPages";
 
 // Dynamic pages
 import DynamicPage from "./pages/DynamicPage";
@@ -104,6 +105,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/reorder"
+              element={
+                <ProtectedRoute>
+                  <ReorderPages />
                 </ProtectedRoute>
               }
             />

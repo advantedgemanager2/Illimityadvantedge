@@ -6,7 +6,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
-import { FileText, Clock, Edit2, UserPlus, Trash2, Users, Loader2, Plus } from "lucide-react";
+import { FileText, Clock, Edit2, UserPlus, Trash2, Users, Loader2, Plus, ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -506,6 +506,13 @@ export default function AdminDashboard() {
         <div className="space-y-8">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-foreground">Pages</h2>
+            <div className="flex items-center gap-2">
+            <Link to="/admin/reorder">
+              <Button size="sm" variant="outline">
+                <ArrowUpDown className="h-4 w-4 mr-2" />
+                Reorder
+              </Button>
+            </Link>
             <Dialog open={createPageOpen} onOpenChange={setCreatePageOpen}>
               <DialogTrigger asChild>
                 <Button size="sm">
@@ -589,6 +596,7 @@ export default function AdminDashboard() {
                 </form>
               </DialogContent>
             </Dialog>
+            </div>
           </div>
 
           {pageGroups.map((group) => (

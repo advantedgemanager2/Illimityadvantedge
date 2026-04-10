@@ -12,6 +12,7 @@ import {
   Building2,
   Package,
   Factory,
+  ArrowUpDown,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useNavigation } from "@/hooks/useNavigation";
@@ -112,6 +113,19 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
             >
               <LayoutDashboard className="h-4 w-4" />
               Dashboard
+            </Link>
+
+            <Link
+              to="/admin/reorder"
+              className={cn(
+                "flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors",
+                location.pathname === "/admin/reorder"
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              )}
+            >
+              <ArrowUpDown className="h-4 w-4" />
+              Reorder Pages
             </Link>
 
             {pageGroups.map((group) => (

@@ -41,7 +41,7 @@ export function useNavigation() {
         sort_order: cat.sort_order,
         pages: ((cat.pages as NavigationPage[]) || [])
           .filter((p) => p.is_published !== false)
-          .sort((a, b) => a.sort_order - b.sort_order),
+          .sort((a, b) => (a.sort_order ?? 999) - (b.sort_order ?? 999)),
       }));
     },
     staleTime: 5 * 60 * 1000,
