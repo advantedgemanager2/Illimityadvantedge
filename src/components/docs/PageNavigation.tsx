@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePageNavigation } from "@/hooks/usePageNavigation";
 
 interface NavItem {
   title: string;
@@ -9,12 +10,19 @@ interface NavItem {
 }
 
 interface PageNavigationProps {
+  /** @deprecated prev/next are now computed automatically from the database */
   prev?: NavItem;
+  /** @deprecated prev/next are now computed automatically from the database */
   next?: NavItem;
   className?: string;
 }
 
-const PageNavigation = ({ prev, next, className }: PageNavigationProps) => {
+const PageNavigation = ({ className }: PageNavigationProps) => {
+  const location = useLocation();
+  // Strip leading slash to get the slug
+  const slug = location.pathname.replace(/^\//, "");
+  const { prev, next } = usePageNavigation(slug);
+
   if (!prev && !next) return null;
 
   return (

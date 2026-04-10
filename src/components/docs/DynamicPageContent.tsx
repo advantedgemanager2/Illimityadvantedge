@@ -57,6 +57,9 @@ interface DynamicPageContentProps {
   fallback?: ReactNode;
 }
 
+// navigation prop is kept for backward compatibility but ignored —
+// prev/next are always computed from the database via usePageNavigation
+
 // Map diagram names to components
 const diagramComponents: Record<string, React.ComponentType> = {
   BaselPillarsDiagram,
@@ -310,7 +313,6 @@ function formatSources(sources: PageSource[]): Array<{ id: number; title: string
 export default function DynamicPageContent({
   slug,
   breadcrumbs,
-  navigation,
   fallback,
 }: DynamicPageContentProps) {
   const { data: pageContent, isLoading, error } = usePageContent(slug);
@@ -405,9 +407,7 @@ export default function DynamicPageContent({
           {sources.length > 0 && <SourceCitations sources={sources} />}
 
           {/* Page Navigation */}
-          {navigation && (
-            <PageNavigation prev={navigation.prev} next={navigation.next} />
-          )}
+          <PageNavigation />
         </article>
 
         {/* Right column: TOC with optional side CTAs below, or standalone side CTAs */}
