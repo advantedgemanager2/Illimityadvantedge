@@ -31,3 +31,8 @@ dist-ssr
 
 # Supabase
 supabase/.temp/
+
+# graphify temp/cache files
+graphify-out/.graphify_*
+graphify-out/.community_snapshot.json
+graphify-out/cache/
