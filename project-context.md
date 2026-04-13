@@ -96,3 +96,60 @@
 1. Where exactly within the "Types of Transition Risks" section should the 4 new risk descriptions (Business Model Disruption, Legal, Reputational, Policy-Driven Market) be placed relative to the existing content in the database? Pietro indicated they should follow the order of the numbered list and be interleaved between existing detailed sections — this needs to be verified against the current database state after the restore.
 2. Should the seed file be updated to match the database, or should it be left as-is since it will never be deployed again?
 3. Questions carried over from previous session: Vercel account cleanup, other seed function audits.
+
+---
+
+## Session: 2026-04-13 at ~00:30
+
+### Accomplished
+
+1. **Generated a full graphify knowledge graph of the entire codebase** — 469 nodes, 344 edges, 201 communities detected across 146 files (~139,333 words). AST extraction produced 239 structural nodes and 738 edges; 7 parallel semantic subagents added 231 semantic nodes and 243 edges covering domain concepts, regulatory frameworks, architectural patterns, and cross-file relationships. Token reduction benchmark: 475x fewer tokens per query versus reading raw corpus.
+
+2. **Discovered the application's "three islands" architecture** — the three major layers (Supabase Backend, Content Display Components, Sector Pages & Data) are completely disconnected from each other in static code. Community 0 (Backend) has 31 nodes, 60 internal edges, and zero external edges. Community 1 (Content Display) has 24 nodes, 28 internal edges, and zero external edges. Community 10 (Sector Pages) has 8 nodes, 10 internal edges, and zero external edges. The entire 469-node graph has only 2 cross-community bridges, both in the domain concept layer: Credible Transition Plans ↔ Prudential Transition Plan (INFERRED, 0.75) and Transition Finance → General Corporate Purpose Loans (EXTRACTED, 1.0).
+
+3. **Mapped the invisible 5-layer content pipeline** — traced how content flows from seed functions (Layer 1, Community 0) through the Supabase database to data hooks (Layer 2, Community 5), to page routes (Layer 3, Community 4), to the DynamicPageContent section renderer (Layer 4, Community 1), dispatching to 12 section types (heading, paragraph, callout, list, accordion, table, blockquote, diagram, card_grid, kpi_metric, image_media, cta_button). Identified 9 specific runtime bridges invisible to static analysis that, if made explicit, would collapse 199 disconnected subgraphs to approximately 5-10.
+
+4. **Traced all three rationale nodes** — the graph contains exactly three explicit "why" nodes: (a) "No New Transition Finance Product Label Needed" — justifying the tool's approach of making existing instruments smarter rather than inventing new ones; (b) "SLLs Should Be Sector-Specific Not Sector-Agnostic" — the complementary argument that existing labels need sector customisation; (c) "Seed Function Must Never Overwrite Existing DB Content" — the operational lesson from the database incidents recorded in previous sessions.
+
+5. **Traced the sector page navigation chain and cross-section bridges** — discovered the chain is broken in the graph (Shipping↔Automotive and Cement↔Steel are only INFERRED semantic similarity, not EXTRACTED references). Found that Shipping has no static content data file (asymmetry vs Automotive/Steel/Cement which all have `src/data/sectors/*Content.ts`). Identified KPIsCriteria as a hidden bridge node — the only page linking across section boundaries (Products → Governance).
+
+6. **Created community connection tracer tooling** — `graphify-out/trace-communities.py` analyses cross-community bridges and saves snapshots for diffing; `graphify-out/post-update-trace.sh` wraps it for post-update use. Installed a `post-commit` git hook that auto-rebuilds the graph (AST only, no LLM cost) on every commit and runs the community tracer with `--diff`.
+
+7. **Committed and pushed all outputs to origin/main** — rebased on top of remote changes (two new commits: drag-and-drop page reorder and prev/next navigation fix) and pushed successfully.
+
+### Decisions Made
+
+- **graphify-out/ is tracked in git** but temp/cache files (.graphify_*, cache/) are excluded via .gitignore. The meaningful outputs (GRAPH_REPORT.md, graph.html, graph.json, tracer scripts) are versioned so future sessions can query the graph without rebuilding.
+- **Post-commit hook auto-rebuilds on code changes only** — uses AST extraction (deterministic, no LLM cost). Document/image changes require a manual `/graphify --update` followed by `bash graphify-out/post-update-trace.sh` to trigger semantic re-extraction with community diffing.
+- **The graph reveals that the application's decoupled architecture is intentional but invisible** — the three main layers communicate only through the database and string-based dispatch (section_type). No decision was made to change this, but it is now documented as a known architectural characteristic.
+
+### Files Changed
+
+- `.gitignore` — added exclusions for graphify temp/cache files (`graphify-out/.graphify_*`, `graphify-out/.community_snapshot.json`, `graphify-out/cache/`)
+- `graphify-out/GRAPH_REPORT.md` — full audit report: god nodes, surprising connections, hyperedges, community breakdowns, suggested questions
+- `graphify-out/graph.html` — interactive HTML graph visualization (469 nodes, open in any browser)
+- `graphify-out/graph.json` — raw graph data in NetworkX node-link format (289KB)
+- `graphify-out/cost.json` — cumulative token cost tracker across graphify runs
+- `graphify-out/manifest.json` — file manifest for incremental `--update` runs
+- `graphify-out/trace-communities.py` — standalone community connection analyser with `--diff` support
+- `graphify-out/post-update-trace.sh` — wrapper script for running tracer after `/graphify --update`
+- `.git/hooks/post-commit` — auto-rebuild hook (local only, not pushed to remote)
+- `project-context.md` — committed previous session's entry as part of this push
+
+### What Did Not Work
+
+- **The post-commit hook creates a nested `graphify-out/graphify-out/` directory** when it fires during `git rebase` — the hook runs from a context where the working directory may differ. Cleaned up manually with `rm -rf`; the hook works correctly during normal commits. Minor issue, not blocking.
+- **`git stash pop` failed after rebase** because the post-commit hook modified `graph.json` during the rebase's re-commit, creating a conflict with the stashed version. Resolved by restoring from HEAD and dropping the stash. This is an inherent tension between hooks that modify tracked files and git rebase workflows.
+
+### Remaining Work
+
+1. **Explore adding explicit bridge annotations** — JSDoc comments or type references that would make the 9 invisible runtime connections visible to future graph builds, collapsing the 199 disconnected subgraphs.
+2. **Create a `shippingContent.ts` data file** — Shipping is the only sector page without a static content data fallback (Automotive, Steel, Cement all have one). This asymmetry may or may not be intentional.
+3. **Fix the post-commit hook working directory issue** — ensure it runs from the repo root during rebase operations to avoid creating nested output directories.
+4. **Remaining work carried over from previous sessions:** fix seed file to match database, add 4 new transition risk descriptions via admin UI, configure SUPABASE_ACCESS_TOKEN, resolve Vercel account confusion, audit other seed functions.
+
+### Open Questions
+
+1. Should the 9 invisible runtime bridges be made explicit in code (e.g., via JSDoc annotations referencing cross-layer dependencies), or is the current decoupled architecture intentionally opaque?
+2. Is the missing `shippingContent.ts` data file intentional (Shipping content is DB-only) or an oversight?
+3. Questions carried over: Vercel account cleanup, seed file update strategy, other seed function audits.
