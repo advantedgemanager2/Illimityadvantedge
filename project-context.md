@@ -153,3 +153,63 @@
 1. Should the 9 invisible runtime bridges be made explicit in code (e.g., via JSDoc annotations referencing cross-layer dependencies), or is the current decoupled architecture intentionally opaque?
 2. Is the missing `shippingContent.ts` data file intentional (Shipping content is DB-only) or an oversight?
 3. Questions carried over: Vercel account cleanup, seed file update strategy, other seed function audits.
+
+---
+
+## Session: 2026-04-14 at ~11:00
+
+### Accomplished
+
+1. **Built a standalone landing page for the AdvantEdge Transition Finance Toolkit** — a self-contained HTML file at `public/landing.html` that is completely separate from the existing React/Vite application. It is served as a static file by Vite and accessible at `https://transitionfinance4illimity.com/landing.html` after Vercel deploy. The page was designed using the UI/UX Pro Max skill for design system generation and the 21st.dev MCP for component inspiration (hero patterns, bento grids, animated counters, CTA layouts).
+
+2. **Implemented an interactive particle network background** — a canvas-based animated background in the hero section where particles (dots) are connected by lines forming a web/constellation pattern. Lines near the mouse cursor glow crimson; distant lines are subtle gray. Particles repel from the cursor on hover. Respects `prefers-reduced-motion` (canvas hidden entirely). This replaced an initial mesh gradient background that Pietro found impacted readability.
+
+3. **Adopted the advant-nctm.com color palette** — extracted the exact colors from `https://www.advant-nctm.com` using Playwright (navigated the live site, dismissed cookie banners, captured screenshots, extracted computed styles via JS evaluation). The palette is: primary crimson `#ac1939`, black `#141414`, grays `#3e3d3d` / `#5a5a5a` / `#c3c3c3`, light backgrounds `#f2f2f2` / `#eeeeee`, blue accent `#1032cf` (not used in landing page). This replaced the original green/navy/gold palette from the existing toolkit site.
+
+4. **Created an SVG logo matching the original brand identity** — reproduced the logo from a PNG reference (`/Users/pie/Desktop/advantedge/Sito Vecchio/screenshots sito/Screenshot 2025-10-06 at 17.55.11.png`) as an inline SVG with three lines: "advantedge" in gray-green (#5a706e), "by ADVANT Nctm" (right-aligned under "advantedge", ADVANT in crimson), and "Transition Finance Toolkit" (left-aligned, bold, dark). Multiple iterations were needed to get the alignment correct — the "m" of "Nctm" must align with the last "e" of "advantedge", and proper vertical spacing was needed between the descender of "g" and the "by" line. The logo is used in both the navbar and footer, and saved as a standalone file at `logo.svg`.
+
+5. **Integrated a Formspree lead capture form** — a modal form that opens from all CTA buttons (navbar "Request Access", hero "Explore the Platform", CTA section "Request Early Access" and "Contact Our Team"). The form collects: first name, last name, work email, company, role, primary interest (dropdown), and optional message. Submissions are sent via Formspree endpoint `https://formspree.io/f/meevoqkp` to `pietro.calderini.nannerini@gmail.com` with CC to `riccardo.sallustio@advant-nctm.com`. The modal has close-on-escape, close-on-click-outside, and a success confirmation state.
+
+6. **Rewrote all landing page copy from sales-oriented to professional/explanatory tone** — Pietro directed that the tone was "too cocky" and needed to reflect what AdvantEdge actually is: a knowledge platform that educates first, then opens the door to solutions and consultancy. Key changes: hero headline from "Navigate Climate Risk with Precision" to "Understanding Transition Finance Before You Build It"; features section from "Everything You Need" to "The Knowledge Architecture Behind Transition Finance"; How It Works reframed as "Understand → Identify Gaps → Engage Advisory" (knowledge first, consultancy after); testimonials rewritten to be grounded and practical; CTA from "Ready to Transform?" to "Interested in Exploring the Platform?"
+
+7. **Replaced the Lovable favicon site-wide** — created `public/favicon.svg` (crimson rounded square with white "TF") and `public/favicon.ico` (proper ICO with 16x16 and 32x32 PNG layers generated via Python). Updated both `index.html` and `public/landing.html` with cache-busting `?v=2` query params. Safari's aggressive favicon caching proved resistant to normal cache clearing — the Lovable favicon persisted despite multiple approaches (SVG favicon, ICO favicon, apple-touch-icon, cache-busting params, quitting Safari).
+
+8. **Removed the "100% Taxonomy Aligned" stat box** and changed the stats grid from 4 columns to 3, centering the remaining stats (19 Knowledge Modules, 4 Industrial Sectors, 12+ EU Regulations Mapped).
+
+### Decisions Made
+
+- **The landing page is a standalone HTML file, not a React component.** It lives at `public/landing.html` and has zero dependencies on the existing React/Vite application. This was a deliberate choice so it can be reviewed, shared, and iterated on independently without touching the main codebase. It can later be integrated as a React route if needed.
+- **The color palette follows advant-nctm.com, not the existing toolkit site.** The green/navy/gold palette of the toolkit was replaced with crimson/black/white from the law firm's website. This aligns the landing page with the ADVANT Nctm brand identity since the toolkit is offered through that firm.
+- **The landing page positioning is "knowledge platform first, consultancy second."** The toolkit is the point of contact — it educates the client on transition finance. Solutions, tools, and hands-on consultancy are positioned as the next step after the client has engaged with the knowledge. This is not a product sales page; it is a professional invitation to explore.
+- **Formspree was chosen for form handling** because the landing page is standalone HTML with no backend. Free tier (50 submissions/month) is sufficient for early access requests. Both Pietro and Riccardo receive submissions.
+- **Font is Verdana** as requested by Pietro, not Inter (which the existing toolkit uses).
+
+### Files Changed
+
+- `public/landing.html` — **(new)** Complete standalone landing page with: particle network hero, 3-stat counter grid, 6-card bento features grid, 3-step how-it-works, 3 testimonial cards, CTA section, footer, registration modal form, inline SVG logo. Uses advant-nctm.com crimson palette and Verdana font.
+- `logo.svg` — **(new)** Standalone SVG logo file: "advantedge" + "by ADVANT Nctm" + "Transition Finance Toolkit" with correct brand colors and alignment.
+- `public/favicon.svg` — **(new)** SVG favicon: crimson rounded square with white "TF" text.
+- `public/favicon.ico` — **(new)** ICO favicon with 16x16 and 32x32 PNG layers for Safari compatibility.
+- `index.html` — Updated favicon references to point to new `/favicon.ico` and `/favicon.svg` with cache-busting `?v=2`, replacing the empty `data:,` favicon.
+
+### What Did Not Work
+
+- **Initial mesh gradient background** — three large blurry radial gradient circles with CSS animations (`mesh-move`). Pietro found it impacted readability and wanted something "more bold and linear, like a moving web." Replaced with the canvas-based particle network.
+- **SVG logo text positioning** — multiple iterations failed because Verdana character width estimates were inaccurate. First attempt placed "by ADVANT Nctm" to the right of "advantedge" (should be below). Second attempt had it right-aligned to the viewBox edge (x=340) instead of the text edge. Third attempt used `text-anchor="end"` with `x` on a `<tspan>` (wrong — SVG applies the anchor to the `<text>` element's x, not the tspan's). Final working solution: `text-anchor="end"` on the `<text>` element with `x="228"` (estimated Verdana width of "advantedge" at 40px), no x on individual tspans.
+- **Safari favicon cache** — the Lovable favicon from the project's original scaffolding persisted despite: (a) adding an inline data-URI SVG favicon, (b) creating a `/favicon.svg` file, (c) creating a proper `/favicon.ico` with PNG layers, (d) adding `apple-touch-icon`, (e) cache-busting query params `?v=2`, (f) clearing Safari cache. Safari stores favicons in a separate database on macOS Sequoia that was not found at any of the documented paths. The Lovable favicon may still be visible in Safari — this remains unresolved.
+- **Playwright browser session** — the Playwright MCP browser session closed mid-testing and could not be reconnected, requiring direct `open` commands for subsequent testing.
+
+### Remaining Work
+
+1. **Resolve the Safari favicon issue** — the Lovable favicon still appears in Safari. Options: (a) check Vercel project settings for a configured favicon, (b) find and delete the Safari favicon database on macOS Sequoia, (c) try accessing the site from a different browser/device to confirm the new favicon works elsewhere.
+2. **Test the Formspree form end-to-end** — submit a test entry through the live deployed form at `transitionfinance4illimity.com/landing.html` and verify that both Pietro and Riccardo receive the email.
+3. **Review the landing page with Riccardo (Pietro's boss)** — the page is now live for review. Feedback may require further iterations on copy, layout, or design.
+4. **Consider adding an OG image and Twitter card image** — the `og:image` and `twitter:image` meta tags in `index.html` are currently empty. A social preview image would improve link sharing.
+5. **Remaining work carried over from previous sessions:** fix seed file to match database, add 4 new transition risk descriptions via admin UI, configure SUPABASE_ACCESS_TOKEN, resolve Vercel account confusion, audit other seed functions, explore bridge annotations in graphify, create shippingContent.ts, fix post-commit hook working directory issue.
+
+### Open Questions
+
+1. Does Riccardo approve the landing page tone and content, or are further revisions needed?
+2. Should the landing page eventually be integrated as a React route (e.g., `/` as the homepage) rather than a standalone HTML file?
+3. Is the Lovable favicon visible in browsers other than Safari? If it's Safari-only, it may be a local cache issue that resolves on other devices.
+4. Questions carried over: Vercel account cleanup, seed file update strategy, other seed function audits, bridge annotations, shippingContent.ts.
